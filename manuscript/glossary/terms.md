@@ -1,0 +1,3 @@
+# Glossary
+
+Starter glossary terms.
