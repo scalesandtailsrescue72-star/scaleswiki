@@ -2,7 +2,10 @@ import Link from "next/link";
 
 const chapters = [
   { title: "Cover", href: "/content/guides/ball-python/00-cover.md" },
-  { title: "Introduction", href: "/content/guides/ball-python/01-introduction.md" },
+  {
+  title: "Introduction",
+  href: "/guides/ball-python/introduction",
+
   { title: "Natural History", href: "/content/guides/ball-python/02-natural-history.md" },
   { title: "Is a Ball Python Right for You?", href: "/content/guides/ball-python/03-is-a-ball-python-right-for-you.md" },
   { title: "Preparing Before You Buy", href: "/content/guides/ball-python/04-preparing-before-you-buy.md" },
