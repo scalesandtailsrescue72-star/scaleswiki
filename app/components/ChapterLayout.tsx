@@ -14,7 +14,7 @@ interface ChapterLayoutProps {
 export default function ChapterLayout({
   chapter,
   title,
- readingTime,
+  readingTime,
   guideHref,
   nextHref,
   previousHref,
@@ -23,7 +23,6 @@ export default function ChapterLayout({
   return (
     <main className="min-h-screen bg-[#08120D] text-[#F5F5F5]">
       <section className="mx-auto max-w-5xl px-6 py-16 lg:px-8">
-
         <div className="mb-6 text-sm text-gray-400">
           <Link href="/">Home</Link>
           {" / "}
@@ -36,9 +35,7 @@ export default function ChapterLayout({
           {chapter}
         </p>
 
-        <h1 className="mt-3 text-5xl font-bold">
-          {title}
-        </h1>
+        <h1 className="mt-3 text-5xl font-bold">{title}</h1>
 
         <p className="mt-3 text-gray-400">
           📖 Estimated Reading Time: {readingTime}
@@ -49,7 +46,6 @@ export default function ChapterLayout({
         </article>
 
         <div className="mt-14 flex flex-wrap justify-between">
-
           {previousHref ? (
             <Link
               href={previousHref}
@@ -68,10 +64,10 @@ export default function ChapterLayout({
             >
               Next →
             </Link>
-          ) : null}
-
+          ) : (
+            <div />
+          )}
         </div>
-
       </section>
     </main>
   );
