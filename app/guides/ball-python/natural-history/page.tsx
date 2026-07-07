@@ -3,6 +3,7 @@ import KeeperInsight from "@/app/components/callouts/KeeperInsight";
 import VetPerspective from "@/app/components/callouts/VetPerspective";
 import CommonMistake from "@/app/components/callouts/CommonMistake";
 import WhyThisMatters from "@/app/components/callouts/WhyThisMatters";
+import SpeciesProfile from "@/app/components/callouts/SpeciesProfile";
 
 export default function NaturalHistoryPage() {
   return (
@@ -21,43 +22,15 @@ export default function NaturalHistoryPage() {
         rooted in the environments where this species evolved.
       </p>
 
-      <section className="mt-12 rounded-2xl border border-[#2ECC71]/30 bg-[#10351E] p-8">
-        <h2 className="text-2xl font-bold text-[#2ECC71]">
-          Species Profile
-        </h2>
-
-        <div className="mt-8 grid gap-6 md:grid-cols-2">
-          <div>
-            <h3 className="font-semibold">Scientific Name</h3>
-            <p className="italic text-gray-300">Python regius</p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold">Family</h3>
-            <p className="text-gray-300">Pythonidae</p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold">Native Range</h3>
-            <p className="text-gray-300">West & Central Africa</p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold">Average Length</h3>
-            <p className="text-gray-300">3–5 feet (0.9–1.5 m)</p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold">Lifespan</h3>
-            <p className="text-gray-300">20–30+ years</p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold">IUCN Status</h3>
-            <p className="text-gray-300">Least Concern</p>
-          </div>
-        </div>
-      </section>
+      <SpeciesProfile
+  commonName="Ball Python"
+  scientificName="Python regius"
+  family="Pythonidae"
+  nativeRange="West & Central Africa"
+  averageLength="3–5 feet (0.9–1.5 m)"
+  lifespan="20–30+ years"
+  iucn="Least Concern"
+/>
 
       <KeeperInsight>
         Successful husbandry begins with understanding where a species evolved.
