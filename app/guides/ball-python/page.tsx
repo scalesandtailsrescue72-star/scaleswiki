@@ -2,6 +2,7 @@ import Link from "next/link";
 
 const chapters = [
   {
+
     title: "Cover",
     href: "/content/guides/ball-python/00-cover.md",
   },
@@ -9,10 +10,10 @@ const chapters = [
     title: "Introduction",
     href: "/guides/ball-python/introduction",
   },
-  {
-    title: "Natural History",
-    href: "/content/guides/ball-python/02-natural-history.md",
-  },
+ {
+  title: "Natural History",
+  href: "/guides/ball-python/natural-history",
+},
   {
     title: "Is a Ball Python Right for You?",
     href: "/content/guides/ball-python/03-is-a-ball-python-right-for-you.md",
