@@ -16,8 +16,8 @@ const chapters = [
 },
   {
     title: "Is a Ball Python Right for You?",
-    href: "/content/guides/ball-python/03-is-a-ball-python-right-for-you.md",
-  },
+   href:"/guides/ball-python/is-a-ball-python-right-for-you",
+  } ,
   {
     title: "Preparing Before You Buy",
     href: "/content/guides/ball-python/04-preparing-before-you-buy.md",
