@@ -1,6 +1,7 @@
 import ChapterLayout from "@/app/components/ChapterLayout";
 import KeeperInsight from "@/app/components/callouts/KeeperInsight";
 import DecisionChecklist from "@/app/components/DecisionChecklist";
+import ChapterSnapshot from "@/app/components/snapshots/ChapterSnapshot";
 
 export default function IntroductionPage() {
   return (
@@ -81,6 +82,18 @@ export default function IntroductionPage() {
           <li>✓ Understanding natural history improves captive care.</li>
         </ul>
       </section>
+      <ChapterSnapshot
+  number="001"
+  chapter="Chapter 1"
+  title="Introduction"
+>
+  <ul className="space-y-4">
+    <li>✓ Ball pythons require specialized care.</li>
+    <li>✓ Responsible ownership begins with education.</li>
+    <li>✓ Husbandry recommendations should be evidence-informed.</li>
+    <li>✓ Caring for a ball python is a long-term commitment.</li>
+  </ul>
+</ChapterSnapshot>
     </ChapterLayout>
   );
 }
