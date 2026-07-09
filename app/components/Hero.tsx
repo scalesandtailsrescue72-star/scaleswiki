@@ -4,8 +4,7 @@ export function Hero() {
   return (
     <section className="mx-auto flex max-w-7xl flex-col items-center px-6 py-24 text-center lg:px-8 lg:py-32">
       <span className="rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1 text-sm font-medium text-green-300">
-  📚 Evidence-Based Education • 🐍 Community • ❤️ Better Care
-</span>
+  📚 Learn • ❤️ Care • 🌳 Grow
 
       <h1 className="mt-6 max-w-4xl text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
         The Place Where People Learn Reptile Husbandry.
@@ -15,6 +14,9 @@ export function Hero() {
        Explore evidence-based reptile care guides, structured Academy courses,
 downloadable resources, and a growing community dedicated to improving
 reptile welfare through education.
+<p className="mt-4 text-base font-medium text-green-300">
+  Education first. Sustainability second.
+</p>
       </p>
 
       <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -49,7 +51,9 @@ reptile welfare through education.
       Academy
     </h3>
     <p className="mt-2 text-sm text-gray-300">
-      Track your progress, earn certificates, and build your reptile husbandry knowledge.
+     <p className="mt-2 text-sm text-gray-300">
+  Coming soon: Track progress, earn certificates, complete quizzes, and continue learning.
+</p>
     </p>
   </div>
 
