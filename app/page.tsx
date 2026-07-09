@@ -1,6 +1,7 @@
 import { Academy } from "@/app/components/Academy";
 import { Footer } from "@/app/components/Footer";
 import { FoundersTreePreview } from "@/app/components/FoundersTreePreview";
+import { SupportMission } from "@/app/components/SupportMission";
 import { GuideCards } from "@/components/GuideCards";
 import { Hero } from "@/app/components/Hero";
 import { Navbar } from "@/app/components/Navbar";
@@ -19,6 +20,7 @@ export default function Home() {
       <GuideCards />
       <Academy />
       <FoundersTreePreview />
+      <SupportMission />
       <Rescue />
       <Newsletter />
       <Footer />
