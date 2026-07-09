@@ -17,14 +17,15 @@ export function Academy() {
 </p>
         </h2>
 
-        <p className="mt-6 max-w-3xl text-lg leading-8 text-gray-300">
-          The ScalesWiki Academy transforms reptile care into a structured
-          learning experience through guided lessons, quizzes, certificates,
-          and printable educational resources.
-          <p className="mt-4 text-base text-gray-400 italic">
+      <p className="mt-6 max-w-3xl text-lg leading-8 text-gray-300">
+  The ScalesWiki Academy transforms reptile care into a structured
+  learning experience through guided lessons, quizzes, certificates,
+  and printable educational resources.
+</p>
+
+<p className="mt-4 text-base text-gray-400 italic">
   Every expert reptile keeper started by learning one chapter at a time.
 </p>
-        </p>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
 
