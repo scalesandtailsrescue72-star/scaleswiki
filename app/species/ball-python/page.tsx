@@ -2,6 +2,7 @@ import { Hero } from "./components/Hero";
 import { QuickFacts } from "./components/QuickFacts";
 import { Introduction } from "./components/Introduction";
 import { NaturalHistory } from "./components/NaturalHistory";
+import { IsItRightForYou } from "./components/IsItRightForYou";
 
 export default function BallPythonPage() {
   return (
@@ -14,6 +15,8 @@ export default function BallPythonPage() {
       <Introduction />
 
       <NaturalHistory />
+
+      <IsItRightForYou />
 
     </main>
   );
