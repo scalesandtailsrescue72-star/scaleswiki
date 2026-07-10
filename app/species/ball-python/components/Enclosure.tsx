@@ -1,68 +1,56 @@
-import Image from "next/image";
+import { SectionHeading } from "@/app/components/ui/SectionHeading";
 import { Callout } from "@/app/components/ui/Callout";
 
-export function EnclosureBlueprint() {
+export function Enclosure() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
 
-      <div className="text-center">
+      <SectionHeading
+        eyebrow="Enclosure"
+        title="Designing a Healthy Habitat"
+        description="A well-designed enclosure should provide security, proper environmental gradients, and opportunities for natural behavior."
+      />
 
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
-          Habitat Illustration
-        </p>
+      <div className="mt-16 grid gap-8 md:grid-cols-2">
 
-        <h2 className="mt-4 text-5xl font-bold text-white">
-          Ball Python Enclosure Blueprint
-        </h2>
+        <div className="rounded-3xl border border-white/10 bg-[#101B15] p-8">
+          <h3 className="text-2xl font-bold text-white">
+            Minimum Adult Size
+          </h3>
 
-        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-300">
-          This ScalesWiki enclosure blueprint illustrates a modern Ball Python
-          habitat with proper heating, hides, enrichment, ventilation, water,
-          and environmental gradients.
-        </p>
+          <p className="mt-6 text-4xl font-bold text-green-400">
+            4' × 2' × 2'
+          </p>
 
-      </div>
+          <p className="mt-6 text-gray-300">
+            A four-foot enclosure provides sufficient room for an adult Ball
+            Python to thermoregulate, explore, and display natural behaviors.
+          </p>
+        </div>
 
-      <div className="mt-16 overflow-hidden rounded-3xl border border-white/10 bg-[#101B15] p-4 shadow-2xl">
+        <div className="rounded-3xl border border-white/10 bg-[#101B15] p-8">
+          <h3 className="text-2xl font-bold text-white">
+            Essential Features
+          </h3>
 
-        <Image
-          src="/illustrations/ball-python-enclosure-blueprint.png"
-          alt="ScalesWiki Ball Python Enclosure Blueprint"
-          width={1536}
-          height={1024}
-          priority
-          className="w-full h-auto rounded-2xl"
-        />
+          <ul className="mt-6 space-y-3 text-gray-300">
+            <li>• Warm hide</li>
+            <li>• Cool hide</li>
+            <li>• Large water bowl</li>
+            <li>• Climbing branches</li>
+            <li>• Leaf litter & enrichment</li>
+            <li>• Secure ventilation</li>
+          </ul>
+        </div>
 
       </div>
 
       <Callout
         type="tip"
-        title="ScalesWiki Recommendation"
+        title="ScalesWiki Tip"
       >
-        Ball Pythons thrive in enclosures that provide multiple secure hiding
-        places, climbing opportunities, proper temperature gradients, and
-        environmental enrichment. The goal is to encourage natural behaviors
-        while allowing the keeper to maintain stable husbandry conditions.
-      </Callout>
-
-      <Callout
-        type="warning"
-        title="Common Mistake"
-      >
-        Large empty enclosures often increase stress. Provide visual barriers,
-        plants, cork bark, and clutter so your Ball Python feels secure while
-        exploring.
-      </Callout>
-
-      <Callout
-        type="science"
-        title="Science Note"
-      >
-        Ball Pythons naturally use underground burrows and sheltered areas to
-        regulate temperature and humidity. A captive enclosure should recreate
-        these environmental choices rather than offering a single uniform
-        climate.
+        Design the enclosure around the snake's natural behaviors rather than
+        simply meeting minimum dimensions.
       </Callout>
 
     </section>
