@@ -10,13 +10,12 @@ export function Academy() {
 
         <div className="flex flex-col items-center text-center">
 
-          <Image
-            src="/branding/academy-logo.svg"
-            alt="ScalesWiki Academy"
-            width={140}
-            height={140}
-            className="mb-6"
-          />
+   <Image
+  src="/branding/academy-logo.svg"
+  alt="ScalesWiki Academy"
+  width={140}
+  height={140}
+/>
 
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
             Academy

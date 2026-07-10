@@ -6,12 +6,11 @@ export function FoundersTreePreview() {
       <div className="rounded-3xl border border-white/10 bg-[#101B15] p-10 text-center">
 
         <Image
-          src="/branding/founders-tree-logo.svg"
-          alt="Founders Tree"
-          width={140}
-          height={140}
-          className="mx-auto mb-6"
-        />
+  src="/branding/founders-tree-logo.svg"
+  alt="Founders Tree"
+  width={140}
+  height={140}
+/>
 
         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
           Community
