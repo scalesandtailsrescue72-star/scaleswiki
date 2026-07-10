@@ -3,6 +3,9 @@ import { QuickFacts } from "./components/QuickFacts";
 import { Introduction } from "./components/Introduction";
 import { NaturalHistory } from "./components/NaturalHistory";
 import { IsItRightForYou } from "./components/IsItRightForYou";
+import { Enclosure } from "./components/Enclosure";
+import { EnclosureBlueprint } from "./components/EnclosureBlueprint";
+import { Heating } from "./components/Heating";
 
 export default function BallPythonPage() {
   return (
@@ -17,6 +20,12 @@ export default function BallPythonPage() {
       <NaturalHistory />
 
       <IsItRightForYou />
+
+      <Enclosure />
+
+      <EnclosureBlueprint />
+
+      <Heating />
 
     </main>
   );
