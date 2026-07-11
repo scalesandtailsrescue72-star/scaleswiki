@@ -14,6 +14,7 @@ import { Feeding } from "./components/Feeding";
 import { Handling } from "./components/Handling";
 import { Health } from "./components/Health";
 import { CommonMistakes } from "./components/CommonMistakes";
+import { FAQ } from "./components/FAQ";
 
 export default function BallPythonPage() {
   return (
@@ -50,6 +51,8 @@ export default function BallPythonPage() {
       <Health />
 
       <CommonMistakes />
+
+      <FAQ />
 
     </main>
   );
