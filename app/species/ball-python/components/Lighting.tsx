@@ -12,7 +12,7 @@ export function Lighting() {
       <SectionHeading
         eyebrow="Lighting"
         title="Providing an Appropriate Light Cycle"
-        description="Ball Pythons are primarily crepuscular to nocturnal, but they still benefit from a consistent day and night cycle. Proper lighting supports normal behavior, environmental awareness, and overall welfare."
+        description="Ball Pythons are primarily crepuscular to nocturnal, but they still benefit from a consistent day and night cycle. Appropriate lighting, combined with a proper thermal gradient and warm basking area, supports normal behavior, thermoregulation, and overall welfare."
       />
 
       <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -27,7 +27,7 @@ export function Lighting() {
           label="UVB"
           value="Beneficial"
           accent="blue"
-          description="Low-output UVB may provide welfare benefits."
+          description="Low-output UVB may provide welfare benefits when properly installed."
         />
 
         <SpeciesStat
@@ -38,10 +38,10 @@ export function Lighting() {
         />
 
         <SpeciesStat
-          label="Basking Lamp"
-          value="Optional"
+          label="Warm Basking / Hot Spot"
+          value="Required"
           accent="purple"
-          description="Heating and lighting serve different purposes."
+          description="Provide a properly heated warm area as part of the enclosure's thermal gradient."
         />
 
       </div>
@@ -54,16 +54,19 @@ export function Lighting() {
           references={3}
         >
           Providing approximately 12 hours of light and 12 hours of darkness
-          each day helps establish predictable environmental rhythms.
+          each day helps establish predictable environmental rhythms while
+          supporting natural activity cycles.
         </RecommendationCard>
 
         <RecommendationCard
           type="consensus"
-          title="Consider Low-Level UVB"
+          title="Provide a Warm Basking / Hot Spot"
         >
-          Many experienced keepers successfully maintain Ball Pythons without
-          UVB, while others report behavioral and welfare benefits when
-          appropriate low-output UVB is provided.
+          Ball Pythons require access to an appropriately heated warm basking
+          area as part of a proper thermal gradient. Although many individuals
+          warm themselves from within a secure hide rather than basking openly,
+          access to this heated area is essential for normal thermoregulation,
+          digestion, immune function, and overall health.
         </RecommendationCard>
 
         <RecommendationCard
@@ -71,7 +74,9 @@ export function Lighting() {
           title="Avoid Colored Night Bulbs"
         >
           Red, blue, and other colored nighttime bulbs are generally not
-          recommended. Ball Pythons benefit from a natural dark period.
+          recommended. Ball Pythons benefit from a natural dark period. If
+          supplemental overnight heat is necessary, use equipment that produces
+          heat without emitting visible light.
         </RecommendationCard>
 
       </div>
@@ -91,17 +96,19 @@ export function Lighting() {
           icon="☀️"
           title="UVB Lighting"
         >
-          When used, choose a low-output UVB fixture appropriate for a
-          crepuscular species and follow manufacturer recommendations for
-          distance and replacement intervals.
+          Low-output UVB is not universally considered essential for Ball
+          Pythons, but an increasing number of veterinarians and experienced
+          keepers recognize potential welfare benefits when appropriate
+          fixtures, distances, and replacement schedules are used.
         </InfoCard>
 
         <InfoCard
           icon="🌙"
           title="Night Cycle"
         >
-          Turn all visible lights off at night. If supplemental heat is
-          required overnight, use equipment that does not emit visible light.
+          Turn all visible lights off at night. If additional heat is required,
+          use a thermostat-controlled heat source that does not produce visible
+          light so the snake experiences a normal dark period.
         </InfoCard>
 
       </div>
@@ -109,8 +116,8 @@ export function Lighting() {
       <ReferenceBox>
 
         <p>
-          Mader DR, Divers SJ. <em>Current Therapy in Reptile Medicine and
-          Surgery.</em>
+          Divers SJ, Mader DR.
+          <em> Current Therapy in Reptile Medicine and Surgery.</em>
         </p>
 
         <p>
@@ -127,7 +134,7 @@ export function Lighting() {
 
         <VetReviewBadge
           status="pending"
-          version="0.4"
+          version="0.5"
         />
 
       </div>
