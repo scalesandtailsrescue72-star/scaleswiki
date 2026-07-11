@@ -1,3 +1,5 @@
+import { GuideContents } from "@/app/components/ui/GuideContents";
+
 import { Hero } from "./components/Hero";
 import { QuickFacts } from "./components/QuickFacts";
 import { Introduction } from "./components/Introduction";
@@ -15,6 +17,7 @@ import { Handling } from "./components/Handling";
 import { Health } from "./components/Health";
 import { CommonMistakes } from "./components/CommonMistakes";
 import { FAQ } from "./components/FAQ";
+import { References } from "./components/References";
 
 export default function BallPythonPage() {
   return (
@@ -23,6 +26,27 @@ export default function BallPythonPage() {
       <Hero />
 
       <QuickFacts />
+
+      <GuideContents
+        title="Ball Python Guide"
+        sections={[
+          { id: "introduction", title: "Introduction" },
+          { id: "natural-history", title: "Natural History" },
+          { id: "is-it-right-for-you", title: "Is It Right For You?" },
+          { id: "enclosure", title: "Enclosure" },
+          { id: "heating", title: "Heating" },
+          { id: "humidity", title: "Humidity" },
+          { id: "lighting", title: "Lighting" },
+          { id: "substrate", title: "Substrate" },
+          { id: "water", title: "Water" },
+          { id: "feeding", title: "Feeding" },
+          { id: "handling", title: "Handling" },
+          { id: "health", title: "Health" },
+          { id: "common-mistakes", title: "Common Mistakes" },
+          { id: "faq", title: "FAQ" },
+          { id: "references", title: "References" },
+        ]}
+      />
 
       <Introduction />
 
@@ -53,6 +77,8 @@ export default function BallPythonPage() {
       <CommonMistakes />
 
       <FAQ />
+
+      <References />
 
     </main>
   );
