@@ -1,94 +1,131 @@
+import { SectionHeading } from "@/app/components/ui/SectionHeading";
+import { SpeciesStat } from "@/app/components/ui/SpeciesStat";
+import { RecommendationCard } from "@/app/components/ui/RecommendationCard";
+import { InfoCard } from "@/app/components/ui/InfoCard";
+import { ReferenceBox } from "@/app/components/ui/ReferenceBox";
+import { VetReviewBadge } from "@/app/components/ui/VetReviewBadge";
+
 export function NaturalHistory() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
 
-      <div className="max-w-5xl">
+      <SectionHeading
+        eyebrow="Natural History"
+        title="Understanding Ball Pythons in the Wild"
+        description="Understanding how Ball Pythons live in their natural environment helps explain why they require secure hiding places, environmental gradients, and stable husbandry in captivity. Good captive care begins with respecting the species' natural biology."
+      />
 
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
-          Natural History
-        </p>
+      <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
 
-        <h2 className="mt-4 text-5xl font-bold text-white">
-          Understanding the Species
-        </h2>
+        <SpeciesStat
+          label="Native Range"
+          value="West & Central Africa"
+          description="Found across a broad range of countries and habitats."
+        />
 
-        <p className="mt-8 text-xl leading-9 text-gray-300">
-          Ball Pythons are native to West and Central Africa, where they inhabit
-          savannas, grasslands, lightly wooded forests, and agricultural areas.
-          Rather than living in dense tropical rainforests, they spend much of
-          their lives hidden beneath vegetation or inside abandoned rodent
-          burrows that provide protection from predators and extreme
-          temperatures.
-        </p>
+        <SpeciesStat
+          label="Activity"
+          value="Crepuscular"
+          accent="green"
+          description="Most active during dawn, dusk, and nighttime hours."
+        />
 
-        <p className="mt-8 text-lg leading-8 text-gray-400">
-          These underground retreats create stable environmental conditions,
-          helping maintain humidity while shielding the snakes from intense
-          daytime heat. Understanding this natural behavior explains why secure
-          hiding places and appropriate humidity are essential in captivity.
-        </p>
+        <SpeciesStat
+          label="Lifestyle"
+          value="Terrestrial"
+          accent="blue"
+          description="Primarily ground-dwelling while also using low branches and burrows."
+        />
+
+        <SpeciesStat
+          label="Defense"
+          value="Balling"
+          accent="purple"
+          description="Curls into a tight defensive ball when threatened."
+        />
+
+      </div>
+
+      <div className="mt-16 space-y-8">
+
+        <RecommendationCard
+          type="evidence"
+          title="Natural Behaviors Should Guide Husbandry"
+          references={4}
+        >
+          Ball Pythons spend much of their lives utilizing burrows, termite
+          mounds, dense vegetation, and other sheltered environments.
+          Captive enclosures should provide similar opportunities for hiding,
+          exploration, and thermoregulation.
+        </RecommendationCard>
+
+        <RecommendationCard
+          type="consensus"
+          title="Security Reduces Stress"
+        >
+          Multiple snug hides, visual barriers, and enclosure clutter allow
+          Ball Pythons to display natural behaviors while helping many
+          individuals feel more secure in captivity.
+        </RecommendationCard>
 
       </div>
 
       <div className="mt-16 grid gap-8 lg:grid-cols-3">
 
-        <div className="rounded-3xl border border-white/10 bg-[#101B15] p-8">
+        <InfoCard
+          icon="🌍"
+          title="Native Habitat"
+        >
+          Ball Pythons inhabit grasslands, savannas, lightly wooded areas,
+          and agricultural landscapes where suitable shelter and prey are
+          available.
+        </InfoCard>
 
-          <h3 className="text-2xl font-bold text-white">
-            🌍 Habitat
-          </h3>
+        <InfoCard
+          icon="🐀"
+          title="Natural Diet"
+        >
+          Wild Ball Pythons feed primarily on small mammals and occasionally
+          birds. They are ambush predators that rely on patience rather than
+          actively pursuing prey.
+        </InfoCard>
 
-          <p className="mt-5 leading-8 text-gray-300">
-            Grasslands, forest edges, scrublands and abandoned mammal burrows
-            throughout West and Central Africa.
-          </p>
-
-        </div>
-
-        <div className="rounded-3xl border border-white/10 bg-[#101B15] p-8">
-
-          <h3 className="text-2xl font-bold text-white">
-            🌙 Activity
-          </h3>
-
-          <p className="mt-5 leading-8 text-gray-300">
-            Primarily nocturnal and crepuscular, becoming most active during
-            the evening and overnight hours.
-          </p>
-
-        </div>
-
-        <div className="rounded-3xl border border-white/10 bg-[#101B15] p-8">
-
-          <h3 className="text-2xl font-bold text-white">
-            🐀 Diet
-          </h3>
-
-          <p className="mt-5 leading-8 text-gray-300">
-            Wild Ball Pythons consume a variety of appropriately sized mammals
-            and occasionally birds depending on age, season and habitat.
-          </p>
-
-        </div>
+        <InfoCard
+          icon="🌙"
+          title="Daily Activity"
+        >
+          During daylight hours Ball Pythons often remain hidden inside
+          burrows or other secure retreats before becoming more active during
+          cooler evening and nighttime periods.
+        </InfoCard>
 
       </div>
 
-      <div className="mt-16 rounded-3xl border border-amber-500/30 bg-amber-950/20 p-8">
+      <ReferenceBox>
 
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-300">
-          ScalesWiki Insight
+        <p>
+          Barker DG, Barker TM.
+          <em> Ball Pythons: The History, Natural History, Care and Breeding.</em>
         </p>
 
-        <h3 className="mt-4 text-2xl font-bold text-white">
-          Good husbandry starts with understanding the wild animal.
-        </h3>
-
-        <p className="mt-6 text-lg leading-8 text-gray-300">
-          Successful captive care isn't about copying nature exactly—it's about
-          understanding the environmental conditions that shaped the species'
-          evolution. By recreating those key conditions in captivity, keepers
-          can promote natural behaviors and long-term health.
+        <p>
+          Divers SJ, Mader DR.
+          <em> Current Therapy in Reptile Medicine and Surgery.</em>
         </p>
+
+        <p>
+          Association of Reptile and Amphibian Veterinarians (ARAV)
+          educational resources.
+        </p>
+
+      </ReferenceBox>
+
+      <div className="mt-16">
+
+        <VetReviewBadge
+          status="pending"
+          version="0.5"
+        />
 
       </div>
 

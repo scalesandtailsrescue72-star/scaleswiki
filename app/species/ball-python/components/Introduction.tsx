@@ -1,68 +1,128 @@
+import { SectionHeading } from "@/app/components/ui/SectionHeading";
+import { SpeciesStat } from "@/app/components/ui/SpeciesStat";
+import { RecommendationCard } from "@/app/components/ui/RecommendationCard";
+import { InfoCard } from "@/app/components/ui/InfoCard";
+import { ReferenceBox } from "@/app/components/ui/ReferenceBox";
+import { VetReviewBadge } from "@/app/components/ui/VetReviewBadge";
+
 export function Introduction() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
 
-      <div className="max-w-4xl">
+      <SectionHeading
+        eyebrow="Introduction"
+        title="Getting Started with Ball Python Care"
+        description="Ball Pythons (Python regius) are among the world's most popular pet snakes because of their generally calm temperament, manageable adult size, and long lifespan. Providing appropriate husbandry from the beginning helps establish the foundation for a healthy, thriving snake."
+      />
 
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
-          Introduction
-        </p>
+      <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
 
-        <h2 className="mt-4 text-5xl font-bold text-white">
-          Meet the Ball Python
-        </h2>
+        <SpeciesStat
+          label="Scientific Name"
+          value="Python regius"
+          description="A nonvenomous constrictor native to western and central Africa."
+        />
 
-        <p className="mt-8 text-xl leading-9 text-gray-300">
-          The Ball Python (<span className="italic">Python regius</span>) is one
-          of the most popular pet snakes in the world. Native to the grasslands
-          and forests of West and Central Africa, this species is well known for
-          its calm temperament, manageable adult size, and remarkable diversity
-          of naturally occurring and selectively bred color morphs.
-        </p>
+        <SpeciesStat
+          label="Adult Size"
+          value="3–5 ft"
+          accent="green"
+          description="Most adults remain within this range, although individual variation occurs."
+        />
 
-        <p className="mt-6 text-lg leading-8 text-gray-400">
-          Ball Pythons earned their common name from their natural defensive
-          behavior. When frightened, they curl into a tight ball with their head
-          protected in the center rather than striking. This behavior, combined
-          with their generally calm disposition, has made them one of the most
-          commonly recommended snake species for responsible first-time keepers.
-        </p>
+        <SpeciesStat
+          label="Lifespan"
+          value="20–30+ yrs"
+          accent="blue"
+          description="Excellent husbandry can result in several decades of companionship."
+        />
 
-      </div>
-
-      <div className="mt-16 rounded-3xl border border-blue-500/30 bg-blue-950/30 p-8">
-
-        <p className="text-sm font-semibold uppercase tracking-[0.25em] text-blue-300">
-          ScalesWiki Fact
-        </p>
-
-        <h3 className="mt-4 text-2xl font-bold text-white">
-          Why are they called "Royal Pythons"?
-        </h3>
-
-        <p className="mt-4 text-lg leading-8 text-gray-300">
-          In many parts of Europe, Ball Pythons are known as
-          <span className="font-semibold text-white"> Royal Pythons</span>.
-          Historical accounts suggest they were associated with African royalty,
-          where they were respected and sometimes worn ceremonially as symbols
-          of status.
-        </p>
+        <SpeciesStat
+          label="Experience"
+          value="Beginner+"
+          accent="purple"
+          description="Suitable for many new keepers who are committed to proper care."
+        />
 
       </div>
 
-      <div className="mt-10 rounded-3xl border border-green-500/20 bg-green-950/30 p-8">
+      <div className="mt-16 space-y-8">
 
-        <p className="text-sm font-semibold uppercase tracking-[0.25em] text-green-300">
-          Why This Guide Exists
+        <RecommendationCard
+          type="evidence"
+          title="Successful Keeping Starts with Husbandry"
+          references={4}
+        >
+          Proper enclosure design, temperature regulation, humidity,
+          nutrition, hygiene, and routine observation all work together to
+          support long-term health. There is no single "magic" piece of
+          equipment that replaces good overall husbandry.
+        </RecommendationCard>
+
+        <RecommendationCard
+          type="consensus"
+          title="Plan Before Bringing Your Snake Home"
+        >
+          Purchase equipment, test temperatures and humidity, and fully cycle
+          the enclosure before introducing your Ball Python. A prepared habitat
+          reduces stress during acclimation.
+        </RecommendationCard>
+
+      </div>
+
+      <div className="mt-16 grid gap-8 lg:grid-cols-3">
+
+        <InfoCard
+          icon="🌍"
+          title="Native Habitat"
+        >
+          Ball Pythons naturally inhabit grasslands, scrublands, and forest
+          edges where they spend much of their time using burrows and other
+          sheltered retreats.
+        </InfoCard>
+
+        <InfoCard
+          icon="🛡️"
+          title="Why They're Called Ball Pythons"
+        >
+          When frightened, Ball Pythons often curl into a tight ball with
+          their head protected in the center. This defensive behavior inspired
+          their common name.
+        </InfoCard>
+
+        <InfoCard
+          icon="📚"
+          title="What This Guide Covers"
+        >
+          This guide walks through enclosure design, environmental parameters,
+          feeding, handling, health, and long-term care using current husbandry
+          recommendations and veterinary references.
+        </InfoCard>
+
+      </div>
+
+      <ReferenceBox>
+
+        <p>
+          Barker DG, Barker TM. <em>Ball Pythons: The History, Natural History, Care and Breeding.</em>
         </p>
 
-        <p className="mt-5 text-lg leading-8 text-gray-300">
-          This guide was created to provide evidence-based husbandry
-          recommendations that prioritize animal welfare. Husbandry practices
-          continue to evolve as new research and keeper experience become
-          available, so ScalesWiki regularly reviews and updates its guides to
-          reflect current best practices.
+        <p>
+          Divers SJ, Mader DR. <em>Current Therapy in Reptile Medicine and Surgery.</em>
         </p>
+
+        <p>
+          Association of Reptile and Amphibian Veterinarians (ARAV) educational resources.
+        </p>
+
+      </ReferenceBox>
+
+      <div className="mt-16">
+
+        <VetReviewBadge
+          status="pending"
+          version="0.5"
+        />
 
       </div>
 

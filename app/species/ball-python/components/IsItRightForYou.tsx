@@ -1,94 +1,140 @@
-export function IsItRightForYou() {
-  const checklist = [
-    {
-      title: "First Snake",
-      answer: "Excellent Choice",
-      color: "text-green-400",
-    },
-    {
-      title: "Handle Frequently",
-      answer: "Usually Calm",
-      color: "text-green-400",
-    },
-    {
-      title: "Display Animal",
-      answer: "Often Hidden",
-      color: "text-yellow-400",
-    },
-    {
-      title: "Feed Frozen Rodents",
-      answer: "Required",
-      color: "text-red-400",
-    },
-    {
-      title: "Long-Term Commitment",
-      answer: "20–30+ Years",
-      color: "text-yellow-400",
-    },
-    {
-      title: "Daily Care",
-      answer: "Low Maintenance",
-      color: "text-green-400",
-    },
-  ];
+import { SectionHeading } from "@/app/components/ui/SectionHeading";
+import { SpeciesStat } from "@/app/components/ui/SpeciesStat";
+import { RecommendationCard } from "@/app/components/ui/RecommendationCard";
+import { InfoCard } from "@/app/components/ui/InfoCard";
+import { ReferenceBox } from "@/app/components/ui/ReferenceBox";
+import { VetReviewBadge } from "@/app/components/ui/VetReviewBadge";
 
+export function IsItRightForYou() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
 
-      <div className="text-center">
+      <SectionHeading
+        eyebrow="Choosing a Ball Python"
+        title="Is a Ball Python the Right Pet for You?"
+        description="Ball Pythons can make rewarding companions, but they are a long-term commitment. Before bringing one home, consider the time, financial investment, enclosure space, and ongoing husbandry required throughout its lifetime."
+      />
 
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
-          Ownership Assessment
-        </p>
+      <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
 
-        <h2 className="mt-4 text-5xl font-bold text-white">
-          Is a Ball Python Right for You?
-        </h2>
+        <SpeciesStat
+          label="Commitment"
+          value="20–30+ Years"
+          description="Many Ball Pythons live for several decades with excellent care."
+        />
 
-        <p className="mx-auto mt-6 max-w-3xl text-lg text-gray-300">
-          Every reptile is a long-term commitment. Before bringing one home,
-          consider whether its care requirements match your lifestyle and
-          expectations.
-        </p>
+        <SpeciesStat
+          label="Handling"
+          value="Generally Calm"
+          accent="green"
+          description="Many individuals tolerate gentle, routine handling well."
+        />
 
-      </div>
+        <SpeciesStat
+          label="Care Level"
+          value="Beginner+"
+          accent="blue"
+          description="Suitable for dedicated beginners willing to learn proper husbandry."
+        />
 
-      <div className="mt-16 grid gap-6 md:grid-cols-2">
-
-        {checklist.map((item) => (
-
-          <div
-            key={item.title}
-            className="rounded-3xl border border-white/10 bg-[#101B15] p-8 transition hover:border-green-500/40"
-          >
-
-            <h3 className="text-xl font-semibold text-white">
-              {item.title}
-            </h3>
-
-            <p className={`mt-4 text-2xl font-bold ${item.color}`}>
-              {item.answer}
-            </p>
-
-          </div>
-
-        ))}
+        <SpeciesStat
+          label="Daily Care"
+          value="Low"
+          accent="purple"
+          description="Daily observation is important, even though routine maintenance is moderate."
+        />
 
       </div>
 
-      <div className="mt-16 rounded-3xl border border-green-500/20 bg-green-950/30 p-10">
+      <div className="mt-16 space-y-8">
 
-        <h3 className="text-3xl font-bold text-white">
-          Our Recommendation
-        </h3>
+        <RecommendationCard
+          type="evidence"
+          title="Research Before You Buy"
+          references={4}
+        >
+          Successful Ball Python ownership begins long before bringing a snake
+          home. Learn about enclosure design, environmental requirements,
+          nutrition, veterinary care, and long-term costs before making your
+          decision.
+        </RecommendationCard>
 
-        <p className="mt-6 text-lg leading-8 text-gray-300">
-          Ball Pythons are among the best choices for keepers willing to
-          research proper husbandry and commit to decades of responsible care.
-          Their calm temperament and manageable size make them approachable for
-          many beginners, but they still require thoughtful enclosure design,
-          environmental monitoring, and regular health observation.
+        <RecommendationCard
+          type="consensus"
+          title="Prepare the Enclosure First"
+        >
+          Assemble and test the enclosure before purchasing your Ball Python.
+          Stable temperatures and humidity help reduce stress during the
+          acclimation period.
+        </RecommendationCard>
+
+        <RecommendationCard
+          type="warning"
+          title="Avoid Impulse Purchases"
+        >
+          Ball Pythons are long-lived reptiles that require ongoing financial,
+          time, and husbandry commitments. Never purchase one without planning
+          for its lifelong care.
+        </RecommendationCard>
+
+      </div>
+
+      <div className="mt-16 grid gap-8 lg:grid-cols-3">
+
+        <InfoCard
+          icon="🏠"
+          title="Space Requirements"
+        >
+          Adult Ball Pythons require appropriately sized enclosures that provide
+          secure hiding places, climbing opportunities, and environmental
+          gradients.
+        </InfoCard>
+
+        <InfoCard
+          icon="💲"
+          title="Ongoing Costs"
+        >
+          Budget for electricity, substrate, feeders, enclosure maintenance,
+          replacement equipment, and veterinary care throughout the snake's
+          lifetime.
+        </InfoCard>
+
+        <InfoCard
+          icon="❤️"
+          title="A Long-Term Responsibility"
+        >
+          Purchasing a Ball Python is a commitment that may last several
+          decades. Responsible ownership means planning for the animal's care
+          throughout its entire life.
+        </InfoCard>
+
+      </div>
+
+      <ReferenceBox>
+
+        <p>
+          Barker DG, Barker TM.
+          <em> Ball Pythons: The History, Natural History, Care and Breeding.</em>
         </p>
+
+        <p>
+          Divers SJ, Mader DR.
+          <em> Current Therapy in Reptile Medicine and Surgery.</em>
+        </p>
+
+        <p>
+          Association of Reptile and Amphibian Veterinarians (ARAV)
+          educational resources.
+        </p>
+
+      </ReferenceBox>
+
+      <div className="mt-16">
+
+        <VetReviewBadge
+          status="pending"
+          version="0.5"
+        />
 
       </div>
 
