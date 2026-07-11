@@ -10,6 +10,8 @@ import { Humidity } from "./components/Humidity";
 import { Lighting } from "./components/Lighting";
 import { Substrate } from "./components/Substrate";
 import { Water } from "./components/Water";
+import { Feeding } from "./components/Feeding";
+import { Handling } from "./components/Handling";
 
 export default function BallPythonPage() {
   return (
@@ -38,6 +40,10 @@ export default function BallPythonPage() {
       <Substrate />
 
       <Water />
+
+      <Feeding />
+
+      <Handling />
 
     </main>
   );
