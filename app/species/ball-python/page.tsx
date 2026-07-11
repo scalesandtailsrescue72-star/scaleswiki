@@ -7,10 +7,13 @@ import { Enclosure } from "./components/Enclosure";
 import { EnclosureBlueprint } from "./components/EnclosureBlueprint";
 import { Heating } from "./components/Heating";
 import { Humidity } from "./components/Humidity";
+import { Lighting } from "./components/Lighting";
+import { Substrate } from "./components/Substrate";
 
 export default function BallPythonPage() {
   return (
     <main className="min-h-screen bg-[#08120D] text-white">
+
       <Hero />
 
       <QuickFacts />
@@ -28,6 +31,11 @@ export default function BallPythonPage() {
       <Heating />
 
       <Humidity />
+
+      <Lighting />
+
+      <Substrate />
+
     </main>
   );
 }
