@@ -13,6 +13,7 @@ import { Water } from "./components/Water";
 import { Feeding } from "./components/Feeding";
 import { Handling } from "./components/Handling";
 import { Health } from "./components/Health";
+import { CommonMistakes } from "./components/CommonMistakes";
 
 export default function BallPythonPage() {
   return (
@@ -47,6 +48,8 @@ export default function BallPythonPage() {
       <Handling />
 
       <Health />
+
+      <CommonMistakes />
 
     </main>
   );
