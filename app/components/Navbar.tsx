@@ -2,9 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const navItems = [
-  { label: "Care Guides", href: "#guides" },
-  { label: "Academy", href: "#academy" },
-  { label: "Rescue", href: "#rescue" },
+  { label: "Home", href: "/" },
+  { label: "Species", href: "/species" },
+  { label: "Academy", href: "/academy" },
+  { label: "Shop", href: "/shop" },
 ];
 
 export function Navbar() {
@@ -23,12 +24,12 @@ export function Navbar() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm text-gray-300 md:flex">
+        <nav className="hidden items-center gap-8 text-sm font-medium text-gray-300 md:flex">
           {navItems.map((item) => (
             <Link
               key={item.label}
               href={item.href}
-              className="transition hover:text-white"
+              className="transition hover:text-green-400"
             >
               {item.label}
             </Link>
