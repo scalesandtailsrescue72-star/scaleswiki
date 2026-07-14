@@ -6,8 +6,9 @@ type Species = {
   scientific: string;
   difficulty: string;
   region: string;
-  href: string;
   image: string;
+  href?: string;
+  available: boolean;
 };
 
 const species: Species[] = [
@@ -18,6 +19,7 @@ const species: Species[] = [
     region: "West & Central Africa",
     image: "/species/ball-python.jpeg",
     href: "/species/ball-python",
+    available: true,
   },
   {
     name: "Bearded Dragon",
@@ -25,7 +27,7 @@ const species: Species[] = [
     difficulty: "Beginner",
     region: "Australia",
     image: "/species/bearded-dragon.jpeg",
-    href: "/species/bearded-dragon",
+    available: false,
   },
   {
     name: "Leopard Gecko",
@@ -33,7 +35,7 @@ const species: Species[] = [
     difficulty: "Beginner",
     region: "Afghanistan & Pakistan",
     image: "/species/leopard-gecko.jpeg",
-    href: "/species/leopard-gecko",
+    available: false,
   },
   {
     name: "Corn Snake",
@@ -41,7 +43,7 @@ const species: Species[] = [
     difficulty: "Beginner",
     region: "United States",
     image: "/species/corn-snake.jpeg",
-    href: "/species/corn-snake",
+    available: false,
   },
   {
     name: "Crested Gecko",
@@ -49,7 +51,7 @@ const species: Species[] = [
     difficulty: "Beginner",
     region: "New Caledonia",
     image: "/species/crested-gecko.jpeg",
-    href: "/species/crested-gecko",
+    available: false,
   },
   {
     name: "Blue-Tongued Skink",
@@ -57,7 +59,7 @@ const species: Species[] = [
     difficulty: "Intermediate",
     region: "Australia",
     image: "/species/blue-tongued-skink.jpeg",
-    href: "/species/blue-tongued-skink",
+    available: false,
   },
 ];
 
@@ -77,55 +79,91 @@ export function SpeciesGrid() {
         </h2>
 
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-300">
-          Browse evidence-based reptile care guides, printable resources,
-          Academy lessons, and husbandry information for the world's most
-          popular reptiles.
+          Browse evidence-based reptile care guides, Academy lessons,
+          printable resources, and husbandry information.
         </p>
       </div>
 
       <div className="mt-16 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-        {species.map((animal) => (
-          <Link
-            key={animal.name}
-            href={animal.href}
-            className="group overflow-hidden rounded-3xl border border-white/10 bg-[#101B15] shadow-lg transition-all duration-500 hover:-translate-y-3 hover:border-green-500 hover:shadow-2xl"
-          >
-            <div className="relative h-64 overflow-hidden rounded-t-3xl">
-              <Image
-                src={animal.image}
-                alt={animal.name}
-                fill
-                className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
-              />
+        {species.map((animal) => {
+          const Card = (
+            <>
+              <div className="relative h-64 overflow-hidden rounded-t-3xl">
+                <Image
+                  src={animal.image}
+                  alt={animal.name}
+                  fill
+                  className={`object-cover transition duration-500 ${
+                    animal.available
+                      ? "group-hover:scale-110"
+                      : "opacity-60 grayscale"
+                  }`}
+                />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-[#08120D] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#08120D] via-transparent to-transparent" />
 
-              <div className="absolute bottom-5 left-5">
-                <span className="rounded-full bg-green-600 px-3 py-1 text-sm font-semibold text-white shadow-lg">
-                  {animal.difficulty}
-                </span>
+                <div className="absolute bottom-5 left-5">
+                  <span
+                    className={`rounded-full px-3 py-1 text-sm font-semibold ${
+                      animal.available
+                        ? "bg-green-600 text-white"
+                        : "bg-gray-700 text-gray-200"
+                    }`}
+                  >
+                    {animal.difficulty}
+                  </span>
+                </div>
               </div>
+
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-white">
+                  {animal.name}
+                </h3>
+
+                <p className="mt-2 italic text-green-300">
+                  {animal.scientific}
+                </p>
+
+                <p className="mt-5 text-gray-400">
+                  {animal.region}
+                </p>
+
+                <div
+                  className={`mt-8 rounded-xl py-3 text-center font-semibold ${
+                    animal.available
+                      ? "bg-green-600 text-white"
+                      : "border border-gray-700 text-gray-400"
+                  }`}
+                >
+                  {animal.available
+                    ? "View Care Guide"
+                    : "Coming Soon"}
+                </div>
+              </div>
+            </>
+          );
+
+          if (animal.available && animal.href) {
+            return (
+              <Link
+                key={animal.name}
+                href={animal.href}
+                className="group overflow-hidden rounded-3xl border border-white/10 bg-[#101B15] shadow-lg transition-all duration-300 hover:-translate-y-2 hover:border-green-500 hover:shadow-2xl"
+              >
+                {Card}
+              </Link>
+            );
+          }
+
+          return (
+            <div
+              key={animal.name}
+              className="overflow-hidden rounded-3xl border border-white/10 bg-[#101B15] opacity-90"
+            >
+              {Card}
             </div>
-
-            <div className="p-8">
-              <h3 className="text-2xl font-bold text-white">
-                {animal.name}
-              </h3>
-
-              <p className="mt-2 italic text-green-300">
-                {animal.scientific}
-              </p>
-
-              <p className="mt-5 flex items-center gap-2 text-gray-400">
-                🌍 <span>{animal.region}</span>
-              </p>
-
-              <button className="mt-8 w-full rounded-xl border border-green-500 bg-green-600/90 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:bg-green-500">
-                View Care Guide
-              </button>
-            </div>
-          </Link>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
