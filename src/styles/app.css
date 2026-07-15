@@ -1,0 +1,10 @@
+@import "tailwindcss";
+:root {
+  --bg-main: #0B1411; --bg-card: #101B15; --bg-header: #08120D;
+  --green: #2ECC71; --green-hover: #27AE60;
+  --text-white: #ffffff; --text-gray: #D1D5DB; --text-muted: #9CA3AF;
+}
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg-main); color: var(--text-white); -webkit-font-smoothing: antialiased; }
+}
