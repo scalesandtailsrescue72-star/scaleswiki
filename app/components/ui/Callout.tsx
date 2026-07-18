@@ -1,4 +1,10 @@
-type CalloutType = "tip" | "warning" | "science" | "health";
+type CalloutType =
+  | "tip"
+  | "warning"
+  | "science"
+  | "health"
+  | "evidence"
+  | "consensus";
 
 interface CalloutProps {
   type: CalloutType;
@@ -12,6 +18,18 @@ const styles = {
     background: "bg-green-950/30",
     text: "text-green-300",
   },
+  evidence: {
+  border: "border-green-500/30",
+  background: "bg-green-950/30",
+  text: "text-green-300",
+},
+
+consensus: {
+  border: "border-cyan-500/30",
+  background: "bg-cyan-950/30",
+  text: "text-cyan-300",
+},
+
   warning: {
     border: "border-yellow-500/30",
     background: "bg-yellow-950/30",
@@ -34,7 +52,7 @@ export function Callout({
   title,
   children,
 }: CalloutProps) {
-  const style = styles[type];
+ const style = styles[type] ?? styles.tip;
 
   return (
     <div

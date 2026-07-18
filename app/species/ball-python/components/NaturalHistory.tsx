@@ -7,7 +7,10 @@ import { VetReviewBadge } from "@/app/components/ui/VetReviewBadge";
 
 export function NaturalHistory() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+    <section
+  id="natural-history"
+  className="mx-auto max-w-7xl px-6 py-24 lg:px-8"
+>
 
       <SectionHeading
         eyebrow="Natural History"
@@ -27,14 +30,14 @@ export function NaturalHistory() {
           label="Activity"
           value="Crepuscular"
           accent="green"
-          description="Most active during dawn, dusk, and nighttime hours."
+          description="Primarily crepuscular to nocturnal, with activity influenced by season, temperature, prey availability, and individual behavior."
         />
 
         <SpeciesStat
           label="Lifestyle"
           value="Terrestrial"
           accent="blue"
-          description="Primarily ground-dwelling while also using low branches and burrows."
+          description="Primarily terrestrial, while also utilizing burrows, termite mounds, and low vegetation or branches when appropriate."
         />
 
         <SpeciesStat
@@ -56,7 +59,8 @@ export function NaturalHistory() {
           Ball Pythons spend much of their lives utilizing burrows, termite
           mounds, dense vegetation, and other sheltered environments.
           Captive enclosures should provide similar opportunities for hiding,
-          exploration, and thermoregulation.
+          exploration, and thermoregulation.Replicating natural opportunities for hiding, climbing, exploring, 
+          and thermoregulation encourages normal behavior and supports long-term welfare.
         </RecommendationCard>
 
         <RecommendationCard
@@ -65,7 +69,7 @@ export function NaturalHistory() {
         >
           Multiple snug hides, visual barriers, and enclosure clutter allow
           Ball Pythons to display natural behaviors while helping many
-          individuals feel more secure in captivity.
+          individuals feel more secure in captivity.Snug hides should be available on both the warm and cool sides of the enclosure so the snake does not have to choose between feeling secure and maintaining its preferred body temperature.
         </RecommendationCard>
 
       </div>
@@ -87,7 +91,7 @@ export function NaturalHistory() {
         >
           Wild Ball Pythons feed primarily on small mammals and occasionally
           birds. They are ambush predators that rely on patience rather than
-          actively pursuing prey.
+          actively pursuing prey.Juveniles may consume a wider variety of appropriately sized prey than adults.
         </InfoCard>
 
         <InfoCard
@@ -124,7 +128,7 @@ export function NaturalHistory() {
 
         <VetReviewBadge
           status="pending"
-          version="0.5"
+          version="0.6"
         />
 
       </div>

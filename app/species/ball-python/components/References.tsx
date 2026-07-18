@@ -76,9 +76,10 @@ export function References() {
         </h3>
 
         <p className="mt-6 text-gray-300 leading-8">
-          Every ScalesWiki guide is reviewed for factual accuracy,
-          updated as husbandry recommendations evolve, and clearly
-          identifies content that is awaiting veterinary review.
+          Every ScalesWiki guide is reviewed for factual accuracy, 
+          updated as husbandry recommendations evolve, 
+          distinguishes evidence-based recommendations from expert opinion 
+          where appropriate, and clearly identifies content awaiting independent veterinary review.
         </p>
 
       </div>

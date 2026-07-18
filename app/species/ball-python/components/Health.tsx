@@ -7,7 +7,10 @@ import { VetReviewBadge } from "@/app/components/ui/VetReviewBadge";
 
 export function Health() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+    <section
+  id="health"
+  className="mx-auto max-w-7xl px-6 py-24 lg:px-8"
+>
 
       <SectionHeading
         eyebrow="Health"
@@ -27,7 +30,7 @@ export function Health() {
           label="Weight"
           value="Monthly"
           accent="blue"
-          description="Track weight trends using a digital gram scale."
+          description="Track weight monthly using a digital gram scale. Consistent weight records are one of the earliest indicators of developing health problems."
         />
 
         <SpeciesStat
@@ -39,7 +42,7 @@ export function Health() {
 
         <SpeciesStat
           label="Veterinary Exam"
-          value="As Needed"
+          value="When Ill"
           accent="purple"
           description="Consult a reptile veterinarian whenever illness is suspected."
         />
@@ -129,7 +132,7 @@ export function Health() {
 
         <VetReviewBadge
           status="pending"
-          version="0.4"
+          version="0.6"
         />
 
       </div>

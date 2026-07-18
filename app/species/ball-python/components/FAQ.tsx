@@ -4,7 +4,10 @@ import { VetReviewBadge } from "@/app/components/ui/VetReviewBadge";
 
 export function FAQ() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+    <section
+  id="faq"
+  className="mx-auto max-w-7xl px-6 py-24 lg:px-8"
+>
 
       <SectionHeading
         eyebrow="Frequently Asked Questions"
@@ -69,13 +72,32 @@ export function FAQ() {
           maintained correctly.
         </InfoCard>
 
+        <InfoCard
+  icon="🐁"
+  title="Should I feed live or frozen/thawed prey?"
+>
+  Frozen/thawed rodents are generally the preferred choice because they reduce
+  the risk of injury to the snake while still providing appropriate nutrition.
+  Live prey should only be considered in specific circumstances and should
+  never be left unattended with a snake.
+</InfoCard>
+
+<InfoCard
+  icon="🩺"
+  title="How do I find a qualified reptile veterinarian?"
+>
+  Not every veterinary clinic treats reptiles. Before bringing home a Ball
+  Python, identify an experienced reptile veterinarian in your area and keep
+  their contact information available in case of an emergency.
+</InfoCard>
+
       </div>
 
       <div className="mt-16">
 
         <VetReviewBadge
           status="pending"
-          version="0.4"
+          version="0.6"
         />
 
       </div>

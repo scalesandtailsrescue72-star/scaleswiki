@@ -7,7 +7,10 @@ import { VetReviewBadge } from "@/app/components/ui/VetReviewBadge";
 
 export function IsItRightForYou() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+    <section
+  id="is-it-right-for-you"
+  className="mx-auto max-w-7xl px-6 py-24 lg:px-8"
+>
 
       <SectionHeading
         eyebrow="Choosing a Ball Python"
@@ -39,7 +42,7 @@ export function IsItRightForYou() {
 
         <SpeciesStat
           label="Daily Care"
-          value="Low"
+          value="Moderate"
           accent="purple"
           description="Daily observation is important, even though routine maintenance is moderate."
         />
@@ -56,7 +59,7 @@ export function IsItRightForYou() {
           Successful Ball Python ownership begins long before bringing a snake
           home. Learn about enclosure design, environmental requirements,
           nutrition, veterinary care, and long-term costs before making your
-          decision.
+          decision.Consider locating an experienced reptile veterinarian before acquiring your Ball Python so you are prepared if medical care is needed.
         </RecommendationCard>
 
         <RecommendationCard
@@ -65,7 +68,7 @@ export function IsItRightForYou() {
         >
           Assemble and test the enclosure before purchasing your Ball Python.
           Stable temperatures and humidity help reduce stress during the
-          acclimation period.
+          acclimation period.Operate the enclosure for several days before introducing your Ball Python to confirm that temperatures, humidity, lighting, and thermostat settings remain stable.
         </RecommendationCard>
 
         <RecommendationCard
@@ -74,7 +77,7 @@ export function IsItRightForYou() {
         >
           Ball Pythons are long-lived reptiles that require ongoing financial,
           time, and husbandry commitments. Never purchase one without planning
-          for its lifelong care.
+          for its lifelong care.Responsible ownership also includes planning for vacations, emergencies, and the possibility that your circumstances may change over the snake's lifetime.
         </RecommendationCard>
 
       </div>
@@ -87,7 +90,7 @@ export function IsItRightForYou() {
         >
           Adult Ball Pythons require appropriately sized enclosures that provide
           secure hiding places, climbing opportunities, and environmental
-          gradients.
+          gradients.Adult Ball Pythons benefit from enclosures that allow them to fully stretch out, thermoregulate effectively, and engage in natural behaviors.
         </InfoCard>
 
         <InfoCard
@@ -96,7 +99,7 @@ export function IsItRightForYou() {
         >
           Budget for electricity, substrate, feeders, enclosure maintenance,
           replacement equipment, and veterinary care throughout the snake's
-          lifetime.
+          lifetime.Unexpected veterinary care can be one of the largest expenses, so it is wise to plan for emergency medical costs.
         </InfoCard>
 
         <InfoCard
@@ -107,6 +110,15 @@ export function IsItRightForYou() {
           decades. Responsible ownership means planning for the animal's care
           throughout its entire life.
         </InfoCard>
+
+        <InfoCard
+  icon="👨‍👩‍👧"
+  title="Household Considerations"
+>
+  Consider whether everyone in your household is comfortable living with a
+  snake, and ensure that children interact with Ball Pythons only under
+  appropriate adult supervision.
+</InfoCard>
 
       </div>
 
@@ -133,7 +145,7 @@ export function IsItRightForYou() {
 
         <VetReviewBadge
           status="pending"
-          version="0.5"
+          version="0.6"
         />
 
       </div>
