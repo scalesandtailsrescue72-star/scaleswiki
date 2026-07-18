@@ -7,7 +7,10 @@ import { VetReviewBadge } from "@/app/components/ui/VetReviewBadge";
 
 export function Water() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+    
+    <section
+    id="water" 
+    className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
       <SectionHeading
         eyebrow="Water"
         title="Hydration, Water Quality & Drinking Behavior"

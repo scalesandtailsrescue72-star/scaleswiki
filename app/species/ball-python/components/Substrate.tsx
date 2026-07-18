@@ -7,7 +7,9 @@ import { VetReviewBadge } from "@/app/components/ui/VetReviewBadge";
 
 export function Substrate() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+    <section
+    id="substrate"
+     className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
 
       <SectionHeading
         eyebrow="Substrate"
