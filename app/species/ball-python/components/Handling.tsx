@@ -127,10 +127,8 @@ export function Handling() {
 
       <div className="mt-16">
 
-        <VetReviewBadge
-          status="pending"
-          version="0.4"
-        />
+        <VetReviewBadge status="pending" />
+        
 
       </div>
 

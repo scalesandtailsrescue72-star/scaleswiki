@@ -122,10 +122,7 @@ export function Introduction() {
 
       <div className="mt-16">
 
-        <VetReviewBadge
-          status="pending"
-          version="0.5"
-        />
+       <VetReviewBadge status="pending" />
 
       </div>
 

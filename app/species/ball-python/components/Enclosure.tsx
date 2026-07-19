@@ -140,9 +140,8 @@ export function Enclosure() {
       <div className="mt-16">
 
         <VetReviewBadge
-          status="pending"
-          version="1.0"
-        />
+        status="pending" />
+        
 
       </div>
 
