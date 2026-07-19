@@ -116,7 +116,7 @@ export function Lighting() {
       <div className="mt-16">
         <VetReviewBadge
           status="pending"
-          version="0.6"
+          version="1.0"
         />
       </div>
     </section>

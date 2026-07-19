@@ -98,7 +98,7 @@ export function CommonMistakes() {
 
         <VetReviewBadge
           status="pending"
-          version="0.6"
+          version="1.0"
         />
 
       </div>

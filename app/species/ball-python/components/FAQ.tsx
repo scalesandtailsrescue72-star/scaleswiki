@@ -97,7 +97,7 @@ export function FAQ() {
 
         <VetReviewBadge
           status="pending"
-          version="0.6"
+          version="1.0"
         />
 
       </div>

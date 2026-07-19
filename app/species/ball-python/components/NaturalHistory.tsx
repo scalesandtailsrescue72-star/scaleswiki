@@ -128,7 +128,7 @@ export function NaturalHistory() {
 
         <VetReviewBadge
           status="pending"
-          version="0.6"
+          version="1.0"
         />
 
       </div>
