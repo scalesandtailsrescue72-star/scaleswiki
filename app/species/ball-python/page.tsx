@@ -1,6 +1,7 @@
 import { GuideContents } from "@/app/components/ui/GuideContents";
 
 import { Hero } from "./components/Hero";
+import { PublicationHeader } from "@/app/components/ui/PublicationHeader";
 import { QuickFacts } from "./components/QuickFacts";
 import { Introduction } from "./components/Introduction";
 import { NaturalHistory } from "./components/NaturalHistory";
@@ -24,6 +25,8 @@ export default function BallPythonPage() {
     <main className="min-h-screen bg-[#08120D] text-white">
 
       <Hero />
+
+      <PublicationHeader />
 
       <QuickFacts />
 
