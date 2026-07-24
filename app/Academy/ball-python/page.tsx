@@ -2,7 +2,7 @@ import { SectionHeading } from "@/app/components/ui/SectionHeading";
 import { LessonCard } from "../components/LessonCard";
 import { ObjectiveList } from "../components/ObjectiveList";
 import { ProgressBar } from "../components/ProgressBar";
-import { ballPythonCourse } from "../data/ballPythonCourse";
+import { ballPythonCourse } from "../data/ball-python/course";
 
 export default function BallPythonAcademyPage() {
   return (
