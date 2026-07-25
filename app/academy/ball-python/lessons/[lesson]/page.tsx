@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import Quiz from "../../../components/Quiz";
+import LessonComplete from "../../../components/LessonComplete";
 import { ballPythonCourse } from "@/app/academy/data/ball-python/course";
 
 type LessonPageProps = {
@@ -14,38 +16,246 @@ export default async function LessonPage({
 }: LessonPageProps) {
   const { lesson } = await params;
 
+  const lessonNumber = Number(lesson);
+
   const currentLesson = ballPythonCourse.lessons.find(
-    (l) => l.number === Number(lesson)
+    (l) => l.number === lessonNumber
   );
 
   if (!currentLesson) {
     notFound();
   }
 
+  const previousLesson = ballPythonCourse.lessons.find(
+    (l) => l.number === lessonNumber - 1
+  );
+
+  const nextLesson = ballPythonCourse.lessons.find(
+    (l) => l.number === lessonNumber + 1
+  );
+
   return (
-    <main className="min-h-screen bg-[#08120D] text-white p-10">
-      <div className="mx-auto max-w-4xl">
+    <main className="min-h-screen bg-[#08120D] text-white">
+      <div className="mx-auto max-w-5xl px-6 py-16">
+
+        {/* Header */}
+
         <p className="text-sm uppercase tracking-widest text-green-400">
-          Ball Python Academy
+          ScalesWiki Academy
         </p>
 
         <h1 className="mt-2 text-5xl font-bold">
-          {currentLesson.title}
+          Lesson {currentLesson.number}: {currentLesson.title}
         </h1>
 
-        <div className="mt-6 flex gap-6 text-gray-300">
+        <div className="mt-5 flex flex-wrap gap-6 text-gray-300">
           <span>⏱ {currentLesson.duration}</span>
           <span>📈 {currentLesson.difficulty}</span>
         </div>
 
-        <div className="mt-10">
+        {/* Objectives */}
+
+        <section className="mt-12 rounded-xl bg-[#102017] p-8">
+
+          <h2 className="text-2xl font-bold text-green-300">
+            Learning Objectives
+          </h2>
+
+          <ul className="mt-5 list-disc space-y-3 pl-6 text-gray-200">
+            <li>Understand what Ball Pythons are.</li>
+            <li>Learn why they are one of the world's most popular pet snakes.</li>
+            <li>Understand why proper husbandry is essential for long-term health.</li>
+          </ul>
+
+        </section>
+
+        {/* Lesson */}
+
+        <section className="mt-12">
+
+          <h2 className="text-3xl font-bold">
+            Introduction
+          </h2>
+
+          <div className="mt-6 space-y-6 text-lg leading-8 text-gray-200">
+
+            <p>
+              Ball pythons are calm, manageable reptiles that do well in
+              carefully planned enclosures and with consistent husbandry.
+            </p>
+
+            <p>
+              Their generally gentle temperament and manageable adult size make
+              them one of the most popular snakes in the reptile hobby.
+              Although they are often recommended for beginners, they still
+              require proper heating, humidity, nutrition, and veterinary care
+              throughout their lives.
+            </p>
+
+            <p>
+              Throughout this Academy you will learn how to properly house,
+              feed, monitor, and care for your Ball Python using evidence-based
+              husbandry practices and practical keeper experience.
+            </p>
+
+          </div>
+
+        </section>
+
+        {/* Did You Know */}
+
+        <section className="mt-12 rounded-xl border border-green-800 bg-[#0B1710] p-8">
+
+          <h2 className="text-2xl font-bold text-green-300">
+            💡 Did You Know?
+          </h2>
+
+          <p className="mt-4 text-lg leading-8 text-gray-200">
+            Ball Pythons earned their common name because they frequently curl
+            themselves into a tight defensive ball when frightened instead of
+            striking.
+          </p>
+
+        </section>
+
+        {/* Keeper Tip */}
+
+        <section className="mt-12 rounded-xl border border-yellow-700 bg-[#231A06] p-8">
+
+          <h2 className="text-2xl font-bold text-yellow-300">
+            🐍 Keeper Tip
+          </h2>
+
+          <p className="mt-4 text-lg leading-8 text-gray-200">
+            Never purchase a Ball Python simply because it looks beautiful.
+            Always learn the care requirements first and prepare the enclosure
+            before bringing the snake home.
+          </p>
+
+        </section>
+
+        {/* Key Takeaways */}
+
+        <section className="mt-12 rounded-xl bg-[#102017] p-8">
+
+          <h2 className="text-2xl font-bold text-green-300">
+            Key Takeaways
+          </h2>
+
+          <ul className="mt-5 space-y-4 text-lg">
+
+            <li>✅ Ball Pythons are generally calm snakes.</li>
+
+            <li>✅ Proper husbandry is essential for long-term health.</li>
+
+            <li>✅ Preparation before purchase prevents many common problems.</li>
+
+          </ul>
+
+        </section>
+
+        {/* Quiz */}
+
+        <Quiz
+          questions={[
+            {
+              question:
+                "Ball Pythons are generally known for being...",
+              options: [
+                "Aggressive",
+                "Highly venomous",
+                "Calm and manageable",
+                "Fast-moving",
+              ],
+              answer: 2,
+              explanation:
+                "Ball Pythons are widely known for their calm temperament when properly cared for.",
+            },
+            {
+              question:
+                "Which of the following is part of proper husbandry?",
+              options: [
+                "Ignoring humidity",
+                "Correct heating and enclosure setup",
+                "Keeping multiple adults together",
+                "Feeding once every few months",
+              ],
+              answer: 1,
+              explanation:
+                "Correct heating, humidity, enclosure design, and nutrition are the foundation of proper husbandry.",
+            },
+            {
+              question:
+                "Why are they called Ball Pythons?",
+              options: [
+                "They roll downhill.",
+                "They curl into a defensive ball.",
+                "They change colors.",
+                "They live underground.",
+              ],
+              answer: 1,
+              explanation:
+                "When frightened, Ball Pythons commonly curl into a tight ball to protect themselves.",
+            },
+          ]}
+        />
+        {/* Lesson Complete */}
+
+<LessonComplete
+  courseId="ball-python"
+  lessonNumber={currentLesson.number}
+/>
+
+        {/* Guide */}
+
+        <section className="mt-12 rounded-xl bg-[#102017] p-8">
+
+          <h2 className="text-2xl font-bold text-green-300">
+            Continue Reading
+          </h2>
+
+          <p className="mt-4 text-gray-300">
+            Ready to dive deeper? Continue reading the complete Ball Python
+            Guide for additional husbandry information.
+          </p>
+
           <Link
             href={currentLesson.guideHref}
-            className="rounded-lg bg-green-600 px-6 py-3 font-medium hover:bg-green-700"
+            className="mt-6 inline-block rounded-lg bg-green-600 px-6 py-3 font-medium hover:bg-green-700"
           >
-            Read this section of the Guide →
+            Open Guide →
           </Link>
+
+        </section>
+
+        {/* Navigation */}
+
+        <div className="mt-16 flex justify-between">
+
+          {previousLesson ? (
+            <Link
+              href={`/academy/ball-python/lessons/${previousLesson.number}`}
+              className="rounded-lg border border-gray-700 px-6 py-3 hover:border-green-500"
+            >
+              ← Previous Lesson
+            </Link>
+          ) : (
+            <div />
+          )}
+
+          {nextLesson ? (
+            <Link
+              href={`/academy/ball-python/lessons/${nextLesson.number}`}
+              className="rounded-lg bg-green-600 px-6 py-3 hover:bg-green-700"
+            >
+              Next Lesson →
+            </Link>
+          ) : (
+            <div />
+          )}
+
         </div>
+
       </div>
     </main>
   );
