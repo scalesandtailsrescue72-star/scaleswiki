@@ -7,9 +7,7 @@ import { ballPythonCourse } from "../data/ball-python/course";
 export default function BallPythonAcademyPage() {
   return (
     <main className="min-h-screen bg-[#08120D] text-white">
-
       <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-
         <SectionHeading
           eyebrow="ScalesWiki Academy"
           title={ballPythonCourse.title}
@@ -17,7 +15,6 @@ export default function BallPythonAcademyPage() {
         />
 
         <div className="mt-16 space-y-8">
-
           <ProgressBar
             completed={0}
             total={ballPythonCourse.lessons.length}
@@ -28,30 +25,25 @@ export default function BallPythonAcademyPage() {
           />
 
           <div className="grid gap-6">
-
             {ballPythonCourse.lessons.map((lesson) => (
-
               <LessonCard
                 key={lesson.number}
                 lesson={lesson.number}
                 title={lesson.title}
-                description="Open this lesson in the Ball Python Guide."
+                description="Learn this topic through the Ball Python Keeper's Academy."
                 duration={lesson.duration}
-                difficulty={lesson.difficulty as
-                  | "Beginner"
-                  | "Intermediate"
-                  | "Advanced"}
-                href={lesson.href}
+                difficulty={
+                  lesson.difficulty as
+                    | "Beginner"
+                    | "Intermediate"
+                    | "Advanced"
+                }
+                href={`/academy/ball-python/lessons/${lesson.number}`}
               />
-
             ))}
-
           </div>
-
         </div>
-
       </section>
-
     </main>
   );
 }
