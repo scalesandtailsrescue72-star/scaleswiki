@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 
 import Quiz from "../../../components/Quiz";
 import LessonComplete from "../../../components/LessonComplete";
+import { MarkdownLesson } from "../../../components/MarkdownLesson";
+import { loadLesson } from "../../../lib/loadLesson";
+
 import { ballPythonCourse } from "@/app/academy/data/ball-python/course";
 
 type LessonPageProps = {
@@ -25,6 +28,8 @@ export default async function LessonPage({
   if (!currentLesson) {
     notFound();
   }
+
+  const lessonContent = await loadLesson(lessonNumber);
 
   const previousLesson = ballPythonCourse.lessons.find(
     (l) => l.number === lessonNumber - 1
@@ -69,37 +74,10 @@ export default async function LessonPage({
 
         </section>
 
-        {/* Lesson */}
+        {/* Lesson Content */}
 
         <section className="mt-12">
-
-          <h2 className="text-3xl font-bold">
-            Introduction
-          </h2>
-
-          <div className="mt-6 space-y-6 text-lg leading-8 text-gray-200">
-
-            <p>
-              Ball pythons are calm, manageable reptiles that do well in
-              carefully planned enclosures and with consistent husbandry.
-            </p>
-
-            <p>
-              Their generally gentle temperament and manageable adult size make
-              them one of the most popular snakes in the reptile hobby.
-              Although they are often recommended for beginners, they still
-              require proper heating, humidity, nutrition, and veterinary care
-              throughout their lives.
-            </p>
-
-            <p>
-              Throughout this Academy you will learn how to properly house,
-              feed, monitor, and care for your Ball Python using evidence-based
-              husbandry practices and practical keeper experience.
-            </p>
-
-          </div>
-
+          <MarkdownLesson content={lessonContent} />
         </section>
 
         {/* Did You Know */}
@@ -143,13 +121,9 @@ export default async function LessonPage({
           </h2>
 
           <ul className="mt-5 space-y-4 text-lg">
-
             <li>✅ Ball Pythons are generally calm snakes.</li>
-
             <li>✅ Proper husbandry is essential for long-term health.</li>
-
             <li>✅ Preparation before purchase prevents many common problems.</li>
-
           </ul>
 
         </section>
@@ -199,12 +173,13 @@ export default async function LessonPage({
             },
           ]}
         />
+
         {/* Lesson Complete */}
 
-<LessonComplete
-  courseId="ball-python"
-  lessonNumber={currentLesson.number}
-/>
+        <LessonComplete
+          courseId="ball-python"
+          lessonNumber={currentLesson.number}
+        />
 
         {/* Guide */}
 
