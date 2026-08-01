@@ -1,13 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-export type QuizQuestion = {
-  question: string;
-  options: string[];
-  answer: number;
-  explanation?: string;
-};
+import type { QuizQuestion } from "../types/course";
 
 type QuizProps = {
   questions: QuizQuestion[];

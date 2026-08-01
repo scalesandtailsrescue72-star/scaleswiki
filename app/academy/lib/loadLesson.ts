@@ -1,19 +1,24 @@
 import fs from "fs/promises";
 import path from "path";
+import matter from "gray-matter";
 
-export async function loadLesson(lesson: number) {
-  const fileName = `lesson-${lesson
-    .toString()
-    .padStart(2, "0")}.md`;
+export async function loadLesson(courseSlug: string, lesson: number) {
+  const fileName = `lesson-${lesson.toString().padStart(2, "0")}.md`;
 
   const filePath = path.join(
     process.cwd(),
     "app",
     "academy",
-    "ball-python",
+    courseSlug,
     "content",
     fileName
   );
 
-  return fs.readFile(filePath, "utf8");
+  const raw = await fs.readFile(filePath, "utf8");
+  const parsed = matter(raw);
+
+  return {
+    content: parsed.content,
+    data: parsed.data,
+  };
 }

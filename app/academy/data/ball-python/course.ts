@@ -1,9 +1,20 @@
-export const ballPythonCourse = {
+﻿import type { Course } from "@/app/academy/types/course";
+
+export const ballPythonCourse: Course = {
+  slug: "ball-python",
   title: "Ball Python 101",
   level: "Beginner",
-  estimatedTime: "2–3 Hours",
-  certificate: true,
-
+  status: "Available",
+  description:
+    "Master Ball Python husbandry with structured lessons covering enclosure design, heating, humidity, feeding, handling, health, and more.",
+  lessonCardDescription:
+    "Learn this topic through the Ball Python Keeper's Academy.",
+  stats: {
+    lessons: 14,
+    estimatedTime: "2–3 Hours",
+    certificate: true,
+    quiz: true,
+  },
   objectives: [
     "Understand Ball Python natural history",
     "Build a proper enclosure",
@@ -16,105 +27,179 @@ export const ballPythonCourse = {
     "Handle responsibly",
     "Recognize common health concerns",
   ],
-
+  didYouKnow:
+    "Ball Pythons earned their common name because they frequently curl themselves into a tight defensive ball when frightened instead of striking.",
+  keeperTip:
+    "Never purchase a Ball Python simply because it looks beautiful. Always learn the care requirements first and prepare the enclosure before bringing the snake home.",
+  keyTakeaways: [
+    "Ball Pythons are generally calm snakes.",
+    "Proper husbandry is essential for long-term health.",
+    "Preparation before purchase prevents many common problems.",
+  ],
+  quizQuestions: [
+    {
+      question: "Ball Pythons are generally known for being...",
+      options: [
+        "Aggressive",
+        "Highly venomous",
+        "Calm and manageable",
+        "Fast-moving",
+      ],
+      answer: 2,
+      explanation:
+        "Ball Pythons are widely known for their calm temperament when properly cared for.",
+    },
+    {
+      question: "Which of the following is part of proper husbandry?",
+      options: [
+        "Ignoring humidity",
+        "Correct heating and enclosure setup",
+        "Keeping multiple adults together",
+        "Feeding once every few months",
+      ],
+      answer: 1,
+      explanation:
+        "Correct heating, humidity, enclosure design, and nutrition are the foundation of proper husbandry.",
+    },
+    {
+      question: "Why are they called Ball Pythons?",
+      options: [
+        "They roll downhill.",
+        "They curl into a defensive ball.",
+        "They change colors.",
+        "They live underground.",
+      ],
+      answer: 1,
+      explanation:
+        "When frightened, Ball Pythons commonly curl into a tight ball to protect themselves.",
+    },
+  ],
   lessons: [
     {
       number: 1,
       title: "Introduction",
+      description: "Learn the basics of Ball Python care and what to expect from the course.",
       duration: "8 min",
       difficulty: "Beginner",
       guideHref: "/species/ball-python#introduction",
+      // no technical plate available for lesson 1
     },
     {
       number: 2,
       title: "Natural History",
+      description: "Understand Ball Python origins, wild behavior, and why their natural history matters in captivity.",
       duration: "10 min",
       difficulty: "Beginner",
       guideHref: "/species/ball-python#natural-history",
+      plate: { src: "/academy/plates/ball-python/01-natural-history.webp.webp", alt: "Technical plate — Natural History" },
     },
     {
       number: 3,
       title: "Is a Ball Python Right for You?",
+      description: "Assess whether a Ball Python fits your lifestyle before you bring one home.",
       duration: "10 min",
       difficulty: "Beginner",
       guideHref: "/species/ball-python#is-it-right-for-you",
+      plate: { src: "/academy/plates/ball-python/02-is-it-right-for-you.webp.webp", alt: "Technical plate — Is it right for you" },
     },
     {
       number: 4,
       title: "Enclosure",
+      description: "Learn how to set up a safe, secure enclosure with the right hiding spots and layout.",
       duration: "15 min",
       difficulty: "Beginner",
       guideHref: "/species/ball-python#enclosure",
+      // no technical plate available for enclosure
     },
     {
       number: 5,
       title: "Heating",
+      description: "Design the proper thermal gradient for Ball Pythons and choose the right heat sources.",
       duration: "12 min",
       difficulty: "Beginner",
       guideHref: "/species/ball-python#heating",
+      plate: { src: "/academy/plates/ball-python/03-heating.webp.webp", alt: "Technical plate — Heating" },
     },
     {
       number: 6,
       title: "Humidity",
+      description: "Keep humidity steady and avoid common problems like respiratory issues.",
       duration: "10 min",
       difficulty: "Beginner",
       guideHref: "/species/ball-python#humidity",
+      plate: { src: "/academy/plates/ball-python/05-humidity.webp.webp", alt: "Technical plate — Humidity" },
     },
     {
       number: 7,
       title: "Lighting",
+      description: "Learn what lighting Ball Pythons need, when they need it, and what to avoid.",
       duration: "10 min",
       difficulty: "Beginner",
       guideHref: "/species/ball-python#lighting",
+      plate: { src: "/academy/plates/ball-python/04-lighting.webp.webp", alt: "Technical plate — Lighting" },
     },
     {
       number: 8,
       title: "Substrate",
+      description: "Choose a safe, comfortable substrate that matches Ball Python habitat needs.",
       duration: "10 min",
       difficulty: "Beginner",
       guideHref: "/species/ball-python#substrate",
+      plate: { src: "/academy/plates/ball-python/11-substrate.webp.webp", alt: "Technical plate — Substrate" },
     },
     {
       number: 9,
       title: "Water",
+      description: "Provide clean water and monitor how your snake interacts with its water dish.",
       duration: "6 min",
       difficulty: "Beginner",
       guideHref: "/species/ball-python#water",
+      plate: { src: "/academy/plates/ball-python/06-water.webp.webp", alt: "Technical plate — Water" },
     },
     {
       number: 10,
       title: "Feeding",
+      description: "Feed safely and build a reliable feeding plan for your Ball Python.",
       duration: "15 min",
       difficulty: "Beginner",
       guideHref: "/species/ball-python#feeding",
+      plate: { src: "/academy/plates/ball-python/07-feeding.webp.webp", alt: "Technical plate — Feeding" },
     },
     {
       number: 11,
       title: "Handling",
+      description: "Handle your snake with confidence and minimize stress during interactions.",
       duration: "8 min",
       difficulty: "Beginner",
       guideHref: "/species/ball-python#handling",
+      plate: { src: "/academy/plates/ball-python/08-handling.webp.webp", alt: "Technical plate — Handling" },
     },
     {
       number: 12,
       title: "Health",
+      description: "Recognize common health issues and know when to seek veterinary care.",
       duration: "15 min",
       difficulty: "Intermediate",
       guideHref: "/species/ball-python#health",
+      plate: { src: "/academy/plates/ball-python/09-health.webp.webp", alt: "Technical plate — Health" },
     },
     {
       number: 13,
       title: "Common Mistakes",
+      description: "Avoid the most frequent Ball Python care mistakes that lead to stress and illness.",
       duration: "10 min",
       difficulty: "Beginner",
       guideHref: "/species/ball-python#common-mistakes",
+      plate: { src: "/academy/plates/ball-python/10-common-mistakes.webp.webp", alt: "Technical plate — Common Mistakes" },
     },
     {
       number: 14,
       title: "FAQ",
+      description: "Get answers to the most asked questions about owning a Ball Python.",
       duration: "8 min",
       difficulty: "Beginner",
       guideHref: "/species/ball-python#faq",
+      // no technical plate available for FAQ
     },
   ],
 };

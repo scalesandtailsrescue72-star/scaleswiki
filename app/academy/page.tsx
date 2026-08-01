@@ -1,40 +1,10 @@
 import Link from "next/link";
 import { SectionHeading } from "@/app/components/ui/SectionHeading";
-
-const courses = [
-  {
-    slug: "ball-python",
-    title: "Ball Python 101",
-    level: "Beginner",
-    lessons: 16,
-    duration: "2–3 Hours",
-    description:
-      "Master Ball Python husbandry with structured lessons covering enclosure design, heating, humidity, feeding, handling, health, and more.",
-    status: "Available",
-  },
-  {
-    slug: "leopard-gecko",
-    title: "Leopard Gecko 101",
-    level: "Coming Soon",
-    lessons: 0,
-    duration: "--",
-    description:
-      "Our complete Leopard Gecko course is currently in development.",
-    status: "Coming Soon",
-  },
-  {
-    slug: "bearded-dragon",
-    title: "Bearded Dragon 101",
-    level: "Coming Soon",
-    lessons: 0,
-    duration: "--",
-    description:
-      "A complete evidence-based Bearded Dragon Academy course.",
-    status: "Coming Soon",
-  },
-];
+import { getAllCourses } from "./data";
 
 export default function AcademyPage() {
+  const courses = getAllCourses();
+
   return (
     <main className="min-h-screen bg-[#08120D] text-white">
 
@@ -48,12 +18,16 @@ export default function AcademyPage() {
 
         <div className="mt-16 grid gap-8 lg:grid-cols-3">
 
-          {courses.map((course) => (
+          {courses.map((course) => {
+            const status =
+              course.status ??
+              (course.stats.lessons > 0 ? "Available" : "Coming Soon");
 
-            <div
-              key={course.slug}
-              className="rounded-3xl border border-white/10 bg-[#101B15] p-8 shadow-xl"
-            >
+            return (
+              <div
+                key={course.slug}
+                className="rounded-3xl border border-white/10 bg-[#101B15] p-8 shadow-xl"
+              >
 
               <div className="flex items-center justify-between">
 
@@ -74,22 +48,22 @@ export default function AcademyPage() {
               <div className="mt-8 space-y-2 text-sm text-gray-400">
 
                 <p>
-                  📚 Lessons: {course.lessons}
+                  📚 Lessons: {course.stats.lessons}
                 </p>
 
                 <p>
-                  ⏱ Estimated Time: {course.duration}
+                  ⏱ Estimated Time: {course.stats.estimatedTime}
                 </p>
 
                 <p>
-                  Status: {course.status}
+                  Status: {status}
                 </p>
 
               </div>
 
               <div className="mt-10">
 
-                {course.status === "Available" ? (
+                {status === "Available" ? (
                   <Link
                     href={`/academy/${course.slug}`}
                     className="inline-flex rounded-xl bg-green-600 px-6 py-3 font-semibold transition hover:bg-green-500"
