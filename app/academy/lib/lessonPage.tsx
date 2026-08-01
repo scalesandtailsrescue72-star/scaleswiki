@@ -1,7 +1,9 @@
 import Link from "next/link";
-import LessonComplete from "../components/LessonComplete";
+
+import LessonProgress from "../components/LessonProgress";
 import { MarkdownLesson } from "../components/MarkdownLesson";
 import { CourseProgress } from "../components/CourseProgress";
+
 import type { Course, LessonExtended } from "../types/course";
 
 type LessonPageProps = {
@@ -19,25 +21,29 @@ export function LessonPage({
   previousLesson,
   nextLesson,
 }: LessonPageProps) {
+
   const objectives =
-    currentLesson.objectives && currentLesson.objectives.length > 0
+    currentLesson.objectives?.length
       ? currentLesson.objectives
       : null;
 
   const takeaways =
-    currentLesson.keyTakeaways && currentLesson.keyTakeaways.length > 0
+    currentLesson.keyTakeaways?.length
       ? currentLesson.keyTakeaways
       : null;
 
   return (
     <main className="min-h-screen bg-[#08120D] text-white">
       <div className="mx-auto max-w-5xl px-6 py-16">
+
         <p className="text-sm uppercase tracking-widest text-green-400">
           ScalesWiki Academy
         </p>
 
         <div className="mt-2 flex items-start justify-between gap-6">
+
           <div>
+
             <h1 className="text-4xl font-bold">
               Lesson {currentLesson.number}: {currentLesson.title}
             </h1>
@@ -46,6 +52,7 @@ export function LessonPage({
               <span>⏱ {currentLesson.duration}</span>
               <span>📈 {currentLesson.difficulty}</span>
             </div>
+
           </div>
 
           <div className="w-48">
@@ -54,22 +61,24 @@ export function LessonPage({
               total={course.lessons.length}
             />
           </div>
+
         </div>
 
-        {currentLesson.plate?.src ? (
+        {currentLesson.plate?.src && (
           <section className="mt-8">
-            <div className="rounded-xl overflow-hidden border border-white/5">
+            <div className="overflow-hidden rounded-xl border border-white/5">
               <img
                 src={currentLesson.plate.src}
-                alt={currentLesson.plate.alt ?? `${course.title} plate`}
-                className="w-full h-auto block"
+                alt={currentLesson.plate.alt ?? `${course.title} Plate`}
+                className="block h-auto w-full"
               />
             </div>
           </section>
-        ) : null}
+        )}
 
-        {objectives && objectives.length > 0 ? (
+        {objectives && (
           <section className="mt-12 rounded-xl bg-[#102017] p-8">
+
             <h2 className="text-2xl font-bold text-green-300">
               Learning Objectives
             </h2>
@@ -79,80 +88,100 @@ export function LessonPage({
                 <li key={objective}>{objective}</li>
               ))}
             </ul>
+
           </section>
-        ) : null}
+        )}
 
         <section className="mt-12">
           <MarkdownLesson content={lessonContent} />
         </section>
 
-        {takeaways && takeaways.length > 0 ? (
+        {takeaways && (
           <section className="mt-12 rounded-xl bg-[#102017] p-8">
-            <h2 className="text-2xl font-bold text-green-300">Key Takeaways</h2>
+
+            <h2 className="text-2xl font-bold text-green-300">
+              Key Takeaways
+            </h2>
 
             <ul className="mt-5 space-y-4 text-lg">
-              {takeaways.map((t) => (
-                <li key={t}>{t}</li>
+              {takeaways.map((takeaway) => (
+                <li key={takeaway}>{takeaway}</li>
               ))}
             </ul>
-          </section>
-        ) : null}
 
-        {currentLesson.worksheet ? (
+          </section>
+        )}
+
+        {/* Quiz + Progress + Lesson Complete */}
+        <LessonProgress
+          course={course}
+          lesson={currentLesson}
+        />
+
+        {currentLesson.worksheet && (
           <section className="mt-12">
             <a
               href={currentLesson.worksheet}
-              className="inline-flex items-center gap-3 rounded-lg bg-blue-600 px-6 py-3 font-medium hover:bg-blue-700"
               download
+              className="inline-flex items-center gap-3 rounded-lg bg-blue-600 px-6 py-3 font-medium hover:bg-blue-700"
             >
               Download Worksheet
             </a>
           </section>
-        ) : null}
+        )}
 
-        {currentLesson.downloads && currentLesson.downloads.length > 0 ? (
+        {currentLesson.downloads?.length ? (
           <section className="mt-8 rounded-xl bg-[#0F1713] p-6">
-            <h3 className="text-lg font-semibold text-gray-200">Downloads</h3>
+
+            <h3 className="text-lg font-semibold text-gray-200">
+              Downloads
+            </h3>
+
             <ul className="mt-3 space-y-2 text-gray-300">
-              {currentLesson.downloads.map((d) => (
-                <li key={d.href}>
+              {currentLesson.downloads.map((download) => (
+                <li key={download.href}>
                   <a
-                    href={d.href}
+                    href={download.href}
                     className="text-green-300 underline"
                   >
-                    {d.label}
+                    {download.label}
                   </a>
                 </li>
               ))}
             </ul>
+
           </section>
         ) : null}
 
-        {currentLesson.references && currentLesson.references.length > 0 ? (
-          <section className="mt-8 rounded-xl bg-[#08120D] p-6 border border-white/5">
-            <h3 className="text-lg font-semibold text-gray-200">References</h3>
+        {currentLesson.references?.length ? (
+          <section className="mt-8 rounded-xl border border-white/5 bg-[#08120D] p-6">
+
+            <h3 className="text-lg font-semibold text-gray-200">
+              References
+            </h3>
+
             <ul className="mt-3 space-y-2 text-gray-300">
-              {currentLesson.references.map((r, i) => (
-                <li key={r.href ?? i}>
-                  {r.href ? (
-                    <a href={r.href} className="text-green-300 underline">
-                      {r.label ?? r.href}
+              {currentLesson.references.map((reference, index) => (
+                <li key={reference.href ?? index}>
+                  {reference.href ? (
+                    <a
+                      href={reference.href}
+                      className="text-green-300 underline"
+                    >
+                      {reference.label ?? reference.href}
                     </a>
                   ) : (
-                    <span>{r.label}</span>
+                    <span>{reference.label}</span>
                   )}
                 </li>
               ))}
             </ul>
+
           </section>
         ) : null}
 
-        <LessonComplete
-          courseId={course.slug}
-          lessonNumber={currentLesson.number}
-        />
-
         <section className="mt-12 rounded-xl bg-[#102017] p-8">
+
           <h2 className="text-2xl font-bold text-green-300">
             Continue Reading
           </h2>
@@ -168,9 +197,11 @@ export function LessonPage({
           >
             Open Guide →
           </Link>
+
         </section>
 
         <div className="mt-16 flex justify-between">
+
           {previousLesson ? (
             <Link
               href={`/academy/${course.slug}/lessons/${previousLesson.number}`}
@@ -192,7 +223,9 @@ export function LessonPage({
           ) : (
             <div />
           )}
+
         </div>
+
       </div>
     </main>
   );

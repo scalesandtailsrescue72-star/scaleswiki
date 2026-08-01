@@ -1,24 +1,47 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import type { QuizQuestion } from "../types/course";
+
+export interface QuizResult {
+  score: number;
+  total: number;
+  percentage: number;
+  passed: boolean;
+}
 
 type QuizProps = {
   questions: QuizQuestion[];
+  passingScore?: number;
+  onComplete?: (result: QuizResult) => void;
 };
 
-export default function Quiz({ questions }: QuizProps) {
+export default function Quiz({
+  questions,
+  passingScore = 80,
+  onComplete,
+}: QuizProps) {
   const [answers, setAnswers] = useState<number[]>(
     Array(questions.length).fill(-1)
   );
 
   const [submitted, setSubmitted] = useState(false);
 
-  const score = answers.reduce(
-    (total, answer, index) =>
-      total + (answer === questions[index].answer ? 1 : 0),
-    0
+  const score = useMemo(
+    () =>
+      answers.reduce(
+        (total, answer, index) =>
+          total + (answer === questions[index].answer ? 1 : 0),
+        0
+      ),
+    [answers, questions]
   );
+
+  const percentage = Math.round((score / questions.length) * 100);
+
+  const passed = percentage >= passingScore;
+
+  const allAnswered = answers.every((a) => a !== -1);
 
   function selectAnswer(questionIndex: number, optionIndex: number) {
     if (submitted) return;
@@ -28,25 +51,49 @@ export default function Quiz({ questions }: QuizProps) {
     setAnswers(updated);
   }
 
+  function submitQuiz() {
+    if (!allAnswered) return;
+
+    setSubmitted(true);
+
+    onComplete?.({
+      score,
+      total: questions.length,
+      percentage,
+      passed,
+    });
+  }
+
   function resetQuiz() {
     setAnswers(Array(questions.length).fill(-1));
     setSubmitted(false);
   }
 
   return (
-    <section className="mt-12 rounded-xl bg-[#102017] p-8">
-      <h2 className="text-2xl font-bold text-green-300">
+    <section className="mt-12 rounded-2xl border border-green-900 bg-[#102017] p-8 shadow-lg">
+      <h2 className="text-3xl font-bold text-green-300">
         Knowledge Check
       </h2>
 
-      <div className="mt-8 space-y-10">
+      <p className="mt-2 text-sm text-gray-400">
+        Answer every question before submitting.
+      </p>
+
+      <div className="mt-10 space-y-10">
         {questions.map((question, qIndex) => (
-          <div key={qIndex}>
-            <h3 className="font-semibold text-lg">
-              {qIndex + 1}. {question.question}
+          <div
+            key={qIndex}
+            className="rounded-xl border border-green-900/40 bg-[#0c1812] p-6"
+          >
+            <h3 className="text-lg font-semibold">
+              Question {qIndex + 1}
             </h3>
 
-            <div className="mt-4 space-y-3">
+            <p className="mt-2 text-gray-200">
+              {question.question}
+            </p>
+
+            <div className="mt-5 space-y-3">
               {question.options.map((option, oIndex) => {
                 const selected = answers[qIndex] === oIndex;
 
@@ -70,7 +117,9 @@ export default function Quiz({ questions }: QuizProps) {
                 return (
                   <button
                     key={oIndex}
+                    type="button"
                     className={styles}
+                    disabled={submitted}
                     onClick={() =>
                       selectAnswer(qIndex, oIndex)
                     }
@@ -82,9 +131,11 @@ export default function Quiz({ questions }: QuizProps) {
             </div>
 
             {submitted && question.explanation && (
-              <p className="mt-4 text-green-200">
-                {question.explanation}
-              </p>
+              <div className="mt-5 rounded-lg border border-green-800 bg-green-950/30 p-4">
+                <p className="text-sm text-green-200">
+                  {question.explanation}
+                </p>
+              </div>
             )}
           </div>
         ))}
@@ -92,20 +143,53 @@ export default function Quiz({ questions }: QuizProps) {
 
       {!submitted ? (
         <button
-          onClick={() => setSubmitted(true)}
-          className="mt-10 rounded-lg bg-green-600 px-6 py-3 font-medium hover:bg-green-700"
+          type="button"
+          disabled={!allAnswered}
+          onClick={submitQuiz}
+          className={`mt-10 rounded-xl px-6 py-3 font-semibold transition ${
+            allAnswered
+              ? "bg-green-600 hover:bg-green-500"
+              : "cursor-not-allowed bg-gray-700 text-gray-400"
+          }`}
         >
           Submit Quiz
         </button>
       ) : (
-        <div className="mt-10">
-          <h3 className="text-2xl font-bold">
-            Score: {score} / {questions.length}
+        <div className="mt-12 rounded-xl border border-green-900 bg-[#0c1812] p-6">
+          <h3 className="text-3xl font-bold">
+            {passed ? "🎉 Lesson Passed!" : "📖 Keep Learning!"}
           </h3>
 
+          <p className="mt-4 text-xl">
+            Score:{" "}
+            <span className="font-bold">
+              {score} / {questions.length}
+            </span>
+          </p>
+
+          <p className="text-lg">
+            Percentage:{" "}
+            <span className="font-bold">
+              {percentage}%
+            </span>
+          </p>
+
+          <p
+            className={`mt-4 text-lg font-semibold ${
+              passed
+                ? "text-green-400"
+                : "text-red-400"
+            }`}
+          >
+            {passed
+              ? "You passed this Knowledge Check!"
+              : `A score of ${passingScore}% is required to pass.`}
+          </p>
+
           <button
+            type="button"
             onClick={resetQuiz}
-            className="mt-6 rounded-lg border border-green-600 px-6 py-3 hover:bg-green-900"
+            className="mt-8 rounded-xl border border-green-700 px-6 py-3 hover:bg-green-900"
           >
             Try Again
           </button>
