@@ -83,7 +83,7 @@ export default function AcademyPage() {
 
             </div>
 
-          ))}
+          })}
 
         </div>
 
