@@ -12,10 +12,10 @@ import {
 import { ballPythonCourse } from "@/app/academy/data/ball-python/course";
 
 export default function DashboardStats() {
+  const totalLessons = ballPythonCourse.lessons.length;
+
   const [lessonsCompleted, setLessonsCompleted] = useState(0);
   const [certificateCount, setCertificateCount] = useState(0);
-
-  const totalLessons = ballPythonCourse.lessons.length;
 
   useEffect(() => {
     function refresh() {
@@ -35,7 +35,7 @@ export default function DashboardStats() {
     return () => {
       window.removeEventListener("storage", refresh);
     };
-  }, [totalLessons]);
+  }, []);
 
   const progress =
     totalLessons === 0
