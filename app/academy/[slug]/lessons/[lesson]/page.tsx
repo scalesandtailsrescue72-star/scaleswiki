@@ -14,6 +14,8 @@ export default async function Page({ params }: LessonPageProps) {
   const lessonNumber = Number(resolvedParams.lesson);
 
   const course = getCourseBySlug(courseSlug);
+  console.log("Course slug:", courseSlug);
+console.log("Lessons:", course?.lessons.map(l => l.number));
 
   if (!course) {
     notFound();
