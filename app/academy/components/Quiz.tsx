@@ -11,15 +11,19 @@ export interface QuizResult {
 }
 
 type QuizProps = {
+  title?: string;
   questions: QuizQuestion[];
   passingScore?: number;
   onComplete?: (result: QuizResult) => void;
+  onPass?: () => void;
 };
 
 export default function Quiz({
+  title = "Knowledge Check",
   questions,
   passingScore = 80,
   onComplete,
+  onPass,
 }: QuizProps) {
   const [answers, setAnswers] = useState<number[]>(
     Array(questions.length).fill(-1)
@@ -41,7 +45,7 @@ export default function Quiz({
 
   const passed = percentage >= passingScore;
 
-  const allAnswered = answers.every((a) => a !== -1);
+  const allAnswered = answers.every((answer) => answer !== -1);
 
   function selectAnswer(questionIndex: number, optionIndex: number) {
     if (submitted) return;
@@ -56,12 +60,18 @@ export default function Quiz({
 
     setSubmitted(true);
 
-    onComplete?.({
+    const result: QuizResult = {
       score,
       total: questions.length,
       percentage,
       passed,
-    });
+    };
+
+    onComplete?.(result);
+
+    if (passed) {
+      onPass?.();
+    }
   }
 
   function resetQuiz() {
@@ -72,7 +82,7 @@ export default function Quiz({
   return (
     <section className="mt-12 rounded-2xl border border-green-900 bg-[#102017] p-8 shadow-lg">
       <h2 className="text-3xl font-bold text-green-300">
-        Knowledge Check
+        {title}
       </h2>
 
       <p className="mt-2 text-sm text-gray-400">
@@ -157,18 +167,18 @@ export default function Quiz({
       ) : (
         <div className="mt-12 rounded-xl border border-green-900 bg-[#0c1812] p-6">
           <h3 className="text-3xl font-bold">
-            {passed ? "🎉 Lesson Passed!" : "📖 Keep Learning!"}
+            {passed ? "🎉 Passed!" : "📖 Try Again"}
           </h3>
 
           <p className="mt-4 text-xl">
-            Score:{" "}
+            Score{" "}
             <span className="font-bold">
               {score} / {questions.length}
             </span>
           </p>
 
           <p className="text-lg">
-            Percentage:{" "}
+            Percentage{" "}
             <span className="font-bold">
               {percentage}%
             </span>
@@ -182,7 +192,7 @@ export default function Quiz({
             }`}
           >
             {passed
-              ? "You passed this Knowledge Check!"
+              ? "Congratulations! You passed."
               : `A score of ${passingScore}% is required to pass.`}
           </p>
 

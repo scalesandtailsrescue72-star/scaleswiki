@@ -7,8 +7,26 @@ export interface LessonProgress {
   completedAt: string;
 }
 
+export interface FinalExamProgress {
+  completed: boolean;
+  passed: boolean;
+  score: number;
+  percentage: number;
+  completedAt: string;
+}
+
+export interface CertificateProgress {
+  earned: boolean;
+  certificateId: string;
+  earnedAt: string;
+}
+
 export interface CourseProgress {
   lessons: Record<number, LessonProgress>;
+
+  finalExam?: FinalExamProgress;
+
+  certificate?: CertificateProgress;
 }
 
 export interface AcademyProgress {
@@ -37,6 +55,19 @@ function saveProgress(progress: AcademyProgress) {
   if (typeof window === "undefined") return;
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+
+  // Notify the application that progress changed.
+  window.dispatchEvent(new Event("storage"));
+}
+
+function ensureCourse(progress: AcademyProgress, slug: string) {
+  if (!progress.courses[slug]) {
+    progress.courses[slug] = {
+      lessons: {},
+    };
+  }
+
+  return progress.courses[slug];
 }
 
 export function completeLesson(
@@ -47,18 +78,43 @@ export function completeLesson(
 ) {
   const progress = loadProgress();
 
-  if (!progress.courses[courseSlug]) {
-    progress.courses[courseSlug] = {
-      lessons: {},
-    };
-  }
+  const course = ensureCourse(progress, courseSlug);
 
-  progress.courses[courseSlug].lessons[lessonNumber] = {
+  course.lessons[lessonNumber] = {
     completed: true,
     score,
     percentage,
     completedAt: new Date().toISOString(),
   };
+
+  saveProgress(progress);
+}
+
+export function completeFinalExam(
+  courseSlug: string,
+  score: number,
+  percentage: number,
+  passed: boolean
+) {
+  const progress = loadProgress();
+
+  const course = ensureCourse(progress, courseSlug);
+
+  course.finalExam = {
+    completed: true,
+    passed,
+    score,
+    percentage,
+    completedAt: new Date().toISOString(),
+  };
+
+  if (passed) {
+    course.certificate = {
+      earned: true,
+      certificateId: `${courseSlug.toUpperCase()}-${Date.now()}`,
+      earnedAt: new Date().toISOString(),
+    };
+  }
 
   saveProgress(progress);
 }
@@ -86,6 +142,33 @@ export function getCompletedLessonCount(courseSlug: string): number {
   ).length;
 }
 
+export function getNextLesson(
+  courseSlug: string,
+  totalLessons: number
+): number | null {
+  const course = getCourseProgress(courseSlug);
+
+  for (let lesson = 1; lesson <= totalLessons; lesson++) {
+    if (!course.lessons[lesson]?.completed) {
+      return lesson;
+    }
+  }
+
+  return null;
+}
+
+export function hasPassedFinalExam(courseSlug: string): boolean {
+  return !!getCourseProgress(courseSlug).finalExam?.passed;
+}
+
+export function hasCertificate(courseSlug: string): boolean {
+  return !!getCourseProgress(courseSlug).certificate?.earned;
+}
+
+export function getCertificate(courseSlug: string) {
+  return getCourseProgress(courseSlug).certificate;
+}
+
 export function clearCourseProgress(courseSlug: string) {
   const progress = loadProgress();
 
@@ -98,4 +181,6 @@ export function clearAllProgress() {
   if (typeof window === "undefined") return;
 
   localStorage.removeItem(STORAGE_KEY);
+
+  window.dispatchEvent(new Event("storage"));
 }
