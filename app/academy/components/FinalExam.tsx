@@ -21,7 +21,9 @@ export default function FinalExam({
   const router = useRouter();
 
   async function handleComplete(result: QuizResult) {
-    // Keep localStorage temporarily until the full migration is finished.
+    console.log("========== FINAL EXAM ==========");
+    console.log(result);
+
     completeFinalExam(
       course.slug,
       result.score,
@@ -31,10 +33,14 @@ export default function FinalExam({
 
     const {
       data: { user },
+      error: userError,
     } = await supabase.auth.getUser();
 
+    console.log("Authenticated user:", user);
+    console.log("User error:", userError);
+
     if (!user) {
-      console.warn("No authenticated user.");
+      console.error("No authenticated user.");
       return;
     }
 
@@ -47,9 +53,19 @@ export default function FinalExam({
         passed: result.passed,
       });
 
-      console.log("✅ Final exam saved.");
-    } catch (error) {
-      console.error("❌ Failed to save final exam:", error);
+      console.log("✅ Final exam saved successfully.");
+    } catch (error: any) {
+      console.error("========== SAVE FAILED ==========");
+      console.error(error);
+
+      if (error) {
+        console.error("Code:", error.code);
+        console.error("Message:", error.message);
+        console.error("Details:", error.details);
+        console.error("Hint:", error.hint);
+      }
+
+      return;
     }
   }
 
