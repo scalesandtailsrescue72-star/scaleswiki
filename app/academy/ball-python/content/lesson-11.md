@@ -1,105 +1,161 @@
 ---
 plate:
   src: "/academy/plates/ball-python/10-common-mistakes.webp.webp"
-  alt: "Technical plate — Common mistakes"
+  alt: "Technical plate — Common Husbandry Mistakes"
 ---
 
-# Common Mistakes
+# Common Husbandry Mistakes
 
-Even experienced reptile keepers continue learning throughout their careers. Many of the problems seen in captive Ball Pythons result from common husbandry mistakes that can often be prevented through preparation, observation, and education.
+## Learning From the Mistakes of Others
 
-Learning these mistakes now can help you avoid them in the future.
+Every experienced reptile keeper has made mistakes.
+
+The difference between a successful keeper and an unsuccessful one is the willingness to learn, improve, and build better husbandry practices over time.
+
+Many health problems seen in captive Ball Pythons are not caused by disease—they begin with preventable husbandry errors.
+
+Fortunately, most of these mistakes can be avoided through preparation, observation, and consistency.
 
 ---
 
-## Buying Before Preparing
+# Mistake #1 – Buying Before You're Ready
 
-One of the most common mistakes is purchasing a Ball Python before the enclosure is fully assembled.
+One of the most common mistakes is purchasing a Ball Python before the enclosure has been fully prepared.
 
 Before bringing your snake home:
 
-- Test temperatures.
-- Verify humidity.
-- Install thermostats.
-- Prepare hides and substrate.
-- Ensure fresh water is available.
+- Test all heating equipment.
+- Verify temperatures.
+- Check humidity.
+- Install thermostat probes.
+- Prepare hides.
+- Add substrate.
+- Fill and clean the water bowl.
 
-A prepared enclosure reduces stress and promotes a smooth transition.
-
----
-
-## Incorrect Temperatures
-
-Improper heating is one of the leading causes of husbandry problems.
-
-Always:
-
-- Use a thermostat.
-- Monitor temperatures with digital thermometers.
-- Maintain a proper thermal gradient.
-
-Never guess enclosure temperatures by touch alone.
+A prepared enclosure allows your Ball Python to settle into a stable environment immediately.
 
 ---
 
-## Humidity Problems
+# Mistake #2 – Improper Heating
 
-Humidity that is consistently too low or too high may contribute to health problems.
+Incorrect temperatures can affect nearly every aspect of your Ball Python's health.
 
-Monitor humidity regularly with a digital hygrometer and adjust husbandry when needed.
+Common mistakes include:
 
----
+- No thermostat
+- Incorrect probe placement
+- No thermal gradient
+- Guessing temperatures by touch
+- Using inaccurate gauges
 
-## Feeding Errors
-
-Common feeding mistakes include:
-
-- Offering prey that is too large.
-- Handling immediately after feeding.
-- Inconsistent feeding schedules.
-
-Following a routine helps support healthy digestion.
+Reliable digital equipment helps prevent many of these problems.
 
 ---
 
-## Lack of Observation
+# Mistake #3 – Poor Humidity Management
 
-Spend a few minutes observing your Ball Python every day.
+Humidity should remain stable—not constantly wet or excessively dry.
 
-Changes in behavior, appetite, shedding, or appearance are often the first signs that something may need attention.
+Common humidity mistakes include:
+
+- Constant heavy misting
+- Soaking the substrate
+- Ignoring ventilation
+- Never checking humidity
+
+Balance is more important than extremes.
+
+---
+
+# Mistake #4 – Feeding Errors
+
+Feeding mistakes commonly include:
+
+- Oversized prey
+- Handling immediately after feeding
+- Feeding inconsistent prey sizes
+- Changing feeding routines too frequently
+
+Routine feeding practices help reduce stress.
+
+---
+
+# Mistake #5 – Skipping Daily Observation
+
+Many illnesses begin with subtle behavioral changes.
+
+Take a few minutes every day to observe:
+
+- Activity
+- Breathing
+- Body condition
+- Appetite
+- Shedding
+- General behavior
+
+Small changes noticed early often prevent larger problems later.
+
+---
+
+# Mistake #6 – Waiting Too Long
+
+Some keepers delay seeking veterinary care because they hope a problem will resolve on its own.
+
+When significant concerns develop, early veterinary evaluation is often the best course of action.
+
+Prompt action frequently improves outcomes.
+
+---
+
+# Building Good Habits
+
+Excellent husbandry is built through consistency.
+
+Successful keepers develop routines for:
+
+- Feeding
+- Cleaning
+- Temperature checks
+- Humidity monitoring
+- Health observations
+- Record keeping
+
+These simple habits become second nature over time.
 
 ---
 
 ## 🐍 Did You Know?
 
-Many experienced reptile keepers maintain journals or digital records to track feeding, shedding, weight, and health observations over the lifetime of each animal.
+Professional zoological institutions and accredited reptile facilities rely heavily on routine observations, written records, and standardized husbandry procedures to maintain healthy collections.
 
 ---
 
 ## 💡 Keeper Tip
 
-Good husbandry is built through consistency.
+Don't aim for perfection.
 
-Small daily observations often prevent much larger problems later.
+Aim for consistency.
+
+Small daily improvements are far more valuable than occasional major changes.
 
 ---
 
-## Key Points
+# Key Points
 
-- Prepare before bringing home your Ball Python.
-- Monitor temperatures and humidity regularly.
-- Feed appropriately sized prey.
-- Observe your snake every day.
-- Consistency is one of the best husbandry tools.
+- Preparation prevents many husbandry problems.
+- Stable temperatures and humidity are essential.
+- Follow consistent feeding routines.
+- Observe your Ball Python every day.
+- Never hesitate to seek veterinary care when significant concerns arise.
 
 ---
 
 # Knowledge Check
 
-You've learned several common mistakes made by new Ball Python keepers and how to avoid them.
+You now understand many of the most common husbandry mistakes and how to avoid them.
 
-Complete the Knowledge Check before moving to the final lesson.
+Complete the Knowledge Check before continuing to the final lesson.
 
 Remember:
 
-> **The best mistake is the one you never make because you prepared ahead of time.**
+> **The most successful reptile keepers are lifelong learners who continuously improve their husbandry.**

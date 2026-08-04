@@ -3,86 +3,168 @@ import type { LessonExtended } from "@/app/academy/types/course";
 export const lesson08: LessonExtended = {
   number: 8,
 
-  title: "Feeding",
+  title: "Heating & Temperature",
 
   description:
-    "Learn how to safely feed your Ball Python, choose appropriate prey items, and establish a healthy feeding routine.",
+    "Learn how to create a safe thermal gradient, choose appropriate heating equipment, and maintain temperatures that support healthy Ball Python husbandry.",
 
-  duration: "12 min",
+  duration: "15 min",
 
   difficulty: "Beginner",
 
-  guideHref: "/species/ball-python#feeding",
+  guideHref: "/species/ball-python#heating-and-temperature",
 
   objectives: [
-    "Understand appropriate prey selection.",
-    "Learn safe feeding practices.",
-    "Recognize normal feeding behavior in Ball Pythons.",
+    "Understand why Ball Pythons require external heat.",
+    "Create an effective thermal gradient.",
+    "Learn how thermostats prevent overheating.",
+    "Identify safe heating equipment.",
+    "Recognize common heating mistakes.",
   ],
 
   keyTakeaways: [
-    "Frozen/thawed rodents are the recommended prey for captive Ball Pythons.",
-    "Feed prey that is appropriately sized for the snake.",
-    "Allow your Ball Python time to digest after feeding before handling.",
+    "Ball Pythons depend on environmental heat to regulate their body temperature.",
+    "A warm side and cool side allow natural thermoregulation.",
+    "Every heat source should be controlled by a quality thermostat.",
+    "Digital thermometers provide more reliable measurements than dial gauges.",
+    "Consistent temperatures support digestion, immune function, and overall health.",
   ],
 
   quizQuestions: [
     {
-      question: "What is generally the safest prey option for captive Ball Pythons?",
+      question: "Why do Ball Pythons require external heat?",
       options: [
-        "Live rodents",
-        "Frozen/thawed rodents",
-        "Insects",
-        "Raw chicken",
+        "They are ectothermic and depend on environmental temperatures.",
+        "They produce too much body heat.",
+        "They only need heat during shedding.",
+        "Only juvenile Ball Pythons require heat.",
       ],
-      answer: 1,
+      answer: 0,
       explanation:
-        "Frozen/thawed rodents reduce the risk of injury to the snake while providing complete nutrition.",
+        "Ball Pythons rely on external heat sources to regulate their body temperature.",
     },
 
     {
-      question: "How should prey size generally compare to the snake?",
+      question: "What is a thermal gradient?",
       options: [
-        "Much larger than the snake",
-        "Approximately the same width as the snake's widest body section",
-        "As small as possible",
-        "The snake's full body length",
+        "An enclosure with warm and cool areas.",
+        "A humid hide.",
+        "A feeding schedule.",
+        "A lighting cycle.",
       ],
-      answer: 1,
+      answer: 0,
       explanation:
-        "Appropriately sized prey supports healthy feeding and digestion.",
+        "A thermal gradient allows the snake to choose the temperature it needs.",
     },
 
     {
-      question: "What should you generally avoid immediately after feeding?",
+      question: "Which device should control every heat source?",
       options: [
-        "Providing fresh water",
-        "Handling the snake",
-        "Turning enclosure lights off",
-        "Monitoring temperatures",
+        "A thermostat",
+        "A hygrometer",
+        "A timer",
+        "A UV meter",
       ],
-      answer: 1,
+      answer: 0,
       explanation:
-        "Handling too soon after feeding may increase stress and the risk of regurgitation.",
+        "Thermostats regulate heating equipment and help prevent dangerous overheating.",
     },
 
     {
-      question: "Why do some Ball Pythons occasionally refuse food?",
+      question: "Which tool provides accurate enclosure temperature readings?",
       options: [
-        "They always have a serious illness",
-        "Seasonal behavior, husbandry, or other normal factors can influence feeding",
-        "They no longer need to eat",
-        "They only eat during shedding",
+        "Digital thermometer",
+        "Stick-on dial thermometer",
+        "Guessing by touch",
+        "Room thermostat",
       ],
-      answer: 1,
+      answer: 0,
       explanation:
-        "Temporary food refusals can occur for several reasons. Husbandry should always be reviewed before assuming illness.",
+        "Digital thermometers provide much more reliable readings than stick-on gauges.",
+    },
+
+    {
+      question: "Why do Ball Pythons move between warm and cool areas?",
+      options: [
+        "To regulate their body temperature.",
+        "To increase humidity.",
+        "To improve coloration.",
+        "To avoid eating.",
+      ],
+      answer: 0,
+      explanation:
+        "Moving between warm and cool zones is how ectothermic reptiles thermoregulate.",
+    },
+
+    {
+      question: "Which heating device is commonly used in reptile enclosures?",
+      options: [
+        "Radiant Heat Panel",
+        "Household space heater",
+        "Electric blanket",
+        "Heating pad without a thermostat",
+      ],
+      answer: 0,
+      explanation:
+        "Radiant Heat Panels are commonly used in properly designed reptile enclosures.",
+    },
+
+    {
+      question: "Why is testing temperatures before bringing home your snake important?",
+      options: [
+        "To ensure stable environmental conditions.",
+        "To improve feeding.",
+        "To reduce shedding.",
+        "To increase humidity.",
+      ],
+      answer: 0,
+      explanation:
+        "Testing allows you to correct problems before the animal arrives.",
+    },
+
+    {
+      question: "Which is a common heating mistake?",
+      options: [
+        "Using heating equipment without a thermostat.",
+        "Monitoring temperatures.",
+        "Providing a warm hide.",
+        "Using digital thermometers.",
+      ],
+      answer: 0,
+      explanation:
+        "Heating equipment without a thermostat can become dangerously hot.",
+    },
+
+    {
+      question: "What body functions depend on proper temperatures?",
+      options: [
+        "Digestion and immune function.",
+        "Only shedding.",
+        "Only movement.",
+        "Only feeding.",
+      ],
+      answer: 0,
+      explanation:
+        "Proper temperatures support digestion, metabolism, immunity, and overall health.",
+    },
+
+    {
+      question: "The primary goal of heating is to:",
+      options: [
+        "Provide a safe environment that allows natural thermoregulation.",
+        "Make the enclosure warmer than the room.",
+        "Increase humidity.",
+        "Keep the snake active all day.",
+      ],
+      answer: 0,
+      explanation:
+        "Heating should allow the snake to regulate its own body temperature naturally.",
     },
   ],
 
   references: [
     {
-      label: "ScalesWiki Ball Python Care Guide",
+      label: "ScalesWiki Ball Python Handbook",
       href: "/species/ball-python",
     },
   ],

@@ -1,103 +1,169 @@
 ---
 plate:
   src: "/academy/plates/ball-python/09-health.webp.webp"
-  alt: "Technical plate — Health"
+  alt: "Technical plate — Health Assessment"
 ---
 
-# Health
+# Health & Routine Observation
 
-Healthy Ball Pythons begin with proper husbandry. Correct temperatures, humidity, nutrition, hydration, sanitation, and routine observation all contribute to a long, healthy life.
+## Why Health Starts With Husbandry
 
-Learning to recognize normal behavior allows you to identify potential health problems early.
+Healthy Ball Pythons do not become healthy by chance.
+
+Most long-term health begins with consistent husbandry. Correct temperatures, proper humidity, appropriate nutrition, clean water, sanitation, and routine observation all work together to support normal body function.
+
+Learning what is **normal** for your individual Ball Python makes it much easier to recognize when something changes.
+
+Remember:
+
+Good keepers don't simply react to illness—they work to prevent it.
 
 ---
 
-## Signs of a Healthy Ball Python
+# Knowing What Is Normal
+
+Every Ball Python has its own personality and daily routine.
+
+Over time you should become familiar with your snake's:
+
+- Normal activity level
+- Feeding response
+- Shedding pattern
+- Body condition
+- Breathing
+- Typical resting locations
+- General behavior
+
+Changes from your snake's normal routine are often more important than comparing it to another animal.
+
+---
+
+# Signs of a Healthy Ball Python
 
 Healthy Ball Pythons generally display:
 
-- Clear eyes (except during blue phase before shedding)
+- Clear eyes (except during the blue phase before shedding)
 - Clean nostrils
-- Smooth skin
+- Smooth, healthy skin
 - Good muscle tone
+- Quiet breathing
 - Regular tongue flicking
-- Normal alert behavior
+- Alert but calm behavior
+- Strong body control during movement
 
-Every snake has its own personality, but healthy animals generally appear comfortable and responsive.
+No single characteristic guarantees health, but these observations together help build an overall picture.
 
 ---
 
-## Warning Signs
+# Warning Signs
 
-Seek veterinary advice if you notice:
+Some observations deserve closer attention.
+
+These include:
 
 - Wheezing
 - Open-mouth breathing
-- Refusal to eat for an unusual length of time
+- Persistent discharge from the nose or mouth
 - Significant weight loss
 - Swelling
-- Discharge from the nose or mouth
-- Persistent retained shed
-- Unusual lethargy
+- Visible wounds
+- Severe retained shed
+- Difficulty moving normally
+- Persistent lethargy
+- Repeated refusal to eat beyond what is normal for the individual snake
 
-Early treatment often produces better outcomes.
+These observations do not diagnose a disease, but they should prompt further evaluation by a qualified reptile veterinarian.
 
 ---
 
-## Preventative Care
+# Preventive Husbandry
 
-Good husbandry helps prevent many common health problems.
+Many common health problems can be reduced through proper husbandry.
 
-Maintain:
+Focus on:
 
-- Proper temperatures
+- Stable temperatures
 - Appropriate humidity
-- Clean water
-- Regular enclosure cleaning
-- Correct nutrition
+- Fresh water
+- Clean enclosure conditions
+- Proper nutrition
+- Regular equipment inspections
+- Daily observation
 
-Routine observation helps detect changes before they become serious.
+Preventive care is usually easier than treating preventable problems.
 
 ---
 
-## Veterinary Care
+# Record Keeping
 
-Every Ball Python owner should establish a relationship with a qualified reptile veterinarian before an emergency occurs.
+Keeping simple records can help identify gradual changes that might otherwise be overlooked.
 
-Regular wellness examinations may help identify problems early.
+Useful information includes:
+
+- Feeding dates
+- Shed dates
+- Body weight
+- Cleaning schedule
+- Unusual observations
+- Veterinary visits
+
+Good records become valuable over the lifetime of the animal.
+
+---
+
+# Veterinary Care
+
+Every Ball Python owner should identify a qualified reptile veterinarian before an emergency occurs.
+
+Routine wellness examinations can help establish a health baseline and may identify developing problems earlier.
+
+Never rely solely on internet advice when you believe your Ball Python may be seriously ill.
+
+---
+
+# Common Health Myths
+
+Some common misconceptions include:
+
+- Healthy snakes never refuse food.
+- Every respiratory sound is normal.
+- Poor sheds always resolve on their own.
+- Husbandry mistakes cannot affect health.
+
+Responsible keepers evaluate husbandry first while seeking veterinary care when appropriate.
 
 ---
 
 ## 🐍 Did You Know?
 
-Many reptile illnesses develop gradually. Subtle behavior changes are often the first indication that something may be wrong.
+Many reptile illnesses develop gradually. Subtle changes in appetite, activity, or behavior are often noticed before obvious physical symptoms appear.
 
 ---
 
 ## 💡 Keeper Tip
 
-Observe your Ball Python every day.
+Spend a few minutes observing your Ball Python every day.
 
-Small changes in behavior, appetite, or appearance are often easier to notice when you're familiar with what is normal for your individual snake.
+Consistent observation helps you recognize small changes long before they become major concerns.
 
 ---
 
-## Key Points
+# Key Points
 
-- Healthy husbandry supports healthy snakes.
-- Learn your Ball Python's normal behavior.
-- Watch for early warning signs.
-- Seek veterinary care when needed.
-- Daily observation is one of your best health tools.
+- Proper husbandry supports long-term health.
+- Learn what is normal for your individual snake.
+- Observe your Ball Python every day.
+- Keep simple health records.
+- Seek veterinary care whenever significant concerns develop.
 
 ---
 
 # Knowledge Check
 
-You've learned how proper husbandry and daily observation support your Ball Python's health.
+You now understand how routine observation and proper husbandry work together to support the health of your Ball Python.
 
-Complete the Knowledge Check before moving to the next lesson.
+Complete the Knowledge Check before continuing.
 
 Remember:
 
-> **Early detection and proper husbandry are the foundation of reptile healthcare.**
+> **The best reptile keepers are excellent observers.**

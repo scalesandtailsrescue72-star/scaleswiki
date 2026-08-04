@@ -6,94 +6,146 @@ plate:
 
 # Substrate
 
-Substrate forms the foundation of your Ball Python's enclosure. It influences humidity, cleanliness, comfort, and allows natural behaviors such as exploring and resting.
+## Why Substrate Matters
 
-Choosing the right substrate is an important part of responsible husbandry.
+Substrate forms the foundation of your Ball Python's enclosure. More than simply covering the enclosure floor, it influences humidity, cleanliness, comfort, and allows natural behaviors such as exploring, burrowing, and resting.
+
+Choosing an appropriate substrate helps create an environment that supports both physical health and natural behavior.
 
 ---
 
-## What Does Substrate Do?
+# The Purpose of Substrate
 
-A quality substrate helps:
+A quality substrate serves several important functions.
+
+It helps:
 
 - Maintain humidity
 - Absorb waste
-- Provide traction
+- Provide secure footing
 - Support natural behaviors
-- Create a more natural enclosure
+- Improve enclosure appearance
+- Reduce stress by creating a more natural environment
 
-Different keepers may choose different substrates depending on their enclosure design and husbandry goals.
+The "best" substrate often depends on your enclosure type, humidity goals, and maintenance routine.
 
 ---
 
-## Safe Substrate Choices
+# Choosing a Safe Substrate
 
-Always choose substrates intended for reptiles.
+Always select substrates intended for reptiles.
 
-Good substrate should be:
+A suitable substrate should be:
 
 - Clean
-- Dust-free
-- Free from harmful chemicals
-- Able to support proper humidity
+- Low dust
+- Free of harmful chemicals
+- Free of added fragrances or oils
+- Able to assist with humidity when appropriate
 
-Avoid materials that may contain oils, chemicals, or excessive dust.
-
----
-
-## Cleaning
-
-Spot clean the enclosure whenever waste is found.
-
-Completely replace substrate as needed based on:
-
-- Enclosure size
-- Number of animals
-- Type of substrate
-- Overall cleanliness
-
-Regular cleaning reduces bacteria and helps maintain a healthy environment.
+Avoid materials that may release harmful compounds or create excessive dust.
 
 ---
 
-## Monitoring Humidity
+# Cleaning and Maintenance
 
-Some substrates retain moisture better than others.
+Keeping substrate clean is just as important as selecting the right material.
 
-Regardless of the substrate you choose, continue monitoring humidity with a digital hygrometer to ensure the enclosure remains within the appropriate range.
+Good maintenance includes:
+
+- Spot cleaning whenever waste is found
+- Removing soiled substrate promptly
+- Cleaning water spills
+- Replacing substrate when necessary
+- Regular enclosure inspections
+
+Routine cleaning helps maintain a healthier environment and reduces bacterial growth.
+
+---
+
+# Humidity and Substrate
+
+Different substrates retain moisture differently.
+
+Some help stabilize humidity better than others, while some dry rapidly.
+
+Regardless of which substrate you choose, humidity should always be monitored using a reliable digital hygrometer rather than estimated.
+
+---
+
+# Supporting Natural Behaviors
+
+Appropriate substrate allows Ball Pythons to:
+
+- Explore
+- Rest comfortably
+- Partially burrow
+- Feel more secure
+- Interact naturally with their environment
+
+Natural behaviors contribute to overall welfare.
+
+---
+
+# Common Mistakes
+
+Common substrate mistakes include:
+
+- Using dusty materials
+- Allowing substrate to remain excessively wet
+- Waiting too long between cleanings
+- Choosing products not intended for reptiles
+- Ignoring humidity after changing substrates
+
+Regular observation helps identify problems before they affect your snake.
 
 ---
 
 ## 🐍 Did You Know?
 
-In the wild, Ball Pythons spend much of their time in burrows, beneath vegetation, and in sheltered areas where the ground naturally retains moisture.
+Wild Ball Pythons spend much of their lives inside naturally sheltered burrows where the surrounding soil helps moderate temperature and humidity.
 
 ---
 
 ## 💡 Keeper Tip
 
-Clean substrate is just as important as the substrate you choose.
+No substrate is maintenance-free.
 
-Routine spot cleaning keeps the enclosure healthier and reduces unnecessary stress.
-
----
-
-## Key Points
-
-- Use safe reptile substrate.
-- Spot clean regularly.
-- Replace substrate when necessary.
-- Monitor humidity.
-- Maintain a clean enclosure.
+Even the highest-quality substrate requires routine inspection, spot cleaning, and periodic replacement to keep your Ball Python healthy.
 
 ---
 
-# Knowledge Check
+# Key Points
 
-You've learned how substrate contributes to humidity, cleanliness, and overall enclosure health.
+- Choose a safe reptile substrate.
+- Maintain regular cleaning routines.
+- Monitor humidity regardless of substrate choice.
+- Replace substrate as needed.
+- Support natural behaviors through thoughtful enclosure design.
 
-Complete the Knowledge Check below before taking your final certification exam.
+---
+
+# Course Complete
+
+Congratulations!
+
+You have completed the educational portion of **Ball Python 101**.
+
+You have learned about:
+
+- Natural history
+- Responsible ownership
+- Selecting a healthy Ball Python
+- Quarantine
+- Enclosure design
+- Heating
+- Humidity
+- Health
+- Common husbandry mistakes
+- Proper substrate management
+
+You are now ready to demonstrate your knowledge by completing the **Ball Python 101 Final Certification Exam**.
 
 Remember:
 
-> **A clean enclosure begins with proper substrate and regular maintenance.**
+> **Responsible reptile keeping is a lifelong journey of learning, observation, and continual improvement.**

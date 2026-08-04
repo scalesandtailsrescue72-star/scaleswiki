@@ -1,104 +1,149 @@
 ---
-plate:
-  src: "/academy/plates/ball-python/08-handling.webp.webp"
-  alt: "Technical plate — Handling"
+title: Chapter 9 - Humidity
+guide: Ball Python
+edition: 1.0
+status: Draft for Veterinary Review
+last_updated: 2026-08-04
+reviewed_by:
+references: pending
 ---
 
-# Handling
+# Humidity
 
-Ball Pythons are well known for their generally calm temperament, making them one of the most popular pet snakes in the world. Proper handling helps build confidence for both the keeper and the snake while reducing unnecessary stress.
+## Why Humidity Matters
 
-Handling should always be calm, deliberate, and respectful of the animal's behavior.
+Humidity is one of the most misunderstood aspects of Ball Python husbandry. While these snakes can tolerate small day-to-day fluctuations, consistently incorrect humidity can contribute to poor sheds, dehydration, stress, and other husbandry-related problems.
 
----
-
-## Before Handling
-
-Before picking up your Ball Python:
-
-- Wash your hands.
-- Make sure the snake is awake and aware of your presence.
-- Avoid sudden movements.
-- Never surprise a resting snake.
-
-Giving your Ball Python a moment to recognize your presence helps reduce defensive behavior.
+The goal is not to create a wet enclosure—it is to provide a stable environment that supports normal biological functions.
 
 ---
 
-## Proper Handling Technique
+# Natural Environment
 
-Support the snake's body with both hands whenever possible.
+Wild Ball Pythons inhabit regions of western and central Africa where humidity changes with the seasons.
 
-Allow your Ball Python to move naturally instead of restraining it tightly.
-
-Avoid grabbing only the tail or squeezing the snake.
-
-A relaxed snake will often calmly explore your hands and arms.
+Although captive environments do not need to duplicate every natural weather pattern, understanding their native habitat helps explain why humidity is so important.
 
 ---
 
-## When Not to Handle
+# Recommended Humidity
 
-Avoid handling:
+For most healthy Ball Pythons:
 
-- For approximately 48 hours after feeding.
-- During an active shed if the snake appears uncomfortable.
-- When the snake is showing obvious signs of stress.
-- If your Ball Python is ill or recovering from medical treatment.
+- **Target humidity:** **60–70%**
+- **During shedding:** **70–80% may be beneficial**
 
-Giving the snake time to rest helps support its overall health.
+Individual animals and enclosure types may vary, but stability is generally more important than chasing exact numbers.
 
 ---
 
-## Reading Body Language
+# Measuring Humidity
 
-A relaxed Ball Python may:
+Never estimate humidity by how the enclosure feels.
 
-- Tongue flick normally.
-- Move slowly.
-- Explore calmly.
+Use reliable equipment such as:
 
-Signs of stress may include:
+- Digital hygrometers
+- Combination thermometer/hygrometers
+- Data logging devices (when available)
 
-- Tight defensive balling.
-- Rapid attempts to escape.
-- Hissing or repeated defensive strikes.
-- Persistent hiding after handling.
+Place the sensor inside the enclosure where your snake actually lives.
 
-Learning to recognize these behaviors helps you adjust your handling routine.
+---
+
+# What Affects Humidity?
+
+Several factors influence enclosure humidity:
+
+- Substrate choice
+- Enclosure material
+- Ventilation
+- Water bowl size
+- Room humidity
+- Heating equipment
+
+Changing one factor often affects several others, so make adjustments gradually.
+
+---
+
+# Humid Hides
+
+A humid hide provides your Ball Python with a localized area of increased humidity.
+
+A typical humid hide contains damp sphagnum moss or another moisture-retaining material.
+
+The material should remain damp—not saturated—and should be replaced regularly to maintain cleanliness.
+
+---
+
+# Signs Humidity May Be Too Low
+
+Humidity that remains too low may contribute to:
+
+- Incomplete sheds
+- Retained eye caps
+- Dry skin
+- Mild dehydration
+
+Correct the enclosure conditions rather than attempting to manually remove retained shed.
+
+---
+
+# Signs Humidity May Be Too High
+
+Excessive humidity combined with poor ventilation may contribute to:
+
+- Constantly wet substrate
+- Mold growth
+- Poor air quality
+- Increased bacterial growth
+
+Healthy humidity is always balanced with good airflow.
+
+---
+
+# Common Humidity Mistakes
+
+Common mistakes include:
+
+- Relying on analog gauges
+- Constant heavy misting
+- Wet substrate throughout the enclosure
+- Ignoring ventilation
+- Not monitoring humidity regularly
+
+Consistency is far more important than frequent dramatic changes.
 
 ---
 
 ## 🐍 Did You Know?
 
-Ball Pythons earned their name because they often curl into a defensive ball instead of biting when they feel threatened.
+Ball Pythons often seek naturally humid burrows and shelters in the wild, allowing them to regulate moisture exposure without remaining in constantly wet conditions.
 
 ---
 
 ## 💡 Keeper Tip
 
-Short, positive handling sessions are usually more beneficial than long handling sessions.
-
-Always end handling before your Ball Python becomes overly stressed.
+Instead of spraying the enclosure several times every day, focus on building an enclosure that naturally maintains stable humidity through proper substrate, ventilation, and water placement.
 
 ---
 
-## Key Points
+# Key Points
 
-- Handle calmly and confidently.
-- Support the snake's entire body.
-- Avoid handling immediately after feeding.
-- Learn to recognize signs of stress.
-- Respect your Ball Python's behavior and comfort level.
+- Maintain humidity around **60–70%** for most Ball Pythons.
+- Slightly higher humidity may help during shedding.
+- Always measure humidity with reliable digital equipment.
+- Provide a humid hide when appropriate.
+- Balance humidity with proper ventilation.
 
 ---
 
 # Knowledge Check
 
-You've learned how to safely handle your Ball Python while reducing stress and encouraging positive interactions.
+You now understand how humidity supports healthy shedding, hydration, and long-term Ball Python health.
 
-Complete the Knowledge Check below before continuing to the next lesson.
+Complete the Knowledge Check before continuing.
 
 Remember:
 
-> **Successful handling is based on patience, observation, and respect for the animal.**
+> **Stable humidity—not excessive humidity—is one of the keys to successful Ball Python husbandry.**
