@@ -1,8 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+import { supabase } from "@/app/lib/database/supabase";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -13,6 +16,36 @@ const navItems = [
 
 export function Navbar() {
   const pathname = usePathname();
+
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    async function loadUser() {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      setLoggedIn(!!session);
+    }
+
+    loadUser();
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setLoggedIn(!!session);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  async function handleLogout() {
+    await supabase.auth.signOut();
+
+    window.location.href = "/";
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#07110C]/95 backdrop-blur">
@@ -50,6 +83,40 @@ export function Navbar() {
               </Link>
             );
           })}
+
+          {!loggedIn ? (
+            <>
+              <Link
+                href="/auth/login"
+                className="rounded-lg border border-green-600 px-4 py-2 text-sm font-semibold text-green-300 transition hover:bg-green-900"
+              >
+                Login
+              </Link>
+
+              <Link
+                href="/auth/register"
+                className="rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-green-500"
+              >
+                Sign Up
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/dashboard"
+                className="rounded-lg border border-green-600 px-4 py-2 text-sm font-semibold text-green-300 transition hover:bg-green-900"
+              >
+                Dashboard
+              </Link>
+
+              <button
+                onClick={handleLogout}
+                className="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-500"
+              >
+                Logout
+              </button>
+            </>
+          )}
         </nav>
 
       </div>
