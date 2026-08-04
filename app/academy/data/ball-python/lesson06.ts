@@ -3,86 +3,168 @@ import type { LessonExtended } from "@/app/academy/types/course";
 export const lesson06: LessonExtended = {
   number: 6,
 
-  title: "Humidity",
+  title: "Quarantine & Biosecurity",
 
   description:
-    "Learn why humidity is essential for healthy shedding, hydration, and long-term Ball Python health.",
+    "Learn why every new Ball Python should be quarantined, how to prevent disease transmission, and the daily practices that protect both new and existing reptiles.",
 
-  duration: "10 min",
+  duration: "15 min",
 
   difficulty: "Beginner",
 
-  guideHref: "/species/ball-python#humidity",
+  guideHref: "/species/ball-python#quarantine-and-biosecurity",
 
   objectives: [
-    "Understand why humidity is important.",
-    "Learn the recommended humidity range for Ball Pythons.",
-    "Recognize signs of humidity problems.",
+    "Understand the purpose of quarantine.",
+    "Learn how to properly set up a quarantine enclosure.",
+    "Recognize the importance of biosecurity.",
+    "Identify warning signs that require veterinary evaluation.",
+    "Understand when quarantine can safely end.",
   ],
 
   keyTakeaways: [
-    "Most Ball Pythons thrive around 60–70% humidity.",
-    "A humid hide can support healthy shedding.",
-    "Digital hygrometers provide the most reliable humidity readings.",
+    "Every newly acquired Ball Python should complete a quarantine period.",
+    "Separate equipment helps prevent disease transmission.",
+    "Daily observation allows health problems to be detected early.",
+    "Good biosecurity protects every reptile in your collection.",
+    "Quarantine is an investment in long-term animal health.",
   ],
 
   quizQuestions: [
     {
-      question: "What humidity range is generally recommended for Ball Pythons?",
+      question: "Why should every new Ball Python be quarantined?",
       options: [
-        "20–30%",
-        "40–50%",
-        "60–70%",
-        "90–100%",
+        "To reduce the risk of spreading disease to other reptiles",
+        "To improve coloration",
+        "To make feeding easier",
+        "To increase enclosure humidity",
       ],
-      answer: 2,
+      answer: 0,
       explanation:
-        "Most healthy Ball Pythons do well with humidity around 60–70%, with slightly higher humidity often being helpful during shedding.",
+        "Quarantine helps protect both the new snake and any reptiles already in your collection.",
     },
 
     {
-      question: "Which tool is best for measuring enclosure humidity?",
+      question: "What is the primary purpose of quarantine?",
       options: [
-        "Thermostat",
-        "Digital hygrometer",
-        "Heat gun",
-        "UV meter",
+        "Observation for signs of illness before introduction",
+        "Teaching the snake to eat larger prey",
+        "Making cleaning easier",
+        "Reducing enclosure size",
       ],
-      answer: 1,
+      answer: 0,
       explanation:
-        "A digital hygrometer provides accurate humidity measurements.",
+        "Quarantine provides time to observe feeding, shedding, behavior, and overall health.",
     },
 
     {
-      question: "Low humidity may contribute to...",
+      question: "Which substrate is commonly recommended during quarantine?",
       options: [
-        "Improved shedding",
-        "Retained shed",
-        "Faster growth",
-        "Better appetite",
+        "Paper towels",
+        "Deep bioactive soil",
+        "Play sand",
+        "Gravel",
       ],
-      answer: 1,
+      answer: 0,
       explanation:
-        "Humidity that is too low commonly contributes to shedding problems and dehydration.",
+        "Paper towels make it easier to monitor waste, cleanliness, and parasites.",
     },
 
     {
-      question: "What is the purpose of a humid hide?",
+      question: "Which practice helps reduce cross-contamination?",
       options: [
-        "Increase enclosure temperature",
-        "Provide higher humidity when the snake needs it",
-        "Store food",
-        "Replace the water bowl",
+        "Using separate feeding and cleaning equipment",
+        "Sharing water bowls",
+        "Housing all snakes together",
+        "Using the same hides for every enclosure",
       ],
-      answer: 1,
+      answer: 0,
       explanation:
-        "A humid hide allows the Ball Python to choose a higher humidity area, especially during shedding.",
+        "Separate equipment is one of the simplest and most effective biosecurity practices.",
+    },
+
+    {
+      question: "What should you monitor during quarantine?",
+      options: [
+        "Feeding",
+        "Breathing",
+        "Shedding",
+        "All of the above",
+      ],
+      answer: 3,
+      explanation:
+        "Daily observation of multiple health indicators helps identify problems early.",
+    },
+
+    {
+      question: "Which symptom deserves prompt veterinary evaluation?",
+      options: [
+        "Persistent wheezing",
+        "Normal tongue flicking",
+        "Exploring the enclosure",
+        "Resting inside a hide",
+      ],
+      answer: 0,
+      explanation:
+        "Respiratory signs such as wheezing should always be taken seriously.",
+    },
+
+    {
+      question: "When should quarantine end?",
+      options: [
+        "After the snake has remained healthy throughout the observation period",
+        "After one feeding",
+        "After one shed",
+        "Immediately after purchase",
+      ],
+      answer: 0,
+      explanation:
+        "Quarantine should only end after the animal has remained healthy during the observation period.",
+    },
+
+    {
+      question: "Biosecurity refers to:",
+      options: [
+        "Practices that reduce disease transmission",
+        "Breeding techniques",
+        "Feeding schedules",
+        "Humidity control",
+      ],
+      answer: 0,
+      explanation:
+        "Biosecurity includes procedures that help prevent diseases from spreading between animals.",
+    },
+
+    {
+      question: "Why should you keep written quarantine records?",
+      options: [
+        "To identify changes over time",
+        "To decorate the enclosure",
+        "To reduce humidity",
+        "To eliminate veterinary visits",
+      ],
+      answer: 0,
+      explanation:
+        "Daily records make it easier to recognize subtle changes in health or behavior.",
+    },
+
+    {
+      question: "The overall goal of quarantine is to:",
+      options: [
+        "Protect the health of every reptile in your care",
+        "Increase feeding frequency",
+        "Reduce enclosure costs",
+        "Speed up shedding",
+      ],
+      answer: 0,
+      explanation:
+        "Quarantine and biosecurity are preventive measures that help keep an entire collection healthy.",
     },
   ],
 
   references: [
     {
-      label: "ScalesWiki Ball Python Care Guide",
+      label: "ScalesWiki Ball Python Handbook",
       href: "/species/ball-python",
     },
   ],
