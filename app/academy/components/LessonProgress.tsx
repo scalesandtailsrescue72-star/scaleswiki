@@ -10,6 +10,9 @@ import {
   isLessonComplete,
 } from "../lib/progressStore";
 
+import { saveLessonProgress } from "@/app/lib/services/progressService";
+import { supabase } from "@/app/lib/database/supabase";
+
 import type { Course, LessonExtended } from "../types/course";
 
 type LessonProgressProps = {
@@ -28,14 +31,18 @@ export default function LessonProgress({
     setCompleted(
       isLessonComplete(course.slug, lesson.number)
     );
-
     setMounted(true);
   }, [course.slug, lesson.number]);
 
   async function handleQuizComplete(result: QuizResult) {
-    if (!result.passed) return;
+    console.log("Quiz completed:", result);
 
-    // Temporary local progress
+    if (!result.passed) {
+      console.log("Quiz not passed.");
+      return;
+    }
+
+    // Keep local progress temporarily
     completeLesson(
       course.slug,
       lesson.number,
@@ -43,15 +50,35 @@ export default function LessonProgress({
       result.percentage
     );
 
-    /*
-      NEXT STEP:
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser();
 
-      Replace the line above with:
+    console.log("Supabase user:", user);
+    console.log("User error:", userError);
 
-      await saveLessonProgress(...)
+    if (!user) {
+      console.log("No authenticated user found.");
+      setCompleted(true);
+      return;
+    }
 
-      after authentication is connected.
-    */
+    try {
+      console.log("Saving lesson progress...");
+
+      await saveLessonProgress({
+        userId: user.id,
+        courseSlug: course.slug,
+        lessonNumber: lesson.number,
+        score: result.score,
+        percentage: result.percentage,
+      });
+
+      console.log("✅ Lesson progress saved successfully.");
+    } catch (error) {
+      console.error("❌ Save failed:", error);
+    }
 
     setCompleted(true);
   }

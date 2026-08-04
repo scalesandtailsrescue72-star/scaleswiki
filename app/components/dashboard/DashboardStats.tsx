@@ -4,43 +4,49 @@ import { useEffect, useState } from "react";
 
 import DashboardCard from "./DashboardCard";
 
-import {
-  getCompletedLessonCount,
-  hasCertificate,
-} from "@/app/academy/lib/progressStore";
-
 import { ballPythonCourse } from "@/app/academy/data/ball-python/course";
+import { supabase } from "@/app/lib/database/supabase";
+import { getCourseProgress } from "@/app/lib/repositories/progressRepository";
 
 export default function DashboardStats() {
-  const totalLessons = ballPythonCourse.lessons.length;
+  const [loading, setLoading] = useState(true);
 
   const [lessonsCompleted, setLessonsCompleted] = useState(0);
   const [certificateCount, setCertificateCount] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    function refresh() {
-      setLessonsCompleted(
-        getCompletedLessonCount(ballPythonCourse.slug)
-      );
+    async function loadStats() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
 
-      setCertificateCount(
-        hasCertificate(ballPythonCourse.slug) ? 1 : 0
-      );
+      if (!user) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const courseProgress = await getCourseProgress(
+          user.id,
+          ballPythonCourse.slug,
+          ballPythonCourse.lessons.length
+        );
+
+        setLessonsCompleted(courseProgress.completedLessons);
+        setProgress(courseProgress.percent);
+
+        // Temporary until certificates are migrated
+        setCertificateCount(courseProgress.earnedCertificate ? 1 : 0);
+      } catch (error) {
+        console.error("Failed to load dashboard stats:", error);
+      } finally {
+        setLoading(false);
+      }
     }
 
-    refresh();
-
-    window.addEventListener("storage", refresh);
-
-    return () => {
-      window.removeEventListener("storage", refresh);
-    };
+    loadStats();
   }, []);
-
-  const progress =
-    totalLessons === 0
-      ? 0
-      : Math.round((lessonsCompleted / totalLessons) * 100);
 
   return (
     <section className="grid gap-6 md:grid-cols-4">
@@ -52,19 +58,27 @@ export default function DashboardStats() {
 
       <DashboardCard
         title="Lessons"
-        value={`${lessonsCompleted}/${totalLessons}`}
-        description={`${progress}% complete`}
+        value={
+          loading
+            ? "..."
+            : `${lessonsCompleted}/${ballPythonCourse.lessons.length}`
+        }
+        description={
+          loading
+            ? "Loading..."
+            : `${progress}% complete`
+        }
       />
 
       <DashboardCard
         title="Certificates"
-        value={certificateCount}
+        value={loading ? "..." : certificateCount}
         description="Certificates earned"
       />
 
       <DashboardCard
         title="Overall Progress"
-        value={`${progress}%`}
+        value={loading ? "..." : `${progress}%`}
         description="Academy completion"
       />
     </section>

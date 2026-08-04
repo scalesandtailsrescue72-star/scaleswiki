@@ -15,7 +15,16 @@ export async function saveLessonProgress({
   score,
   percentage,
 }: SaveLessonProgressInput) {
-  const { error } = await supabase
+  console.log("========== Saving Lesson ==========");
+  console.log({
+    userId,
+    courseSlug,
+    lessonNumber,
+    score,
+    percentage,
+  });
+
+  const { data, error } = await supabase
     .from("lesson_progress")
     .upsert(
       {
@@ -25,15 +34,33 @@ export async function saveLessonProgress({
         completed: true,
         score,
         percentage,
+        completed_at: new Date().toISOString(),
       },
       {
         onConflict: "user_id,course_slug,lesson_number",
       }
-    );
+    )
+    .select();
+
+  console.log("Supabase response:");
+  console.log(data);
+
+  console.log("Supabase error:");
+  console.log(error);
 
   if (error) {
+    console.error("Database Error Details:");
+    console.error("Code:", error.code);
+    console.error("Message:", error.message);
+    console.error("Details:", error.details);
+    console.error("Hint:", error.hint);
+
     throw error;
   }
+
+  console.log("Lesson saved successfully.");
+
+  return data;
 }
 
 export async function getCompletedLessonCount(
@@ -51,6 +78,7 @@ export async function getCompletedLessonCount(
     .eq("completed", true);
 
   if (error) {
+    console.error(error);
     throw error;
   }
 
@@ -66,9 +94,12 @@ export async function getLessonProgress(
     .select("*")
     .eq("user_id", userId)
     .eq("course_slug", courseSlug)
-    .order("lesson_number");
+    .order("lesson_number", {
+      ascending: true,
+    });
 
   if (error) {
+    console.error(error);
     throw error;
   }
 

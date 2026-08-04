@@ -5,25 +5,40 @@ import { useEffect, useState } from "react";
 import CourseProgressCard from "./CourseProgressCard";
 
 import { ballPythonCourse } from "@/app/academy/data/ball-python/course";
-
-import { getCompletedLessonCount } from "@/app/academy/lib/progressStore";
+import { getCompletedLessonCount } from "@/app/lib/services/progressService";
+import { supabase } from "@/app/lib/database/supabase";
 
 export default function MyCourses() {
   const [completed, setCompleted] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    function refresh() {
-      setCompleted(
-        getCompletedLessonCount(ballPythonCourse.slug)
-      );
+    async function loadProgress() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (!user) {
+        setCompleted(0);
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const count = await getCompletedLessonCount(
+          user.id,
+          ballPythonCourse.slug
+        );
+
+        setCompleted(count);
+      } catch (error) {
+        console.error("Failed to load course progress:", error);
+      } finally {
+        setLoading(false);
+      }
     }
 
-    refresh();
-
-    window.addEventListener("storage", refresh);
-
-    return () =>
-      window.removeEventListener("storage", refresh);
+    loadProgress();
   }, []);
 
   return (
@@ -36,7 +51,7 @@ export default function MyCourses() {
         <CourseProgressCard
           title={ballPythonCourse.title}
           slug={ballPythonCourse.slug}
-          completed={completed}
+          completed={loading ? 0 : completed}
           total={ballPythonCourse.lessons.length}
         />
       </div>
