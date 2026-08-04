@@ -6,6 +6,9 @@ import Quiz, { QuizResult } from "./Quiz";
 
 import { completeFinalExam } from "../lib/progressStore";
 
+import { supabase } from "@/app/lib/database/supabase";
+import { saveFinalExam } from "@/app/lib/services/finalExamService";
+
 import type { Course } from "../types/course";
 
 type FinalExamProps = {
@@ -17,13 +20,37 @@ export default function FinalExam({
 }: FinalExamProps) {
   const router = useRouter();
 
-  function handleComplete(result: QuizResult) {
+  async function handleComplete(result: QuizResult) {
+    // Keep localStorage temporarily until the full migration is finished.
     completeFinalExam(
       course.slug,
       result.score,
       result.percentage,
       result.passed
     );
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      console.warn("No authenticated user.");
+      return;
+    }
+
+    try {
+      await saveFinalExam({
+        userId: user.id,
+        courseSlug: course.slug,
+        score: result.score,
+        percentage: result.percentage,
+        passed: result.passed,
+      });
+
+      console.log("✅ Final exam saved.");
+    } catch (error) {
+      console.error("❌ Failed to save final exam:", error);
+    }
   }
 
   function handlePass() {
