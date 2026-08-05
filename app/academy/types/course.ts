@@ -1,10 +1,38 @@
 export type Difficulty = "Beginner" | "Intermediate" | "Advanced";
 
 export interface QuizQuestion {
+  /** Optional unique identifier for certification questions */
+  id?: string;
+
+  /** Lesson number the question belongs to */
+  lesson?: number;
+
+  /** Topic/category for study reports */
+  category?: string;
+
+  /** Difficulty used by the certification engine */
+  difficulty?: "easy" | "medium" | "hard";
+
+  /** The question shown to the student */
   question: string;
+
+  /** Available answer choices */
   options: string[];
+
+  /** Index of the correct answer */
   answer: number;
+
+  /** Explanation displayed after submission */
   explanation?: string;
+
+  /** Future support for images */
+  image?: string;
+
+  /** Future searchable tags */
+  tags?: string[];
+
+  /** Future references */
+  references?: string[];
 }
 
 export interface Lesson {
@@ -17,7 +45,6 @@ export interface Lesson {
 }
 
 export interface LessonPlate {
-  /** Path to a technical plate image (preferably in public/) */
   src: string;
   alt?: string;
 }
@@ -33,28 +60,13 @@ export interface ReferenceItem {
 }
 
 export interface LessonExtended extends Lesson {
-  /** Optional override for the markdown content file (defaults to loader convention) */
   contentFile?: string;
-
-  /** Technical plate image to show with the lesson */
   plate?: LessonPlate;
-
-  /** Per-lesson learning objectives (falls back to course-level objectives) */
   objectives?: string[];
-
-  /** Per-lesson key takeaways (falls back to course-level keyTakeaways) */
   keyTakeaways?: string[];
-
-  /** Per-lesson quiz questions (optional; quiz UI will consume when implemented) */
   quizQuestions?: QuizQuestion[];
-
-  /** Link to a worksheet file or resource */
   worksheet?: string;
-
-  /** Downloadable attachments for the lesson */
   downloads?: DownloadItem[];
-
-  /** References or external resources */
   references?: ReferenceItem[];
 }
 

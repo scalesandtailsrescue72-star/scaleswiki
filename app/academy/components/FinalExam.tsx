@@ -21,9 +21,15 @@ export default function FinalExam({
   const router = useRouter();
 
   async function handleComplete(result: QuizResult) {
-    console.log("========== FINAL EXAM ==========");
-    console.log(result);
+    console.log("========== BALL PYTHON FINAL EXAM ==========");
+    console.table({
+      Course: course.slug,
+      Score: result.score,
+      Percentage: result.percentage,
+      Passed: result.passed,
+    });
 
+    // Save locally for progress tracking
     completeFinalExam(
       course.slug,
       result.score,
@@ -31,19 +37,24 @@ export default function FinalExam({
       result.passed
     );
 
+    // Get logged in user
     const {
       data: { user },
       error: userError,
     } = await supabase.auth.getUser();
 
-    console.log("Authenticated user:", user);
-    console.log("User error:", userError);
-
-    if (!user) {
-      console.error("No authenticated user.");
+    if (userError) {
+      console.error("Unable to retrieve authenticated user.");
+      console.error(userError);
       return;
     }
 
+    if (!user) {
+      console.warn("No authenticated user found.");
+      return;
+    }
+
+    // Save to Supabase
     try {
       await saveFinalExam({
         userId: user.id,
@@ -55,7 +66,7 @@ export default function FinalExam({
 
       console.log("✅ Final exam saved successfully.");
     } catch (error: any) {
-      console.error("========== SAVE FAILED ==========");
+      console.error("========== FINAL EXAM SAVE FAILED ==========");
       console.error(error);
 
       if (error) {
@@ -67,19 +78,19 @@ export default function FinalExam({
 
       return;
     }
-  }
 
-  function handlePass() {
-    router.push(`/academy/${course.slug}/certificate`);
+    // Successful completion
+    if (result.passed) {
+      router.push(`/academy/${course.slug}/certificate`);
+    }
   }
 
   return (
     <Quiz
-      title="Final Certification Exam"
+      title={`${course.title} Certification Exam`}
       questions={course.quizQuestions}
-      passingScore={80}
+      passingScore={85}
       onComplete={handleComplete}
-      onPass={handlePass}
     />
   );
 }

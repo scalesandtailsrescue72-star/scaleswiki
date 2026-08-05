@@ -22,36 +22,75 @@ export default async function FinalExamPage({
   }
 
   return (
-    <main className="min-h-screen bg-[#08110d] py-12 text-white">
+    <main className="min-h-screen bg-[#08110D] py-12 text-white">
       <div className="mx-auto max-w-5xl px-6">
 
         <Link
           href={`/academy/${course.slug}`}
-          className="text-green-400 hover:text-green-300"
+          className="text-green-400 transition hover:text-green-300"
         >
           ← Back to Course
         </Link>
 
-        <h1 className="mt-6 text-5xl font-bold">
-          {course.title}
-        </h1>
+        <header className="mt-8">
 
-        <p className="mt-4 text-xl text-gray-300">
-          Final Certification Exam
-        </p>
+          <h1 className="text-5xl font-bold">
+            {course.title}
+          </h1>
 
-        <div className="mt-8 rounded-xl border border-green-900 bg-[#101B15] p-6">
-          <h2 className="text-2xl font-semibold text-green-300">
-            Exam Instructions
+          <p className="mt-3 text-xl text-gray-300">
+            Final Certification Examination
+          </p>
+
+        </header>
+
+        <section className="mt-8 rounded-2xl border border-green-900 bg-[#101B15] p-8">
+
+          <h2 className="text-2xl font-bold text-green-300">
+            Before You Begin
           </h2>
 
-          <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-300">
-            <li>Answer every question.</li>
-            <li>A passing score of 80% is required.</li>
-            <li>You may retake the exam if necessary.</li>
-            <li>Your certificate will be awarded automatically upon passing.</li>
-          </ul>
-        </div>
+          <div className="mt-6 space-y-4 text-gray-300">
+
+            <p>
+              This certification exam measures your understanding of the
+              material presented throughout the Academy.
+            </p>
+
+            <ul className="list-disc space-y-2 pl-6">
+
+              <li>
+                Questions are randomly selected from the certification
+                question bank.
+              </li>
+
+              <li>
+                Every exam is different.
+              </li>
+
+              <li>
+                A minimum score of <strong>85%</strong> is required to earn certification.
+              </li>
+
+              <li>
+                Every question includes an explanation after submission.
+              </li>
+
+              <li>
+                If you do not pass, we'll recommend lessons to review before
+                your next attempt.
+              </li>
+
+              <li>
+                You may retake the certification exam as many times as you'd
+                like.
+              </li>
+
+            </ul>
+
+          </div>
+
+        </section>
 
         <FinalExam course={course} />
 
