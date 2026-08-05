@@ -19,9 +19,11 @@ export function generateFinalExam<T extends QuizQuestion>(
   questionBank: T[],
   questionCount = 50
 ): T[] {
-  if (questionBank.length <= questionCount) {
-    return shuffleQuestions(questionBank);
+  if (questionBank.length === 0) {
+    return [];
   }
 
-  return shuffleQuestions(questionBank).slice(0, questionCount);
+  const shuffled = shuffleQuestions(questionBank);
+
+  return shuffled.slice(0, Math.min(questionCount, shuffled.length));
 }
