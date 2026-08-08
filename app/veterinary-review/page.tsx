@@ -133,10 +133,10 @@ export default function VeterinaryReviewPage() {
           </p>
 
           <a
-            href="mailto:contact@scaleswiki.com"
+            href="mailto:contact@scaleswiki.org"
             className="text-green-300 underline"
           >
-            contact@scaleswiki.com
+            contact@scaleswiki.org
           </a>
 
         </section>

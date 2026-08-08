@@ -89,4 +89,4 @@ Email:
 [insert official email]
 
 Website:
-https://scaleswiki.com
+https://scaleswiki.org

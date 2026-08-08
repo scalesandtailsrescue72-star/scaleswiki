@@ -18,7 +18,7 @@ Publisher:
 ScalesWiki Publishing
 
 Website:
-www.scaleswiki.com
+www.scaleswiki.org
 
 This guide is intended as an educational resource for reptile keepers and veterinary professionals reviewing its content. Final publication will occur following editorial revision and veterinary review.
 
@@ -248,3 +248,4 @@ This manuscript structure is ready for expansion into the website, academy, and 
 - Academy
 - Email Series
 - Future App
+

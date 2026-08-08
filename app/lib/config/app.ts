@@ -8,7 +8,7 @@ export const appConfig = {
   },
 
   support: {
-    email: "academy@scaleswiki.com",
+    email: "academy@scaleswiki.org",
   },
 
   urls: {
