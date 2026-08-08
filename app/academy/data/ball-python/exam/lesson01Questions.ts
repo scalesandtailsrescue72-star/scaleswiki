@@ -1,4 +1,4 @@
-import type { ExamQuestion } from "../finalExamBank";
+import type { ExamQuestion } from "./finalExamBank";
 
 export const lesson01Questions: ExamQuestion[] = [
   // ==========================================================

@@ -5,23 +5,42 @@ import { useRouter } from "next/navigation";
 import Quiz, { QuizResult } from "./Quiz";
 
 import { completeFinalExam } from "../lib/progressStore";
+import { generateFinalExam } from "../lib/generateFinalExam";
 
 import { supabase } from "@/app/lib/database/supabase";
 import { saveFinalExam } from "@/app/lib/services/finalExamService";
 
 import type { Course } from "../types/course";
 
+import {
+  ballPythonFinalExamBank,
+} from "../data/ball-python/exam/finalExamBank";
+
+
 type FinalExamProps = {
   course: Course;
 };
 
+
 export default function FinalExam({
   course,
 }: FinalExamProps) {
+
   const router = useRouter();
 
+
+  const examQuestions = generateFinalExam(
+    ballPythonFinalExamBank,
+    50
+  );
+
+
   async function handleComplete(result: QuizResult) {
-    console.log("========== BALL PYTHON FINAL EXAM ==========");
+
+    console.log(
+      "========== BALL PYTHON FINAL EXAM =========="
+    );
+
     console.table({
       Course: course.slug,
       Score: result.score,
@@ -29,7 +48,8 @@ export default function FinalExam({
       Passed: result.passed,
     });
 
-    // Save locally for progress tracking
+
+    // Always save local progress
     completeFinalExam(
       course.slug,
       result.score,
@@ -37,60 +57,69 @@ export default function FinalExam({
       result.passed
     );
 
-    // Get logged in user
-    const {
-      data: { user },
-      error: userError,
-    } = await supabase.auth.getUser();
 
-    if (userError) {
-      console.error("Unable to retrieve authenticated user.");
-      console.error(userError);
-      return;
-    }
-
-    if (!user) {
-      console.warn("No authenticated user found.");
-      return;
-    }
-
-    // Save to Supabase
+    // Try to save to Supabase if a user exists
     try {
-      await saveFinalExam({
-        userId: user.id,
-        courseSlug: course.slug,
-        score: result.score,
-        percentage: result.percentage,
-        passed: result.passed,
-      });
 
-      console.log("✅ Final exam saved successfully.");
-    } catch (error: any) {
-      console.error("========== FINAL EXAM SAVE FAILED ==========");
-      console.error(error);
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
 
-      if (error) {
-        console.error("Code:", error.code);
-        console.error("Message:", error.message);
-        console.error("Details:", error.details);
-        console.error("Hint:", error.hint);
+
+      if (user) {
+
+        await saveFinalExam({
+          userId: user.id,
+          courseSlug: course.slug,
+          score: result.score,
+          percentage: result.percentage,
+          passed: result.passed,
+        });
+
+
+        console.log(
+          "✅ Final exam saved successfully."
+        );
+
+      } else {
+
+        console.log(
+          "Guest completion. Saved locally only."
+        );
+
       }
 
-      return;
+
+    } catch (error) {
+
+      console.warn(
+        "Unable to save exam online. Continuing with local progress."
+      );
+
+      console.error(error);
+
     }
 
-    // Successful completion
+
+    // Unlock certificate
     if (result.passed) {
-      router.push(`/academy/${course.slug}/certificate`);
+
+      router.push(
+        `/academy/${course.slug}/certificate`
+      );
+
     }
+
   }
+
 
   return (
     <Quiz
       title={`${course.title} Certification Exam`}
-      questions={course.quizQuestions}
+      questions={examQuestions}
       passingScore={85}
       onComplete={handleComplete}
     />
   );
+
 }
