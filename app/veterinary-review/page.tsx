@@ -1,7 +1,6 @@
 export default function VeterinaryReviewPage() {
   return (
-    <main className="min-h-screen bg-[#08120D] px-6 py-16 text-white">
-
+    <main className="min-h-screen bg-[#07110C] px-6 py-16 text-white">
       <div className="mx-auto max-w-5xl">
 
         <p className="text-sm uppercase tracking-[0.3em] text-green-400">
@@ -34,7 +33,6 @@ export default function VeterinaryReviewPage() {
           </p>
 
           <ul className="mt-6 list-disc space-y-3 pl-6 text-gray-300">
-
             <li>
               12 structured educational lessons
             </li>
@@ -50,7 +48,6 @@ export default function VeterinaryReviewPage() {
             <li>
               Printable educational resources
             </li>
-
           </ul>
 
         </section>
@@ -88,6 +85,26 @@ export default function VeterinaryReviewPage() {
         <section className="mt-10 rounded-2xl bg-[#102017] p-8">
 
           <h2 className="text-3xl font-bold text-green-300">
+            Founding Veterinary Reviewer Program
+          </h2>
+
+          <p className="mt-4 text-gray-300">
+            ScalesWiki is establishing a small group of veterinary
+            professionals who can provide feedback during the development of
+            our educational resources.
+          </p>
+
+          <p className="mt-4 text-gray-300">
+            Founding reviewers may be recognized on our website with
+            permission for their contribution to improving reptile education.
+          </p>
+
+        </section>
+
+
+        <section className="mt-10 rounded-2xl bg-[#102017] p-8">
+
+          <h2 className="text-3xl font-bold text-green-300">
             Our Goal
           </h2>
 
@@ -111,11 +128,21 @@ export default function VeterinaryReviewPage() {
             contact ScalesWiki for review access.
           </p>
 
+          <p className="mt-6 text-gray-300">
+            Email:
+          </p>
+
+          <a
+            href="mailto:contact@scaleswiki.com"
+            className="text-green-300 underline"
+          >
+            contact@scaleswiki.com
+          </a>
+
         </section>
 
 
       </div>
-
     </main>
   );
 }
