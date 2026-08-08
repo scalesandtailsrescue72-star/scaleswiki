@@ -25,14 +25,15 @@ export const lesson09: LessonExtended = {
   keyTakeaways: [
     "Most Ball Pythons thrive at approximately 60–70% humidity.",
     "Stable humidity is more important than frequent fluctuations.",
-    "Digital hygrometers provide the most reliable humidity measurements.",
+    "Digital hygrometers provide reliable humidity measurements.",
     "A humid hide can assist with healthy shedding.",
     "Proper ventilation and humidity must work together.",
   ],
 
   quizQuestions: [
     {
-      question: "What humidity range is generally recommended for most Ball Pythons?",
+      question:
+        "What humidity range is generally recommended for most Ball Pythons?",
       options: [
         "20–30%",
         "40–50%",
@@ -45,7 +46,8 @@ export const lesson09: LessonExtended = {
     },
 
     {
-      question: "During shedding, humidity is often increased to approximately:",
+      question:
+        "During shedding, humidity is often increased to approximately:",
       options: [
         "20–30%",
         "40–50%",
@@ -58,7 +60,8 @@ export const lesson09: LessonExtended = {
     },
 
     {
-      question: "Which device is best for measuring humidity?",
+      question:
+        "Which device is best for measuring humidity?",
       options: [
         "Digital hygrometer",
         "Thermostat",
@@ -67,11 +70,12 @@ export const lesson09: LessonExtended = {
       ],
       answer: 0,
       explanation:
-        "Digital hygrometers provide the most reliable humidity measurements.",
+        "Digital hygrometers provide reliable humidity measurements.",
     },
 
     {
-      question: "Which of the following can affect enclosure humidity?",
+      question:
+        "Which of the following can affect enclosure humidity?",
       options: [
         "Substrate",
         "Ventilation",
@@ -80,11 +84,12 @@ export const lesson09: LessonExtended = {
       ],
       answer: 3,
       explanation:
-        "Several enclosure variables work together to influence humidity.",
+        "Substrate, ventilation, and water bowl size can all influence humidity.",
     },
 
     {
-      question: "What is the purpose of a humid hide?",
+      question:
+        "What is the purpose of a humid hide?",
       options: [
         "Provide a localized area of higher humidity",
         "Increase enclosure temperature",
@@ -93,11 +98,12 @@ export const lesson09: LessonExtended = {
       ],
       answer: 0,
       explanation:
-        "Humid hides allow the snake to access increased humidity when needed.",
+        "A humid hide provides a higher humidity area that supports healthy shedding.",
     },
 
     {
-      question: "Humidity that is too low may contribute to:",
+      question:
+        "Humidity that is too low may contribute to:",
       options: [
         "Retained shed",
         "Improved shedding",
@@ -106,11 +112,12 @@ export const lesson09: LessonExtended = {
       ],
       answer: 0,
       explanation:
-        "Low humidity commonly contributes to shedding problems and dehydration.",
+        "Low humidity can contribute to incomplete sheds and dehydration.",
     },
 
     {
-      question: "Excessive humidity combined with poor ventilation may contribute to:",
+      question:
+        "Excessive humidity combined with poor ventilation may contribute to:",
       options: [
         "Mold growth",
         "Improved air quality",
@@ -119,11 +126,12 @@ export const lesson09: LessonExtended = {
       ],
       answer: 0,
       explanation:
-        "Overly damp environments may encourage mold and bacterial growth.",
+        "Overly damp conditions with poor airflow may encourage mold and bacterial growth.",
     },
 
     {
-      question: "Why should humidity be monitored regularly?",
+      question:
+        "Why should humidity be monitored regularly?",
       options: [
         "To identify changes before they become problems",
         "To improve lighting",
@@ -132,11 +140,12 @@ export const lesson09: LessonExtended = {
       ],
       answer: 0,
       explanation:
-        "Routine monitoring allows small husbandry adjustments before health issues develop.",
+        "Regular monitoring helps keep enclosure conditions stable.",
     },
 
     {
-      question: "Which statement best describes good humidity management?",
+      question:
+        "Which statement best describes good humidity management?",
       options: [
         "Stable humidity with proper ventilation",
         "Constant heavy misting",
@@ -145,11 +154,12 @@ export const lesson09: LessonExtended = {
       ],
       answer: 0,
       explanation:
-        "Healthy humidity is stable, balanced, and supported by good airflow.",
+        "Good humidity management balances moisture with proper airflow.",
     },
 
     {
-      question: "The overall goal of humidity management is to:",
+      question:
+        "The overall goal of humidity management is to:",
       options: [
         "Support healthy shedding, hydration, and long-term health",
         "Keep the enclosure wet",
@@ -158,7 +168,7 @@ export const lesson09: LessonExtended = {
       ],
       answer: 0,
       explanation:
-        "Proper humidity supports multiple aspects of Ball Python health without creating an overly damp environment.",
+        "Proper humidity supports health without creating an overly wet environment.",
     },
   ],
 
