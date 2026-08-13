@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function FoundingVeterinaryReviewPacketPage() {
   return (
     <main className="min-h-screen bg-[#07110C] px-6 py-16 text-gray-200">
@@ -66,7 +68,7 @@ export default function FoundingVeterinaryReviewPacketPage() {
 
 
         <section className="mt-8 rounded-2xl border border-green-900 bg-[#0C1812] p-8">
-          <h2 className="text-3xl bold text-green-300">
+          <h2 className="text-3xl font-bold text-green-300">
             Purpose of Veterinary Review
           </h2>
 
@@ -146,6 +148,7 @@ export default function FoundingVeterinaryReviewPacketPage() {
           <p className="mt-4 text-gray-300">
             Website:
             <br />
+
             <a
               href="https://scaleswiki.org"
               target="_blank"
@@ -156,6 +159,28 @@ export default function FoundingVeterinaryReviewPacketPage() {
             </a>
           </p>
         </section>
+
+
+        <section className="mt-8 rounded-2xl bg-[#102017] p-8 text-center">
+
+          <h2 className="text-3xl font-bold text-green-300">
+            Ready to Begin Review?
+          </h2>
+
+          <p className="mt-4 text-gray-300">
+            Access the review materials and begin your evaluation of the
+            ScalesWiki Ball Python 101 Certification Course.
+          </p>
+
+          <Link
+            href="/veterinary-review/access"
+            className="mt-6 inline-block rounded-lg bg-green-600 px-6 py-3 font-semibold text-white hover:bg-green-700"
+          >
+            Access Review Materials
+          </Link>
+
+        </section>
+
 
       </div>
     </main>
