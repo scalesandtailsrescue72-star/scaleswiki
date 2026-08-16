@@ -1,4 +1,5 @@
 import { GuideContents } from "@/app/components/ui/GuideContents";
+import { GuideDownloadCard } from "@/app/components/ui/GuideDownloadCard";
 
 import { Hero } from "./components/Hero";
 import { PublicationHeader } from "@/app/components/ui/PublicationHeader";
@@ -30,6 +31,8 @@ export default function BallPythonPage() {
       <PublicationCover />
 
       <PublicationHeader />
+
+      <GuideDownloadCard />
 
       <QuickFacts />
 
