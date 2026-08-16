@@ -1,4 +1,23 @@
+"use client";
+
 export function GuideDownloadCard() {
+
+  async function handlePurchase() {
+    const response = await fetch(
+      "/api/create-checkout-session",
+      {
+        method: "POST",
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.url) {
+      window.location.href = data.url;
+    }
+  }
+
+
   return (
     <section className="mx-auto my-12 max-w-5xl rounded-2xl border border-green-900 bg-[#102017] p-8">
 
@@ -11,23 +30,18 @@ export function GuideDownloadCard() {
       </h2>
 
       <p className="mt-4 text-gray-300">
-        Download the printable ScalesWiki Ball Python educational guide.
-        This resource covers responsible husbandry, enclosure preparation,
-        feeding, handling, health monitoring, and keeper resources.
+        A complete educational guide for responsible ball python ownership,
+        including husbandry guidance, checklists, and keeper resources.
       </p>
 
-      <p className="mt-4 text-sm text-gray-400">
-        Veterinary Review Draft — Version 1.2
-      </p>
 
-      <a
-        href="/resources/guides/ball-python-101-care-guide.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-6 inline-block rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition hover:bg-green-700"
+      <button
+        onClick={handlePurchase}
+        className="mt-6 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white hover:bg-green-700"
       >
-        Download PDF Guide
-      </a>
+        Purchase Guide — $14.99
+      </button>
+
 
     </section>
   );
