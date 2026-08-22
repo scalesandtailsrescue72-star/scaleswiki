@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
+const DEFAULT_PRICE_ID = "price_1U57UCAC7CAaOpm0V7eHznN7";
+
 export async function POST() {
   try {
     const stripeKey = process.env.STRIPE_SECRET_KEY;
@@ -9,54 +11,49 @@ export async function POST() {
       console.error("STRIPE_SECRET_KEY is not configured.");
 
       return NextResponse.json(
-        {
-          error: "Stripe is not configured.",
-        },
-        {
-          status: 500,
-        }
+        { error: "Stripe is not configured." },
+        { status: 500 }
       );
     }
 
+    // STRIPE_PRICE_ID can override this when switching between Test and Live mode.
+    const priceId = process.env.STRIPE_PRICE_ID || DEFAULT_PRICE_ID;
+
     const stripe = new Stripe(stripeKey);
+    const siteUrl =
+      process.env.NEXT_PUBLIC_SITE_URL ||
+      "https://scaleswiki.scalesandtailsrescue72.workers.dev";
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
-
       line_items: [
         {
-          price: "price_1U57UCAC7CAaOpm0V7eHznN7",
+          price: priceId,
           quantity: 1,
         },
       ],
-
-      success_url: `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/success`,
-
-      cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/species/ball-python`,
+      success_url: `${siteUrl}/success`,
+      cancel_url: `${siteUrl}/species/ball-python`,
     });
 
-    return NextResponse.json({
-      url: session.url,
-    });
-  } catch (error) {
-    console.error("Stripe checkout error:");
+    if (!session.url) {
+      console.error("Stripe returned a checkout session without a URL.");
 
-    if (error instanceof Error) {
-      console.error(error.message);
-    } else {
-      console.error(error);
+      return NextResponse.json(
+        { error: "Stripe did not return a checkout URL." },
+        { status: 502 }
+      );
     }
 
-    return NextResponse.json(
-      {
-        error:
-          error instanceof Error
-            ? error.message
-            : "Unable to create Stripe checkout session.",
-      },
-      {
-        status: 500,
-      }
-    );
+    return NextResponse.json({ url: session.url });
+  } catch (error) {
+    console.error("Stripe checkout error:", error);
+
+    const message =
+      error instanceof Error
+        ? error.message
+        : "Unable to create Stripe checkout session.";
+
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
