@@ -4,6 +4,7 @@ create table if not exists public.newsletter_subscribers (
   first_name text,
   track text not null default 'ball-python',
   status text not null default 'active' check (status in ('active','unsubscribed')),
+  unsubscribe_token uuid not null default gen_random_uuid() unique,
   subscribed_at timestamptz not null default now(),
   unsubscribed_at timestamptz,
   last_sent_week integer,
@@ -17,24 +18,36 @@ create index if not exists newsletter_subscribers_subscribed_at_idx on public.ne
 
 alter table public.newsletter_subscribers enable row level security;
 
+drop policy if exists "Anyone can subscribe" on public.newsletter_subscribers;
 create policy "Anyone can subscribe"
 on public.newsletter_subscribers
 for insert
 to anon, authenticated
 with check (status = 'active' and track = 'ball-python');
 
-create policy "Subscribers can unsubscribe themselves"
-on public.newsletter_subscribers
-for update
-to anon, authenticated
-using (true)
-with check (status in ('active','unsubscribed'));
-
+drop policy if exists "Subscribers can unsubscribe themselves" on public.newsletter_subscribers;
+drop policy if exists "Admins can view newsletter subscribers" on public.newsletter_subscribers;
 create policy "Admins can view newsletter subscribers"
 on public.newsletter_subscribers
 for select
 to authenticated
 using ((auth.jwt() ->> 'email') = current_setting('app.settings.admin_email', true));
+
+create or replace function public.unsubscribe_newsletter(p_token uuid)
+returns boolean
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  update public.newsletter_subscribers
+  set status = 'unsubscribed', unsubscribed_at = now()
+  where unsubscribe_token = p_token and status = 'active';
+  return found;
+end;
+$$;
+
+grant execute on function public.unsubscribe_newsletter(uuid) to anon, authenticated;
 
 create or replace function public.touch_newsletter_subscriber()
 returns trigger
