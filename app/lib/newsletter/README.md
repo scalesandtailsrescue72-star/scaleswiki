@@ -1,0 +1,1 @@
+Newsletter funnel implementation: 52-week Ball Python curriculum, subscriber storage, signup/unsubscribe endpoints, and admin visibility.
