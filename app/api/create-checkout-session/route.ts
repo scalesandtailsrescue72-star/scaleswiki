@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const TEST_PRICE_ID = "price_1U7HiAAC7CAaOpm0w5CAKplM";
+const DEFAULT_PRICE_ID = "price_1U57UCAC7CAaOpm0V7eHznN7";
 
 export async function POST() {
   try {
@@ -16,9 +16,8 @@ export async function POST() {
       );
     }
 
-    // Keep the price configurable so Test and Live Stripe modes can use
-    // different Price IDs without changing application code.
-    const priceId = process.env.STRIPE_PRICE_ID || TEST_PRICE_ID;
+    // STRIPE_PRICE_ID can override this when switching between Test and Live mode.
+    const priceId = process.env.STRIPE_PRICE_ID || DEFAULT_PRICE_ID;
 
     const stripe = new Stripe(stripeKey);
     const siteUrl =
