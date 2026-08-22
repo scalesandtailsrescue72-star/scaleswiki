@@ -6,6 +6,16 @@ const STRIPE_PRICE_ID = "price_1U57UCAC7CAaOpm0V7eHznN7";
 const GUIDE_OBJECT_KEY = "guides/ball-python-101-care-guide.pdf";
 const STRIPE_TIMEOUT_MS = 10000;
 
+type GuideR2Object = {
+  body: ReadableStream;
+  httpEtag?: string;
+  writeHttpMetadata: (headers: Headers) => void;
+};
+
+type GuideR2Bucket = {
+  get: (key: string) => Promise<GuideR2Object | null>;
+};
+
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
@@ -111,7 +121,7 @@ export async function GET(request: Request) {
     }
 
     const { env } = await getCloudflareContext({ async: true });
-    const bucket = (env as typeof env & { scaleswiki_guides: R2Bucket })
+    const bucket = (env as typeof env & { scaleswiki_guides: GuideR2Bucket })
       .scaleswiki_guides;
 
     if (!bucket) {
