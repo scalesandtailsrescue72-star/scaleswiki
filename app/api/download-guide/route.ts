@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 const STRIPE_API_BASE = "https://api.stripe.com/v1/checkout/sessions";
 const STRIPE_PRICE_ID = "price_1U57UCAC7CAaOpm0V7eHznN7";
 const GUIDE_OBJECT_KEY = "guides/ball-python-101-care-guide.pdf";
+const STRIPE_TIMEOUT_MS = 10000;
 
 export const dynamic = "force-dynamic";
 
@@ -31,21 +32,49 @@ export async function GET(request: Request) {
     const stripeUrl = new URL(`${STRIPE_API_BASE}/${encodeURIComponent(sessionId)}`);
     stripeUrl.searchParams.append("expand[]", "line_items.data.price");
 
-    const stripeResponse = await fetch(stripeUrl, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${stripeKey}`,
-      },
-      cache: "no-store",
-    });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), STRIPE_TIMEOUT_MS);
+
+    let stripeResponse: Response;
+
+    try {
+      stripeResponse = await fetch(stripeUrl, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${stripeKey}`,
+        },
+        cache: "no-store",
+        signal: controller.signal,
+      });
+    } catch (error) {
+      if (error instanceof Error && error.name === "AbortError") {
+        console.error("[GuideDownload] Stripe session lookup timed out");
+        return NextResponse.json(
+          { error: "Purchase verification timed out. Please try again." },
+          { status: 504 }
+        );
+      }
+
+      throw error;
+    } finally {
+      clearTimeout(timeout);
+    }
 
     const session = await stripeResponse.json();
 
     if (!stripeResponse.ok) {
       console.error("[GuideDownload] Stripe session lookup failed:", session);
+
+      const availabilityFailure =
+        stripeResponse.status === 429 || stripeResponse.status >= 500;
+
       return NextResponse.json(
-        { error: "We could not verify this purchase." },
-        { status: 403 }
+        {
+          error: availabilityFailure
+            ? "Stripe is temporarily unavailable. Please try again."
+            : "We could not verify this purchase.",
+        },
+        { status: availabilityFailure ? 503 : 403 }
       );
     }
 
