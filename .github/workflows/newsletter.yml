@@ -1,0 +1,19 @@
+name: ScalesWiki 52-Week Newsletter
+
+on:
+  schedule:
+    - cron: "15 13 * * *"
+  workflow_dispatch:
+
+jobs:
+  send-due-lessons:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send due newsletter lessons
+        env:
+          NEWSLETTER_CRON_SECRET: ${{ secrets.NEWSLETTER_CRON_SECRET }}
+        run: |
+          curl --fail-with-body -X POST \
+            -H "Authorization: Bearer ${NEWSLETTER_CRON_SECRET}" \
+            -H "Content-Type: application/json" \
+            "https://scaleswiki.org/api/newsletter/process"
