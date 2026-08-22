@@ -33,6 +33,29 @@ for select
 to authenticated
 using ((auth.jwt() ->> 'email') = current_setting('app.settings.admin_email', true));
 
+create or replace function public.subscribe_newsletter(p_email text, p_first_name text default null)
+returns table(already_subscribed boolean)
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  existing_status text;
+begin
+  select status into existing_status from public.newsletter_subscribers where email = lower(trim(p_email));
+  if existing_status = 'active' then
+    return query select true;
+    return;
+  end if;
+  insert into public.newsletter_subscribers(email, first_name, track, status, unsubscribed_at)
+  values(lower(trim(p_email)), nullif(trim(p_first_name), ''), 'ball-python', 'active', null)
+  on conflict(email) do update set first_name=excluded.first_name, track='ball-python', status='active', unsubscribed_at=null;
+  return query select false;
+end;
+$$;
+
+grant execute on function public.subscribe_newsletter(text, text) to anon, authenticated;
+
 create or replace function public.unsubscribe_newsletter(p_token uuid)
 returns boolean
 language plpgsql
