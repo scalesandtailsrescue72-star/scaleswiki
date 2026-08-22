@@ -1,26 +1,7 @@
+"use client";
+import { FormEvent, useState } from "react";
 export function EmailSignup() {
-  return (
-    <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-      <div className="rounded-3xl border border-green-500/20 bg-gradient-to-br from-green-950/70 to-[#0D1610] p-8 sm:p-10">
-        <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">Stay in the loop</p>
-          <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">Get new care guides and rescue-backed updates in your inbox.</h2>
-          <p className="mt-4 text-lg text-gray-300">
-            Join our list for practical advice, printable resources, and the latest from the ScalesWiki community.
-          </p>
-        </div>
-
-        <form className="mt-8 flex flex-col gap-4 sm:flex-row">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none ring-0 placeholder:text-gray-400"
-          />
-          <button className="rounded-xl bg-green-600 px-6 py-3 font-semibold text-white transition hover:bg-green-700">
-            Subscribe
-          </button>
-        </form>
-      </div>
-    </section>
-  );
+  const [email, setEmail] = useState(""); const [firstName, setFirstName] = useState(""); const [message, setMessage] = useState(""); const [loading, setLoading] = useState(false);
+  async function submit(event: FormEvent<HTMLFormElement>) { event.preventDefault(); setLoading(true); setMessage(""); try { const r = await fetch("/api/newsletter/subscribe", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({email, firstName})}); const d = await r.json(); if(!r.ok) throw new Error(d?.error || "Signup failed."); setMessage(d.alreadySubscribed ? "You're already on the ScalesWiki learning list." : "You're in! Your 52-week Ball Python journey starts with Week 1."); setEmail(""); setFirstName(""); } catch(e) { setMessage(e instanceof Error ? e.message : "Signup failed. Please try again."); } finally { setLoading(false); } }
+  return <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8"><div className="rounded-3xl border border-green-500/20 bg-gradient-to-br from-green-950/70 to-[#0D1610] p-8 sm:p-10"><p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">52 weeks of free learning</p><h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">Learn Ball Python care one practical lesson at a time.</h2><p className="mt-4 text-lg text-gray-300">One useful lesson each week, plus occasional links to deeper ScalesWiki resources. No Academy account required.</p><form onSubmit={submit} className="mt-8 grid gap-4 sm:grid-cols-[.7fr_1fr_auto]"><input value={firstName} onChange={e=>setFirstName(e.target.value)} placeholder="First name (optional)" className="rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-white placeholder:text-gray-400"/><input type="email" value={email} onChange={e=>setEmail(e.target.value)} placeholder="Enter your email" required className="rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-white placeholder:text-gray-400"/><button disabled={loading} className="rounded-xl bg-green-600 px-6 py-3 font-semibold text-white disabled:opacity-60">{loading?"Joining…":"Start Learning"}</button></form><p className="mt-4 text-sm text-gray-400">Free educational emails. Unsubscribe anytime.</p>{message&&<p className="mt-4 rounded-xl border border-green-500/20 bg-green-950/30 px-4 py-3 text-sm text-green-200">{message}</p>}</div></section>;
 }
