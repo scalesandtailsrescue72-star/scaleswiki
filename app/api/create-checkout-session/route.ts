@@ -1,14 +1,25 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const stripeKey = process.env.STRIPE_SECRET_KEY;
-
-console.log("Stripe key loaded:", !!stripeKey);
-
-const stripe = new Stripe(stripeKey || "");
-
 export async function POST() {
   try {
+    const stripeKey = process.env.STRIPE_SECRET_KEY;
+
+    if (!stripeKey) {
+      console.error("STRIPE_SECRET_KEY is not configured.");
+
+      return NextResponse.json(
+        {
+          error: "Stripe is not configured.",
+        },
+        {
+          status: 500,
+        }
+      );
+    }
+
+    const stripe = new Stripe(stripeKey);
+
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
 
@@ -19,25 +30,29 @@ export async function POST() {
         },
       ],
 
-      success_url:
-        "http://localhost:3000/success",
+      success_url: `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/success`,
 
-      cancel_url:
-        "http://localhost:3000/species/ball-python",
+      cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/species/ball-python`,
     });
 
     return NextResponse.json({
       url: session.url,
     });
-
-  } catch (error: any) {
-
+  } catch (error) {
     console.error("Stripe checkout error:");
-    console.error(error.message);
+
+    if (error instanceof Error) {
+      console.error(error.message);
+    } else {
+      console.error(error);
+    }
 
     return NextResponse.json(
       {
-        error: error.message,
+        error:
+          error instanceof Error
+            ? error.message
+            : "Unable to create Stripe checkout session.",
       },
       {
         status: 500,
