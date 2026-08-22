@@ -26,7 +26,7 @@ export async function POST() {
     body.set("mode", "payment");
     body.set("line_items[0][price]", STRIPE_PRICE_ID);
     body.set("line_items[0][quantity]", "1");
-    body.set("success_url", `${siteUrl}/success`);
+    body.set("success_url", `${siteUrl}/success?session_id={CHECKOUT_SESSION_ID}`);
     body.set("cancel_url", `${siteUrl}/species/ball-python`);
     body.set("billing_address_collection", "auto");
 
