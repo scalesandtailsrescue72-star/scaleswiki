@@ -4,8 +4,20 @@ import { Navbar } from "@/app/components/Navbar";
 import { Footer } from "@/app/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Quarantine for New Reptiles | ScalesWiki",
+  title: "Quarantine for New Reptiles",
   description: "A practical, evidence-informed guide to reptile quarantine, biosecurity, observation, veterinary screening, and safer collection management.",
+  alternates: { canonical: "/articles/quarantine-for-new-reptiles" },
+  openGraph: {
+    type: "article",
+    url: "/articles/quarantine-for-new-reptiles",
+    title: "Quarantine: The Habit That Protects Every Reptile You'll Ever Keep",
+    description: "A practical, evidence-informed guide to reptile quarantine, biosecurity, observation, veterinary screening, and safer collection management.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Quarantine for New Reptiles",
+    description: "Evidence-informed reptile quarantine and biosecurity guidance from ScalesWiki.",
+  },
 };
 
 const Section = ({ id, title, children }: { id: string; title: string; children: React.ReactNode }) => (
@@ -14,6 +26,8 @@ const Section = ({ id, title, children }: { id: string; title: string; children:
     <div className="mt-5 space-y-5 text-[17px] leading-8 text-gray-300">{children}</div>
   </section>
 );
+
+const sourceClass = "font-semibold text-green-300 underline decoration-green-500/40 underline-offset-4 hover:text-green-200";
 
 export default function QuarantineArticle() {
   return (
@@ -71,7 +85,14 @@ export default function QuarantineArticle() {
 
         <section className="mt-12 border-t border-white/10 pt-10">
           <h2 className="text-2xl font-bold">Sources & further reading</h2>
-          <ul className="mt-5 space-y-4 text-sm leading-6 text-gray-300"><li>Association of Reptile and Amphibian Veterinarians (ARAV). <em>Caring for Captive Reptiles and Amphibians.</em> Guidance includes separate-room quarantine, a minimum of 60 days in most cases, separate supplies, and established animals cared for before quarantined animals.</li><li>Willems D, DVM. <em>Quarantine of New Reptiles.</em> Aurora Animal Hospital. Discusses longer observation periods, including a 90-day zoo standard, dedicated equipment, simple quarantine setups, weight monitoring, and veterinary screening.</li><li>Human dermatitis caused by <em>Ophionyssus natricis</em>, a snake mite. Published literature reporting a 13–19 day life cycle; more recent literature reports approximately 7–14 days under favorable conditions.</li><li>Parrish K, Kirkland PD, Skerratt LF, Ariel E. <em>Nidoviruses in Reptiles: A Review.</em> Frontiers in Veterinary Science. 2021;8:733404.</li><li>Merck Veterinary Manual. Parasitic diseases of reptiles and veterinary diagnostic guidance.</li></ul>
+          <p className="mt-3 text-sm leading-6 text-gray-400">ScalesWiki prioritizes veterinary guidance and peer-reviewed literature. Links below open the underlying sources.</p>
+          <ul className="mt-6 space-y-5 text-sm leading-6 text-gray-300">
+            <li><a className={sourceClass} href="https://arav.org/wp-content/uploads/2024/02/ARAV-COVID19-with-Reptiles-and-Amphibians-1.pdf" target="_blank" rel="noreferrer">Association of Reptile and Amphibian Veterinarians (ARAV): Caring for Captive Reptiles and Amphibians</a><br />Includes separate-room quarantine, a minimum of 60 days in most cases, separate supplies, and caring for established animals before quarantined animals.</li>
+            <li><a className={sourceClass} href="https://assets.ctfassets.net/rt5zmd3ipxai/1SouVQYaqsgZylRnCHnXNO/69e75fd271f8368f9d6029e0c389676f/Reptile_Quarantine_Aurora_Animal_Hospital.pdf" target="_blank" rel="noreferrer">Dayna Willems, DVM: Quarantine of New Reptiles — Aurora Animal Hospital</a><br />Discusses a 90-day zoo standard, dedicated equipment, simple quarantine setups, weight monitoring, fecal testing, and veterinary screening.</li>
+            <li><a className={sourceClass} href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4345101/" target="_blank" rel="noreferrer">Human Dermatitis Caused by Ophionyssus natricis, a Snake Mite</a><br />Peer-reviewed literature describing the snake mite life cycle, including a 13–19 day estimate.</li>
+            <li><a className={sourceClass} href="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2021.733404/full" target="_blank" rel="noreferrer">Parrish K, Kirkland PD, Skerratt LF, Ariel E. Nidoviruses in Reptiles: A Review</a><br />Frontiers in Veterinary Science. 2021;8:733404. Reviews serpentovirus disease, diagnosis, management, and spread in captive reptile populations.</li>
+            <li><a className={sourceClass} href="https://www.merckvetmanual.com/exotic-and-laboratory-animals/reptiles/parasitic-diseases-of-reptiles" target="_blank" rel="noreferrer">Merck Veterinary Manual: Parasitic Diseases of Reptiles</a><br />Veterinary reference covering reptile parasites, screening, diagnosis, and collection-level parasite management.</li>
+          </ul>
         </section>
 
         <div className="mt-12 rounded-3xl bg-green-900/30 p-8 text-center"><h2 className="text-2xl font-bold">Build better husbandry from the ground up.</h2><p className="mx-auto mt-3 max-w-2xl text-gray-300">Continue with structured ScalesWiki lessons and practical reptile-care education.</p><Link href="/academy" className="mt-6 inline-block rounded-xl bg-green-600 px-6 py-3 font-semibold text-white transition hover:bg-green-500">Start Learning →</Link></div>
