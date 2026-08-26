@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { GuideContents } from "@/app/components/ui/GuideContents";
 import { GuideDownloadCard } from "@/app/components/ui/GuideDownloadCard";
@@ -23,6 +24,18 @@ import { CommonMistakes } from "./components/CommonMistakes";
 import { FAQ } from "./components/FAQ";
 import { References } from "./components/References";
 
+export const metadata: Metadata = {
+  title: "Ball Python Care Guide",
+  description: "Evidence-informed Ball Python husbandry covering enclosure design, heating, humidity, lighting, feeding, handling, health, supplies, and preventive care.",
+  alternates: { canonical: "/species/ball-python" },
+  openGraph: {
+    type: "article",
+    title: "Ball Python Care Guide | ScalesWiki",
+    description: "A practical, evidence-informed Ball Python husbandry reference from ScalesWiki.",
+    url: "/species/ball-python",
+  },
+};
+
 export default function BallPythonPage() {
   return (
     <main className="min-h-screen bg-[#08120D] text-white">
@@ -31,14 +44,28 @@ export default function BallPythonPage() {
       <PublicationHeader />
       <GuideDownloadCard />
 
-      <section className="mx-auto max-w-5xl px-6 pb-8">
-        <div className="rounded-2xl border border-green-500/20 bg-green-500/5 p-6 sm:flex sm:items-center sm:justify-between sm:gap-6">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-green-400">Before you shop</p>
-            <h2 className="mt-2 text-2xl font-semibold">Build your Ball Python setup checklist</h2>
-            <p className="mt-2 max-w-2xl text-gray-300">See the required and recommended enclosure, heating, monitoring, feeding, cleaning, and quarantine supplies in one place.</p>
-          </div>
-          <Link href="/shop/ball-python-supplies" className="mt-5 inline-flex shrink-0 rounded-xl bg-green-600 px-5 py-3 font-semibold transition hover:bg-green-500 sm:mt-0">View supplies →</Link>
+      <section className="mx-auto max-w-5xl px-6 pb-10">
+        <div className="grid gap-4 md:grid-cols-3">
+          <Link href="/shop/ball-python-supplies" className="rounded-2xl border border-green-500/20 bg-green-500/5 p-6 transition hover:border-green-400/50 hover:bg-green-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-green-400">Build the habitat</p>
+            <h2 className="mt-2 text-xl font-semibold">Setup & Supplies</h2>
+            <p className="mt-2 text-sm leading-6 text-gray-300">Required and recommended enclosure, heating, monitoring, feeding, cleaning, and quarantine supplies.</p>
+            <p className="mt-4 font-semibold text-green-300">View checklist →</p>
+          </Link>
+
+          <Link href="/academy/ball-python" className="rounded-2xl border border-green-500/20 bg-green-500/5 p-6 transition hover:border-green-400/50 hover:bg-green-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-green-400">Learn step by step</p>
+            <h2 className="mt-2 text-xl font-semibold">Ball Python 101</h2>
+            <p className="mt-2 text-sm leading-6 text-gray-300">Turn the guide into structured lessons, practical examples, quizzes, progress tracking, and a course certificate.</p>
+            <p className="mt-4 font-semibold text-green-300">Start Academy course →</p>
+          </Link>
+
+          <Link href="/articles/quarantine-for-new-reptiles" className="rounded-2xl border border-green-500/20 bg-green-500/5 p-6 transition hover:border-green-400/50 hover:bg-green-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-green-400">Before arrival</p>
+            <h2 className="mt-2 text-xl font-semibold">Quarantine Guide</h2>
+            <p className="mt-2 text-sm leading-6 text-gray-300">Learn how separation, dedicated equipment, observation, and veterinary testing protect new and established reptiles.</p>
+            <p className="mt-4 font-semibold text-green-300">Read quarantine article →</p>
+          </Link>
         </div>
       </section>
 
