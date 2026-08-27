@@ -30,10 +30,10 @@ export function Hero() {
         </Link>
 
         <Link
-          href="#academy"
+          href="/academy"
           className="rounded-xl border border-green-600 px-8 py-4 text-lg font-semibold text-green-300 transition hover:bg-green-900/40"
         >
-          Explore Academy
+          Enter Academy
         </Link>
       </div>
 
@@ -55,12 +55,12 @@ export function Hero() {
           <p className="text-3xl">🎓</p>
 
           <h3 className="mt-4 text-xl font-semibold text-white">
-            Academy
+            ScalesWiki Academy
           </h3>
 
           <p className="mt-2 text-sm text-gray-300">
-            Coming soon: Track progress, earn certificates, complete quizzes,
-            and continue learning.
+            Learn at your own pace with structured lessons, quizzes, progress
+            tracking, final exams, and ScalesWiki certificates.
           </p>
         </div>
 
