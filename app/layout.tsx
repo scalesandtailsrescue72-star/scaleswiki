@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   description: "Trusted reptile care guides, practical husbandry resources, rescue-backed education, and structured learning for responsible reptile keepers.",
   applicationName: "ScalesWiki",
   alternates: { canonical: "/" },
+  icons: {
+    icon: "/logo/scaleswiki-logo.svg",
+    shortcut: "/logo/scaleswiki-logo.svg",
+    apple: "/logo/scaleswiki-logo.svg",
+  },
   openGraph: {
     type: "website",
     url: "https://scaleswiki.org",
