@@ -4,7 +4,7 @@ import { Navbar } from "@/app/components/Navbar";
 import { Footer } from "@/app/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Reptile Care Articles | ScalesWiki",
+  title: "Reptile Care Articles",
   description: "Evidence-informed reptile husbandry and welfare articles from ScalesWiki.",
 };
 
