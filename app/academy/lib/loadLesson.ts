@@ -1,24 +1,12 @@
-import fs from "fs/promises";
-import path from "path";
-import matter from "gray-matter";
+import { generatedLessonContent } from "@/app/academy/data/_generatedLessonContent";
 
 export async function loadLesson(courseSlug: string, lesson: number) {
-  const fileName = `lesson-${lesson.toString().padStart(2, "0")}.md`;
+  const key = `${courseSlug}:${lesson}`;
+  const lessonContent = generatedLessonContent[key];
 
-  const filePath = path.join(
-    process.cwd(),
-    "app",
-    "academy",
-    courseSlug,
-    "content",
-    fileName
-  );
+  if (!lessonContent) {
+    throw new Error(`Lesson content not found for ${key}`);
+  }
 
-  const raw = await fs.readFile(filePath, "utf8");
-  const parsed = matter(raw);
-
-  return {
-    content: parsed.content,
-    data: parsed.data,
-  };
+  return lessonContent;
 }
