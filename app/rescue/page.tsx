@@ -4,7 +4,7 @@ import { Navbar } from "@/app/components/Navbar";
 import { Footer } from "@/app/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Reptile Rescue Mission | ScalesWiki",
+  title: "Reptile Rescue Mission",
   description: "How rescue experience shapes ScalesWiki education, welfare guidance, and the mission behind the platform.",
 };
 
