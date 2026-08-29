@@ -18,6 +18,13 @@ export default function ArticlesPage() {
         <p className="mt-5 max-w-3xl text-lg leading-8 text-gray-300">Long-form husbandry, biosecurity, welfare, and preventive-care education backed by rescue experience and carefully reviewed sources.</p>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <Link href="/articles/thermal-gradient-for-healthy-reptiles" className="rounded-2xl border border-white/10 bg-[#111D17] p-7 transition hover:border-green-500/60 hover:bg-[#14231B]">
+            <p className="text-sm font-semibold text-green-400">HEATING • HUSBANDRY</p>
+            <h2 className="mt-3 text-2xl font-bold">The Thermal Gradient: Why One Temperature Is Never Enough for Your Reptile</h2>
+            <p className="mt-4 leading-7 text-gray-300">How reptiles use behavioral thermoregulation, how to build a usable warm-to-cool range, and how to measure it safely.</p>
+            <p className="mt-6 font-semibold text-green-300">Read article →</p>
+          </Link>
+
           <Link href="/articles/quarantine-for-new-reptiles" className="rounded-2xl border border-white/10 bg-[#111D17] p-7 transition hover:border-green-500/60 hover:bg-[#14231B]">
             <p className="text-sm font-semibold text-green-400">BIOSECURITY • NEW ARRIVALS</p>
             <h2 className="mt-3 text-2xl font-bold">Quarantine: The Habit That Protects Every Reptile You’ll Ever Keep</h2>
