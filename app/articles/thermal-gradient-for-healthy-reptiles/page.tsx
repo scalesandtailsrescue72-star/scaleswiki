@@ -4,7 +4,7 @@ import { Navbar } from "@/app/components/Navbar";
 import { Footer } from "@/app/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Thermal Gradients for Reptiles | ScalesWiki",
+  title: "Thermal Gradients for Reptiles",
   description:
     "An evidence-informed guide to reptile thermal gradients, behavioral thermoregulation, thermostat use, temperature measurement, and enclosure setup.",
   alternates: { canonical: "/articles/thermal-gradient-for-healthy-reptiles" },
