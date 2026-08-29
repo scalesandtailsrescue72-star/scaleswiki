@@ -4,7 +4,7 @@ import { Navbar } from "@/app/components/Navbar";
 import { Footer } from "@/app/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Veterinary Review Program | ScalesWiki",
+  title: "Veterinary Review Program",
   description: "How ScalesWiki handles veterinary review, source standards, review status, and transparency across guides and Academy lessons.",
 };
 
