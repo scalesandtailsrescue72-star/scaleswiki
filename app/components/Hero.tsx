@@ -1,5 +1,32 @@
 import Link from "next/link";
 
+const cards = [
+  {
+    icon: "📚",
+    title: "Learn for Free",
+    description:
+      "Explore evidence-based reptile care guides written to help keepers provide better care.",
+    href: "/species",
+    cta: "Browse species →",
+  },
+  {
+    icon: "🎓",
+    title: "ScalesWiki Academy",
+    description:
+      "Ball Python 101 is live with 12 lessons, quizzes, progress tracking, a final exam, and a completion certificate.",
+    href: "/academy",
+    cta: "Start Ball Python 101 →",
+  },
+  {
+    icon: "🌳",
+    title: "Support the Mission",
+    description:
+      "Help expand free education, independent veterinary review, and the rescue mission behind ScalesWiki.",
+    href: "/founders-tree",
+    cta: "Explore the Founders Tree →",
+  },
+];
+
 export function Hero() {
   return (
     <section className="mx-auto flex max-w-7xl flex-col items-center px-6 py-24 text-center lg:px-8 lg:py-32">
@@ -12,70 +39,48 @@ export function Hero() {
       </h1>
 
       <p className="mt-6 max-w-3xl text-lg leading-8 text-gray-300 sm:text-xl">
-        Explore evidence-based reptile care guides, structured Academy courses,
-        downloadable resources, and a growing community dedicated to improving
-        reptile welfare through education.
+        For keepers who want reliable answers backed by evidence: explore reptile care guides,
+        structured Academy courses, downloadable resources, and a growing community dedicated
+        to improving reptile welfare through education.
       </p>
 
       <p className="mt-4 text-base font-medium text-green-300">
-        Education first. Sustainability second.
+        Free education first. Membership and support help us keep expanding it.
       </p>
 
       <div className="mt-10 flex flex-col gap-4 sm:flex-row">
         <Link
-          href="#guides"
+          href="#species"
           className="rounded-xl bg-green-600 px-8 py-4 text-lg font-semibold text-white transition hover:bg-green-700"
         >
-          Start Learning
+          Read the Free Guides
         </Link>
 
         <Link
-          href="/academy"
+          href="/academy/ball-python"
           className="rounded-xl border border-green-600 px-8 py-4 text-lg font-semibold text-green-300 transition hover:bg-green-900/40"
         >
-          Enter Academy
+          Start Ball Python 101
         </Link>
       </div>
 
+      <p className="mt-4 text-sm text-gray-400">1 course live · 12 lessons · 2–3 hours · self-paced</p>
+
       <div className="mt-14 grid gap-6 text-left sm:grid-cols-3">
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <p className="text-3xl">📚</p>
-
-          <h3 className="mt-4 text-xl font-semibold text-white">
-            Learn for Free
-          </h3>
-
-          <p className="mt-2 text-sm text-gray-300">
-            Explore evidence-based reptile care guides written to help keepers
-            provide better care.
-          </p>
-        </div>
-
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <p className="text-3xl">🎓</p>
-
-          <h3 className="mt-4 text-xl font-semibold text-white">
-            ScalesWiki Academy
-          </h3>
-
-          <p className="mt-2 text-sm text-gray-300">
-            Learn at your own pace with structured lessons, quizzes, progress
-            tracking, final exams, and ScalesWiki certificates.
-          </p>
-        </div>
-
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <p className="text-3xl">🌳</p>
-
-          <h3 className="mt-4 text-xl font-semibold text-white">
-            Support the Mission
-          </h3>
-
-          <p className="mt-2 text-sm text-gray-300">
-            Every Academy membership helps keep evidence-based reptile education
-            free for everyone.
-          </p>
-        </div>
+        {cards.map((card) => (
+          <Link
+            key={card.title}
+            href={card.href}
+            className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-0.5 hover:border-green-500/40 hover:bg-white/[0.07]"
+          >
+            <p className="text-3xl">{card.icon}</p>
+            <h3 className="mt-4 text-xl font-semibold text-white">{card.title}</h3>
+            <p className="mt-2 text-sm leading-6 text-gray-300">{card.description}</p>
+            <p className="mt-5 text-sm font-semibold text-green-300 transition group-hover:text-green-200">
+              {card.cta}
+            </p>
+          </Link>
+        ))}
       </div>
     </section>
   );
