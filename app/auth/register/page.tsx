@@ -38,8 +38,12 @@ export default function RegisterPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const requestedGuide = new URLSearchParams(window.location.search).get("guide");
+    const params = new URLSearchParams(window.location.search);
+    const requestedGuide = params.get("guide");
+    const requestedRole = params.get("role");
+
     if (requestedGuide && guideOptions.some(([value]) => value === requestedGuide)) setGuideInterest(requestedGuide);
+    if (requestedRole && memberRoles.some(([value]) => value === requestedRole)) setMemberRole(requestedRole);
   }, []);
 
   async function handleRegister(event: React.FormEvent) {
