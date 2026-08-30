@@ -12,9 +12,9 @@ export const metadata: Metadata = {
   applicationName: "ScalesWiki",
   alternates: { canonical: "/" },
   icons: {
-    icon: "/logo/scaleswiki-logo.svg",
-    shortcut: "/logo/scaleswiki-logo.svg",
-    apple: "/logo/scaleswiki-logo.svg",
+    icon: "/scaleswiki-favicon.svg",
+    shortcut: "/scaleswiki-favicon.svg",
+    apple: "/scaleswiki-favicon.svg",
   },
   openGraph: {
     type: "website",
