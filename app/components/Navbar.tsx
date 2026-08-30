@@ -9,6 +9,7 @@ import { supabase } from "@/app/lib/database/supabase";
 
 const navItems = [
   { label: "Home", href: "/" },
+  { label: "Community", href: "/community" },
   { label: "Species", href: "/species" },
   { label: "Articles", href: "/articles" },
   { label: "Academy", href: "/academy" },
