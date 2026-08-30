@@ -3,6 +3,7 @@ interface SectionHeadingProps {
   title: string;
   description?: string;
   centered?: boolean;
+  as?: "h1" | "h2";
 }
 
 export function SectionHeading({
@@ -10,16 +11,18 @@ export function SectionHeading({
   title,
   description,
   centered = false,
+  as = "h2",
 }: SectionHeadingProps) {
+  const Heading = as;
   return (
     <div className={centered ? "text-center" : ""}>
       <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
         {eyebrow}
       </p>
 
-      <h2 className="mt-4 text-5xl font-bold text-white">
+      <Heading className="mt-4 text-5xl font-bold text-white">
         {title}
-      </h2>
+      </Heading>
 
       {description && (
         <p
