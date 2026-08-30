@@ -59,7 +59,7 @@ export function Enclosure() {
           Ball Pythons naturally seek secure shelters with access to different
           temperatures and humidity levels. Captive enclosures should recreate
           these choices by providing multiple hides, environmental gradients,
-          and opportunities for natural behavior.Enclosures should allow the snake to choose between different temperatures, humidity levels, and hiding locations throughout the day.
+          and opportunities for natural behavior. Enclosures should allow the snake to choose between different temperatures, humidity levels, and hiding locations throughout the day.
         </RecommendationCard>
 
         <RecommendationCard
@@ -68,7 +68,7 @@ export function Enclosure() {
         >
           PVC enclosures are popular because they generally retain heat and
           humidity well, but glass, wood, and other enclosure materials can
-          also work when designed and managed correctly.The best enclosure is one that consistently maintains appropriate environmental conditions and can be easily cleaned and monitored.
+          also work when designed and managed correctly. The best enclosure is one that consistently maintains appropriate environmental conditions and can be easily cleaned and monitored.
         </RecommendationCard>
 
         <RecommendationCard
@@ -90,7 +90,7 @@ export function Enclosure() {
         >
           Select an enclosure that allows your Ball Python to fully stretch out,
           thermoregulate, and explore while providing multiple secure hiding
-          locations.Front-opening enclosures often make routine maintenance and handling less stressful for both the keeper and the snake.
+          locations. Front-opening enclosures often make routine maintenance and handling less stressful for both the keeper and the snake.
         </InfoCard>
 
         <InfoCard
@@ -98,7 +98,7 @@ export function Enclosure() {
           title="Environmental Enrichment"
         >
           Branches, cork bark, plants, leaf litter, and climbing opportunities
-          encourage natural behaviors and provide additional security.Rearranging enrichment occasionally can encourage exploration, but avoid frequent major changes that may increase stress.
+          encourage natural behaviors and provide additional security. Rearranging enrichment occasionally can encourage exploration, but avoid frequent major changes that may increase stress.
         </InfoCard>
 
         <InfoCard
@@ -107,7 +107,7 @@ export function Enclosure() {
         >
           Consistent temperatures, humidity, lighting, and husbandry practices
           are generally more important than purchasing expensive equipment.
-        </InfoCard>Consistent husbandry is generally more important than purchasing expensive equipment.
+        </InfoCard>
 
 <InfoCard
   icon="🔒"
