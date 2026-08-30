@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/guides/ball-python/is-a-ball-python-right-for-you",
     "/academy",
     "/community",
+    "/community/rescue-partners",
     "/articles",
     "/articles/quarantine-for-new-reptiles",
     "/articles/thermal-gradient-for-healthy-reptiles",
