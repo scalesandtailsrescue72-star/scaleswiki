@@ -10,7 +10,6 @@ export const metadata: Metadata = {
   title: { default: "ScalesWiki | Evidence-Informed Reptile Care", template: "%s | ScalesWiki" },
   description: "Trusted reptile care guides, practical husbandry resources, rescue-backed education, and structured learning for responsible reptile keepers.",
   applicationName: "ScalesWiki",
-  alternates: { canonical: "/" },
   icons: {
     icon: "/scaleswiki-favicon.svg",
     shortcut: "/scaleswiki-favicon.svg",
