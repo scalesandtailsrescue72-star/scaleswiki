@@ -56,7 +56,7 @@ export default function CommunityPage() {
             <li className="rounded-xl bg-black/20 p-4">✓ Academy progress tracking</li>
             <li className="rounded-xl bg-black/20 p-4">✓ Course exams and certificates</li>
             <li className="rounded-xl bg-black/20 p-4">✓ Early community updates</li>
-            <li className="rounded-xl bg-black/20 p-4">✓ A voice in future resources and Spotlights</li>
+            <li className="rounded-xl bg-black/20 p-4">✓ Vote on which species guide comes next</li>
           </ul>
           <p className="mt-7 leading-7 text-gray-400">
             Your selected community role and Spotlight interest are kept as private account preferences. Joining does not publish a public profile or imply veterinary review, endorsement, or accreditation.
@@ -67,7 +67,7 @@ export default function CommunityPage() {
       <section className="mx-auto max-w-5xl px-6 py-16 text-center lg:px-8">
         <h2 className="text-4xl font-bold">Be one of the first people inside.</h2>
         <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-gray-300">
-          The first members will help determine which community tools, educational resources, and recognition programs ScalesWiki develops next.
+          The first members will help determine which species guide comes next, which community tools matter most, and how future recognition programs should work.
         </p>
         <Link href="/auth/register" className="mt-8 inline-flex rounded-xl bg-green-600 px-8 py-4 text-lg font-semibold transition hover:bg-green-500">Create Your Free Account</Link>
       </section>
