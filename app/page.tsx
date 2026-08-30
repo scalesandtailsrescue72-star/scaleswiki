@@ -10,6 +10,7 @@ import { SupportMission } from "@/app/components/SupportMission";
 import { Rescue } from "@/app/components/Rescue";
 import { Newsletter } from "@/app/components/Newsletter";
 import { Footer } from "@/app/components/Footer";
+import { CommunityInvite } from "@/app/components/CommunityInvite";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -27,6 +28,7 @@ export default function Home() {
 <FoundersTreePreview />
 <SupportMission />
 <Rescue />
+<CommunityInvite />
 <Newsletter />
 <Footer />
     </main>
