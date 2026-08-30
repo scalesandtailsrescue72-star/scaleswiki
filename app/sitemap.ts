@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/shop/ball-python-supplies",
     "/support",
     "/veterinary-review",
+    "/veterinary-review/founding-reviewers",
   ];
 
   return routes.map((route) => ({
