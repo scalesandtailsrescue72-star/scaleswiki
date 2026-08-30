@@ -6,6 +6,7 @@ import { Footer } from "@/app/components/Footer";
 export const metadata: Metadata = {
   title: "Veterinary Review Program",
   description: "How ScalesWiki handles veterinary review, source standards, review status, and transparency across guides and Academy lessons.",
+  alternates: { canonical: "/veterinary-review" },
 };
 
 export default function VeterinaryReviewPage() {
