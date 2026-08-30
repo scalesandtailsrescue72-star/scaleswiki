@@ -57,8 +57,9 @@ export default function VeterinaryReviewPage() {
         </p>
 
         <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-          <Link href="/veterinary-review/access" className="rounded-xl bg-green-600 px-6 py-3 text-center font-semibold text-white transition hover:bg-green-500">Veterinary Reviewer Access</Link>
-          <Link href="/support" className="rounded-xl border border-green-600 px-6 py-3 text-center font-semibold text-green-300 transition hover:bg-green-950/50">Contact ScalesWiki</Link>
+          <Link href="/veterinary-review/founding-reviewers" className="rounded-xl bg-green-600 px-6 py-3 text-center font-semibold text-white transition hover:bg-green-500">Become a Founding Reviewer</Link>
+          <Link href="/veterinary-review/access" className="rounded-xl border border-green-600 px-6 py-3 text-center font-semibold text-green-300 transition hover:bg-green-950/50">Reviewer Access</Link>
+          <Link href="/support" className="rounded-xl border border-white/15 px-6 py-3 text-center font-semibold text-gray-200 transition hover:border-green-500/50">Contact ScalesWiki</Link>
         </div>
       </section>
 
