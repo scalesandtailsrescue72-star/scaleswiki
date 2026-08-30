@@ -11,9 +11,9 @@ export function PublicationHeader() {
             ScalesWiki Publication
           </p>
 
-          <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
+          <h2 className="mt-4 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
             {GUIDE.title}
-          </h1>
+          </h2>
 
           <p className="mt-3 text-xl italic text-slate-600">
             {GUIDE.scientificName}
