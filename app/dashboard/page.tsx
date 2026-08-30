@@ -32,6 +32,17 @@ const quickLinks = [
 export default async function DashboardPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
+  const communityRole = user?.user_metadata?.community_role as string | undefined;
+  const spotlightInterest = Boolean(user?.user_metadata?.spotlight_interest);
+  const roleLabels: Record<string, string> = {
+    keeper: "Reptile keeper",
+    rescue: "Rescue or adoption organization",
+    veterinary: "Veterinarian or veterinary professional",
+    store: "Reptile store or responsible business",
+    educator: "Educator or content creator",
+    breeder: "Breeder",
+    other: "Community member",
+  };
 
   return (
     <main className="min-h-screen bg-[#08120D] text-white">
@@ -63,6 +74,17 @@ export default async function DashboardPage() {
 
         {user ? (
           <>
+            <section className="mt-10 rounded-2xl border border-green-500/20 bg-green-950/20 p-7" aria-labelledby="community-heading">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-green-400">Founding Community</p>
+              <h2 id="community-heading" className="mt-2 text-2xl font-bold">You are helping build ScalesWiki from the beginning.</h2>
+              <div className="mt-5 grid gap-4 text-sm sm:grid-cols-3">
+                <div className="rounded-xl bg-black/20 p-4"><span className="block text-gray-400">Membership</span><strong className="mt-1 block text-green-300">Founding community</strong></div>
+                <div className="rounded-xl bg-black/20 p-4"><span className="block text-gray-400">Community role</span><strong className="mt-1 block text-white">{communityRole ? roleLabels[communityRole] ?? "Community member" : "Not selected yet"}</strong></div>
+                <div className="rounded-xl bg-black/20 p-4"><span className="block text-gray-400">Spotlight interest</span><strong className="mt-1 block text-white">{spotlightInterest ? "Interested" : "Not selected"}</strong></div>
+              </div>
+              <Link href="/community" className="mt-5 inline-flex font-semibold text-green-300 hover:text-green-200">Explore the community vision →</Link>
+            </section>
+
             <div className="mt-10"><ContinueLearning /></div>
 
             <section className="mt-10" aria-labelledby="progress-heading">
