@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/app/components/Navbar";
 import { Footer } from "@/app/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Founders Tree",
+  description: "Join the ScalesWiki Founders Tree and help expand accessible reptile education, independent veterinary review, and rescue-focused resources.",
+  alternates: { canonical: "/founders-tree" },
+};
 
 const tiers = [
   {
