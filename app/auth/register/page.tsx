@@ -1,9 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/app/lib/database/supabase";
+
+const guideOptions = [
+  ["", "No preference yet"],
+  ["bearded-dragon", "Bearded Dragon"],
+  ["leopard-gecko", "Leopard Gecko"],
+  ["corn-snake", "Corn Snake"],
+  ["crested-gecko", "Crested Gecko"],
+  ["blue-tongued-skink", "Blue-Tongued Skink"],
+];
 
 const memberRoles = [
   ["keeper", "Reptile keeper"],
@@ -20,12 +29,18 @@ export default function RegisterPage() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [memberRole, setMemberRole] = useState("keeper");
+  const [guideInterest, setGuideInterest] = useState("");
   const [spotlightInterest, setSpotlightInterest] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const requestedGuide = new URLSearchParams(window.location.search).get("guide");
+    if (requestedGuide && guideOptions.some(([value]) => value === requestedGuide)) setGuideInterest(requestedGuide);
+  }, []);
 
   async function handleRegister(event: React.FormEvent) {
     event.preventDefault();
@@ -41,6 +56,7 @@ export default function RegisterPage() {
           first_name: firstName,
           last_name: lastName,
           community_role: memberRole,
+          guide_interest: guideInterest || null,
           spotlight_interest: spotlightInterest,
           founding_community: true,
         },
@@ -98,6 +114,14 @@ export default function RegisterPage() {
               <select required className="mt-2 w-full rounded-lg border border-gray-700 bg-[#08120D] p-3 text-white" value={memberRole} onChange={(event) => setMemberRole(event.target.value)}>
                 {memberRoles.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
               </select>
+            </label>
+
+            <label className="block text-sm font-medium text-gray-200">
+              Which guide should ScalesWiki build next?
+              <select className="mt-2 w-full rounded-lg border border-gray-700 bg-[#08120D] p-3 text-white" value={guideInterest} onChange={(event) => setGuideInterest(event.target.value)}>
+                {guideOptions.map(([value, label]) => <option key={value || "none"} value={value}>{label}</option>)}
+              </select>
+              <span className="mt-1 block text-xs text-gray-500">Your private preference helps prioritize the species pipeline.</span>
             </label>
 
             <label className="block text-sm font-medium text-gray-200">
