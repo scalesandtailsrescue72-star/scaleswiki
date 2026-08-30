@@ -8,6 +8,7 @@ type Species = {
   region: string;
   image: string;
   href?: string;
+  interest: string;
   available: boolean;
 };
 
@@ -19,6 +20,7 @@ const species: Species[] = [
     region: "West & Central Africa",
     image: "/species/ball-python.jpeg",
     href: "/species/ball-python",
+    interest: "ball-python",
     available: true,
   },
   {
@@ -27,6 +29,7 @@ const species: Species[] = [
     difficulty: "Beginner",
     region: "Australia",
     image: "/species/bearded-dragon.jpeg",
+    interest: "bearded-dragon",
     available: false,
   },
   {
@@ -35,6 +38,7 @@ const species: Species[] = [
     difficulty: "Beginner",
     region: "Afghanistan & Pakistan",
     image: "/species/leopard-gecko.jpeg",
+    interest: "leopard-gecko",
     available: false,
   },
   {
@@ -43,6 +47,7 @@ const species: Species[] = [
     difficulty: "Beginner",
     region: "United States",
     image: "/species/corn-snake.jpeg",
+    interest: "corn-snake",
     available: false,
   },
   {
@@ -51,6 +56,7 @@ const species: Species[] = [
     difficulty: "Beginner",
     region: "New Caledonia",
     image: "/species/crested-gecko.jpeg",
+    interest: "crested-gecko",
     available: false,
   },
   {
@@ -59,6 +65,7 @@ const species: Species[] = [
     difficulty: "Intermediate",
     region: "Australia",
     image: "/species/blue-tongued-skink.jpeg",
+    interest: "blue-tongued-skink",
     available: false,
   },
 ];
@@ -137,7 +144,7 @@ export function SpeciesGrid() {
                 >
                   {animal.available
                     ? "View Care Guide"
-                    : "Coming Soon"}
+                    : "Vote for this guide"}
                 </div>
               </div>
             </>
@@ -156,12 +163,14 @@ export function SpeciesGrid() {
           }
 
           return (
-            <div
+            <Link
               key={animal.name}
-              className="overflow-hidden rounded-3xl border border-white/10 bg-[#101B15] opacity-90"
+              href={`/auth/register?guide=${animal.interest}`}
+              className="group block overflow-hidden rounded-3xl border border-white/10 bg-[#101B15] opacity-90 transition-all duration-300 hover:-translate-y-2 hover:border-green-500 hover:opacity-100"
+              aria-label={`Join ScalesWiki and vote for the ${animal.name} guide`}
             >
               {Card}
-            </div>
+            </Link>
           );
         })}
       </div>
