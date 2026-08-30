@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionHeading } from "@/app/components/ui/SectionHeading";
 import { getAllCourses } from "./data";
+
+export const metadata: Metadata = {
+  title: "Reptile Care Academy",
+  description: "Learn reptile husbandry through structured ScalesWiki courses, practical lessons, quizzes, printable resources, and completion certificates.",
+  alternates: { canonical: "/academy" },
+};
 
 export default function AcademyPage() {
   const courses = getAllCourses();
@@ -12,6 +19,7 @@ export default function AcademyPage() {
           eyebrow="ScalesWiki Academy"
           title="Structured Reptile Education"
           description="Go beyond reading care guides. Learn through structured lessons, practical examples, quizzes, printable resources, and certificates designed to build confident reptile keepers."
+          as="h1"
         />
 
         <div className="mt-16 grid gap-8 lg:grid-cols-3">
