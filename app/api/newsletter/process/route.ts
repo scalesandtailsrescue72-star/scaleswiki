@@ -1,8 +1,17 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { ballPython52Week } from "@/app/lib/newsletter/ball-python-52-week";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 export const dynamic = "force-dynamic";
+
+function getRuntimeEnv() {
+  try {
+    return getCloudflareContext().env as unknown as Record<string, string | undefined>;
+  } catch {
+    return process.env;
+  }
+}
 
 function escapeHtml(value: string) {
   return value.replace(/[&<>\"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[character] || character));
@@ -14,16 +23,20 @@ function getDueWeek(subscribedAt: string, lastSentWeek: number | null) {
 }
 
 export async function POST(request: Request) {
-  const secret = process.env.NEWSLETTER_CRON_SECRET;
+  const env = getRuntimeEnv();
+  const secret = env.NEWSLETTER_CRON_SECRET;
   const supplied = request.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
   if (!secret || supplied !== secret) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  const resendKey = process.env.RESEND_API_KEY;
-  const from = process.env.NEWSLETTER_FROM_EMAIL;
+  const serviceKey = env.SUPABASE_SERVICE_ROLE_KEY;
+  const resendKey = env.RESEND_API_KEY;
+  const from = env.NEWSLETTER_FROM_EMAIL;
   if (!serviceKey || !resendKey || !from) return NextResponse.json({ error: "Newsletter automation is not configured." }, { status: 503 });
 
-  const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, serviceKey, { auth: { autoRefreshToken: false, persistSession: false } });
+  const supabaseUrl = env.NEXT_PUBLIC_SUPABASE_URL;
+  if (!supabaseUrl) return NextResponse.json({ error: "Newsletter database is not configured." }, { status: 503 });
+
+  const supabase = createClient(supabaseUrl, serviceKey, { auth: { autoRefreshToken: false, persistSession: false } });
   const { data: subscribers, error } = await supabase.from("newsletter_subscribers").select("id,email,first_name,unsubscribe_token,subscribed_at,last_sent_week").eq("status", "active").eq("track", "ball-python");
   if (error) return NextResponse.json({ error: "Unable to load subscribers." }, { status: 500 });
 
