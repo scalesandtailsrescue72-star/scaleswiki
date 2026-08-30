@@ -26,19 +26,7 @@ export async function POST(request: Request) {
   const env = getRuntimeEnv();
   const secret = env.NEWSLETTER_CRON_SECRET;
   const supplied = request.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
-  if (!secret || supplied !== secret) {
-    return NextResponse.json(
-      {
-        error: "Unauthorized",
-        diagnostic: {
-          configured: Boolean(secret),
-          configuredLength: secret?.length ?? 0,
-          suppliedLength: supplied?.length ?? 0,
-        },
-      },
-      { status: 401 },
-    );
-  }
+  if (!secret || supplied !== secret) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const serviceKey = env.SUPABASE_SERVICE_ROLE_KEY;
   const resendKey = env.RESEND_API_KEY;
