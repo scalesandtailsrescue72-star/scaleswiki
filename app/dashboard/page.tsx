@@ -34,6 +34,14 @@ export default async function DashboardPage() {
   const { data: { user } } = await supabase.auth.getUser();
   const communityRole = user?.user_metadata?.community_role as string | undefined;
   const spotlightInterest = Boolean(user?.user_metadata?.spotlight_interest);
+  const guideInterest = user?.user_metadata?.guide_interest as string | undefined;
+  const guideLabels: Record<string, string> = {
+    "bearded-dragon": "Bearded Dragon",
+    "leopard-gecko": "Leopard Gecko",
+    "corn-snake": "Corn Snake",
+    "crested-gecko": "Crested Gecko",
+    "blue-tongued-skink": "Blue-Tongued Skink",
+  };
   const roleLabels: Record<string, string> = {
     keeper: "Reptile keeper",
     rescue: "Rescue or adoption organization",
@@ -77,9 +85,10 @@ export default async function DashboardPage() {
             <section className="mt-10 rounded-2xl border border-green-500/20 bg-green-950/20 p-7" aria-labelledby="community-heading">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-green-400">Founding Community</p>
               <h2 id="community-heading" className="mt-2 text-2xl font-bold">You are helping build ScalesWiki from the beginning.</h2>
-              <div className="mt-5 grid gap-4 text-sm sm:grid-cols-3">
+              <div className="mt-5 grid gap-4 text-sm sm:grid-cols-2 lg:grid-cols-4">
                 <div className="rounded-xl bg-black/20 p-4"><span className="block text-gray-400">Membership</span><strong className="mt-1 block text-green-300">Founding community</strong></div>
                 <div className="rounded-xl bg-black/20 p-4"><span className="block text-gray-400">Community role</span><strong className="mt-1 block text-white">{communityRole ? roleLabels[communityRole] ?? "Community member" : "Not selected yet"}</strong></div>
+                <div className="rounded-xl bg-black/20 p-4"><span className="block text-gray-400">Guide vote</span><strong className="mt-1 block text-white">{guideInterest ? guideLabels[guideInterest] ?? "Submitted" : "No preference yet"}</strong></div>
                 <div className="rounded-xl bg-black/20 p-4"><span className="block text-gray-400">Spotlight interest</span><strong className="mt-1 block text-white">{spotlightInterest ? "Interested" : "Not selected"}</strong></div>
               </div>
               <Link href="/community" className="mt-5 inline-flex font-semibold text-green-300 hover:text-green-200">Explore the community vision →</Link>
