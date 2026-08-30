@@ -59,7 +59,7 @@ export function NaturalHistory() {
           Ball Pythons spend much of their lives utilizing burrows, termite
           mounds, dense vegetation, and other sheltered environments.
           Captive enclosures should provide similar opportunities for hiding,
-          exploration, and thermoregulation.Replicating natural opportunities for hiding, climbing, exploring, 
+          exploration, and thermoregulation. Replicating natural opportunities for hiding, climbing, exploring, 
           and thermoregulation encourages normal behavior and supports long-term welfare.
         </RecommendationCard>
 
@@ -69,7 +69,7 @@ export function NaturalHistory() {
         >
           Multiple snug hides, visual barriers, and enclosure clutter allow
           Ball Pythons to display natural behaviors while helping many
-          individuals feel more secure in captivity.Snug hides should be available on both the warm and cool sides of the enclosure so the snake does not have to choose between feeling secure and maintaining its preferred body temperature.
+          individuals feel more secure in captivity. Snug hides should be available on both the warm and cool sides of the enclosure so the snake does not have to choose between feeling secure and maintaining its preferred body temperature.
         </RecommendationCard>
 
       </div>
@@ -91,7 +91,7 @@ export function NaturalHistory() {
         >
           Wild Ball Pythons feed primarily on small mammals and occasionally
           birds. They are ambush predators that rely on patience rather than
-          actively pursuing prey.Juveniles may consume a wider variety of appropriately sized prey than adults.
+          actively pursuing prey. Juveniles may consume a wider variety of appropriately sized prey than adults.
         </InfoCard>
 
         <InfoCard
