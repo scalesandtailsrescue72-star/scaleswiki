@@ -46,7 +46,7 @@ These natural conditions explain why captive Ball Pythons require both proper he
 
 ## Daily Behavior
 
-Ball Pythons are primarily nocturnal and crepuscular, meaning they are most active during the evening, overnight, and around dawn.
+Ball Pythons are primarily crepuscular to nocturnal, meaning they are most active around dusk, overnight, and near dawn.
 
 During daylight hours they usually remain hidden inside secure shelters to avoid predators and excessive heat.
 
@@ -89,7 +89,8 @@ Using the species' natural history as your guide is one of the best ways to prov
 
 - Ball Pythons are native to western and central Africa.
 - They naturally inhabit grasslands, savannas, and forest edges.
-- They are primarily nocturnal ambush predators.
+- Their activity patterns are primarily crepuscular to nocturnal.
+- They are ambush predators.
 - Proper husbandry is based on recreating their natural environment.
 ---
 
