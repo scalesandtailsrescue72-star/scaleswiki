@@ -120,10 +120,10 @@ export async function GET(request: Request) {
 
   if (code) {
     const supabase = await createClient();
-    const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(code);
+    const { data: exchangeData, error: exchangeError } = await supabase.auth.exchangeCodeForSession(code);
 
     if (!exchangeError) {
-      const { data: { user } } = await supabase.auth.getUser();
+      const user = exchangeData.user ?? (await supabase.auth.getUser()).data.user;
 
       if (user?.email && !user.user_metadata?.welcome_email_sent) {
         const sent = await sendWelcomeEmail(
