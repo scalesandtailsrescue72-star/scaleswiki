@@ -8,10 +8,9 @@ import { VetReviewBadge } from "@/app/components/ui/VetReviewBadge";
 export function NaturalHistory() {
   return (
     <section
-  id="natural-history"
-  className="mx-auto max-w-7xl px-6 py-24 lg:px-8"
->
-
+      id="natural-history"
+      className="mx-auto max-w-7xl px-6 py-24 lg:px-8"
+    >
       <SectionHeading
         eyebrow="Natural History"
         title="Understanding Ball Pythons in the Wild"
@@ -19,7 +18,6 @@ export function NaturalHistory() {
       />
 
       <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-
         <SpeciesStat
           label="Native Range"
           value="West & Central Africa"
@@ -28,9 +26,9 @@ export function NaturalHistory() {
 
         <SpeciesStat
           label="Activity"
-          value="Crepuscular"
+          value="Crepuscular to Nocturnal"
           accent="green"
-          description="Primarily crepuscular to nocturnal, with activity influenced by season, temperature, prey availability, and individual behavior."
+          description="Activity is concentrated around dusk, nighttime, and dawn, with patterns influenced by season, temperature, prey availability, and individual behavior."
         />
 
         <SpeciesStat
@@ -46,21 +44,19 @@ export function NaturalHistory() {
           accent="purple"
           description="Curls into a tight defensive ball when threatened."
         />
-
       </div>
 
       <div className="mt-16 space-y-8">
-
         <RecommendationCard
           type="evidence"
           title="Natural Behaviors Should Guide Husbandry"
           references={4}
         >
           Ball Pythons spend much of their lives utilizing burrows, termite
-          mounds, dense vegetation, and other sheltered environments.
-          Captive enclosures should provide similar opportunities for hiding,
-          exploration, and thermoregulation. Replicating natural opportunities for hiding, climbing, exploring, 
-          and thermoregulation encourages normal behavior and supports long-term welfare.
+          mounds, dense vegetation, and other sheltered environments. Captive
+          enclosures should provide secure hiding places along with appropriate
+          opportunities for climbing, exploration, and thermoregulation to
+          encourage normal behavior and support long-term welfare.
         </RecommendationCard>
 
         <RecommendationCard
@@ -69,44 +65,35 @@ export function NaturalHistory() {
         >
           Multiple snug hides, visual barriers, and enclosure clutter allow
           Ball Pythons to display natural behaviors while helping many
-          individuals feel more secure in captivity. Snug hides should be available on both the warm and cool sides of the enclosure so the snake does not have to choose between feeling secure and maintaining its preferred body temperature.
+          individuals feel more secure in captivity. Snug hides should be
+          available on both the warm and cool sides of the enclosure so the
+          snake does not have to choose between feeling secure and maintaining
+          its preferred body temperature.
         </RecommendationCard>
-
       </div>
 
       <div className="mt-16 grid gap-8 lg:grid-cols-3">
-
-        <InfoCard
-          icon="🌍"
-          title="Native Habitat"
-        >
+        <InfoCard icon="🌍" title="Native Habitat">
           Ball Pythons inhabit grasslands, savannas, lightly wooded areas,
           and agricultural landscapes where suitable shelter and prey are
           available.
         </InfoCard>
 
-        <InfoCard
-          icon="🐀"
-          title="Natural Diet"
-        >
+        <InfoCard icon="🐀" title="Natural Diet">
           Wild Ball Pythons feed primarily on small mammals and occasionally
           birds. They are ambush predators that rely on patience rather than
-          actively pursuing prey. Juveniles may consume a wider variety of appropriately sized prey than adults.
+          actively pursuing prey. Juveniles may consume a wider variety of
+          appropriately sized prey than adults.
         </InfoCard>
 
-        <InfoCard
-          icon="🌙"
-          title="Daily Activity"
-        >
+        <InfoCard icon="🌙" title="Daily Activity">
           During daylight hours Ball Pythons often remain hidden inside
           burrows or other secure retreats before becoming more active during
           cooler evening and nighttime periods.
         </InfoCard>
-
       </div>
 
       <ReferenceBox>
-
         <p>
           Barker DG, Barker TM.
           <em> Ball Pythons: The History, Natural History, Care and Breeding.</em>
@@ -121,15 +108,11 @@ export function NaturalHistory() {
           Association of Reptile and Amphibian Veterinarians (ARAV)
           educational resources.
         </p>
-
       </ReferenceBox>
 
       <div className="mt-16">
-
         <VetReviewBadge status="pending" />
-
       </div>
-
     </section>
   );
 }
