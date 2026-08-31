@@ -29,6 +29,29 @@ const quickLinks = [
   },
 ];
 
+const partnerDashboardContent = {
+  rescue: {
+    eyebrow: "Founding Rescue Partner",
+    title: "Welcome to your Rescue Partner dashboard.",
+    description:
+      "Your rescue perspective can help ScalesWiki build clearer resources for adopters. Start with the partner overview, explore the current education, and share ideas whenever your schedule allows.",
+    primaryHref: "/community/rescue-partners",
+    primaryLabel: "View the Rescue Partner Program",
+    secondaryHref: "mailto:partners@scaleswiki.org?subject=Founding%20Rescue%20Partner%20Question",
+    secondaryLabel: "Contact ScalesWiki",
+  },
+  veterinary: {
+    eyebrow: "Founding Veterinary Reviewer",
+    title: "Welcome to your Veterinary Reviewer dashboard.",
+    description:
+      "Your account gives you one place to review the program boundaries, inspect current educational material, and respond only to clearly scoped requests that fit your expertise and availability.",
+    primaryHref: "/veterinary-review/founding-reviewers",
+    primaryLabel: "View the Reviewer Program",
+    secondaryHref: "/veterinary-review",
+    secondaryLabel: "Read the Review Standards",
+  },
+} as const;
+
 export default async function DashboardPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -51,6 +74,10 @@ export default async function DashboardPage() {
     breeder: "Breeder",
     other: "Community member",
   };
+  const partnerContent =
+    communityRole === "rescue" || communityRole === "veterinary"
+      ? partnerDashboardContent[communityRole]
+      : null;
 
   return (
     <main className="min-h-screen bg-[#08120D] text-white">
@@ -58,13 +85,18 @@ export default async function DashboardPage() {
 
       <section className="mx-auto max-w-7xl px-6 py-12 sm:py-16 lg:px-8">
         <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#102017] to-[#0C1711] p-7 sm:p-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-green-400">My ScalesWiki</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-green-400">
+            {user && partnerContent ? partnerContent.eyebrow : "My ScalesWiki"}
+          </p>
           <h1 className="mt-3 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            {user ? "Welcome back." : "Save your learning progress."}
+            {user
+              ? partnerContent?.title ?? "Welcome back."
+              : "Save your learning progress."}
           </h1>
           <p className="mt-4 max-w-3xl text-base leading-7 text-gray-300 sm:text-lg">
             {user
-              ? "Pick up where you left off, track your Academy progress, revisit care resources, and keep your learning organized in one place."
+              ? partnerContent?.description ??
+                "Pick up where you left off, track your Academy progress, revisit care resources, and keep your learning organized in one place."
               : "Create a free ScalesWiki account to track completed lessons, continue where you left off, take final exams, and keep certificates tied to your profile."}
           </p>
 
@@ -75,6 +107,17 @@ export default async function DashboardPage() {
               </Link>
               <Link href="/auth/login" className="rounded-xl border border-green-600 px-6 py-3 text-center font-semibold text-green-300 transition hover:bg-green-950/50">
                 Sign In
+              </Link>
+            </div>
+          )}
+
+          {user && partnerContent && (
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <Link href={partnerContent.primaryHref} className="rounded-xl bg-green-600 px-6 py-3 text-center font-semibold text-white transition hover:bg-green-500">
+                {partnerContent.primaryLabel}
+              </Link>
+              <Link href={partnerContent.secondaryHref} className="rounded-xl border border-green-600 px-6 py-3 text-center font-semibold text-green-300 transition hover:bg-green-950/50">
+                {partnerContent.secondaryLabel}
               </Link>
             </div>
           )}
@@ -91,7 +134,12 @@ export default async function DashboardPage() {
                 <div className="rounded-xl bg-black/20 p-4"><span className="block text-gray-400">Guide vote</span><strong className="mt-1 block text-white">{guideInterest ? guideLabels[guideInterest] ?? "Submitted" : "No preference yet"}</strong></div>
                 <div className="rounded-xl bg-black/20 p-4"><span className="block text-gray-400">Spotlight interest</span><strong className="mt-1 block text-white">{spotlightInterest ? "Interested" : "Not selected"}</strong></div>
               </div>
-              <Link href="/community" className="mt-5 inline-flex font-semibold text-green-300 hover:text-green-200">Explore the community vision →</Link>
+              <Link
+                href={partnerContent?.primaryHref ?? "/community"}
+                className="mt-5 inline-flex font-semibold text-green-300 hover:text-green-200"
+              >
+                {partnerContent?.primaryLabel ?? "Explore the community vision"} →
+              </Link>
             </section>
 
             <div className="mt-10"><ContinueLearning /></div>
