@@ -30,7 +30,7 @@ export function QuickFacts() {
     },
     {
       title: "🌙 Activity",
-      value: "Primarily Nocturnal",
+      value: "Primarily Crepuscular to Nocturnal",
     },
     {
       title: "🏠 Adult Enclosure",
