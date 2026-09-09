@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import ChapterLayout from "@/app/components/ChapterLayout";
 import KeeperInsight from "@/app/components/callouts/KeeperInsight";
 import DecisionChecklist from "@/app/components/DecisionChecklist";
 import ChapterSnapshot from "@/app/components/snapshots/ChapterSnapshot";
+
+export const metadata: Metadata = {
+  title: "Ball Python Guide: Introduction",
+  description: "Start the ScalesWiki Ball Python guide with evidence-informed husbandry principles and the realities of long-term reptile care.",
+  alternates: { canonical: "/guides/ball-python/introduction" },
+};
 
 export default function IntroductionPage() {
   return (

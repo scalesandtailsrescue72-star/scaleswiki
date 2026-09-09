@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/app/components/Navbar";
 import { Footer } from "@/app/components/Footer";
@@ -5,6 +6,13 @@ import ContinueLearning from "@/app/components/dashboard/ContinueLearning";
 import DashboardStats from "@/app/components/dashboard/DashboardStats";
 import MyCourses from "@/app/components/dashboard/MyCourses";
 import { createClient } from "@/app/lib/database/server";
+
+export const metadata: Metadata = {
+  title: "My Dashboard",
+  description: "View your ScalesWiki community profile, Academy progress, courses, and partner resources.",
+  alternates: { canonical: "/dashboard" },
+  robots: { index: false, follow: false },
+};
 
 const quickLinks = [
   {

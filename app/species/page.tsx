@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Reptile Species Guides",
+  description: "Browse ScalesWiki reptile care guides and vote for the species guide you want us to build next.",
+  alternates: { canonical: "/species" },
+};
 
 type SpeciesCard = {
   name: string;
@@ -14,15 +21,15 @@ const species: SpeciesCard[] = [
     status: "Available",
     href: "/species/ball-python",
   },
-  { name: "Leopard Gecko", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon" },
-  { name: "Bearded Dragon", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon" },
-  { name: "Corn Snake", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon" },
-  { name: "Blue Tongue Skink", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon" },
-  { name: "Russian Tortoise", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon" },
-  { name: "Veiled Chameleon", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon" },
-  { name: "Green Iguana", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon" },
-  { name: "Red Eared Slider", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon" },
-  { name: "Crested Gecko", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon" },
+  { name: "Leopard Gecko", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon", href: "/auth/register?guide=leopard-gecko" },
+  { name: "Bearded Dragon", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon", href: "/auth/register?guide=bearded-dragon" },
+  { name: "Corn Snake", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon", href: "/auth/register?guide=corn-snake" },
+  { name: "Blue Tongue Skink", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon", href: "/auth/register?guide=blue-tongued-skink" },
+  { name: "Russian Tortoise", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon", href: "/auth/register" },
+  { name: "Veiled Chameleon", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon", href: "/auth/register" },
+  { name: "Green Iguana", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon", href: "/auth/register" },
+  { name: "Red Eared Slider", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon", href: "/auth/register" },
+  { name: "Crested Gecko", description: "Species guide planned for a future ScalesWiki release.", status: "Coming Soon", href: "/auth/register?guide=crested-gecko" },
 ];
 
 export default function SpeciesPage() {
@@ -48,7 +55,7 @@ export default function SpeciesPage() {
                   </span>
                 </div>
                 <p className="mt-3 text-sm leading-6 text-gray-300">{item.description}</p>
-                {item.href && <p className="mt-5 text-sm font-semibold text-green-300">Explore {item.name} →</p>}
+                {item.href && <p className="mt-5 text-sm font-semibold text-green-300">{item.status === "Available" ? `Explore ${item.name}` : "Join free to get updates"} →</p>}
               </>
             );
 

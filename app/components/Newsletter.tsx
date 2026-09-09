@@ -9,7 +9,7 @@ export function Newsletter() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!email.trim()) return;
+    if (!event.currentTarget.reportValidity()) return;
 
     setStatus("loading");
     setMessage("");
@@ -18,7 +18,8 @@ export function Newsletter() {
       const response = await fetch("/api/newsletter/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: email.trim() }),
+        cache: "no-store",
       });
 
       const data = await response.json();
@@ -47,14 +48,23 @@ export function Newsletter() {
           New guides, new Academy courses, printable resources, community updates, and rescue news. No spam; unsubscribe anytime.
         </p>
 
-        <form onSubmit={handleSubmit} className="mx-auto mt-10 flex max-w-xl flex-col gap-4 sm:flex-row">
+        <form onSubmit={handleSubmit} className="mx-auto mt-10 flex max-w-xl flex-col gap-4 sm:flex-row" aria-busy={status === "loading"}>
           <label htmlFor="newsletter-email" className="sr-only">Email address</label>
           <input
             id="newsletter-email"
+            name="email"
             type="email"
+            inputMode="email"
+            autoComplete="email"
             required
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(event) => {
+              setEmail(event.target.value);
+              if (status !== "idle") {
+                setStatus("idle");
+                setMessage("");
+              }
+            }}
             placeholder="Enter your email"
             className="flex-1 rounded-xl border border-white/10 bg-[#15211A] px-5 py-4 text-white outline-none focus:border-green-500/60"
           />
@@ -69,7 +79,7 @@ export function Newsletter() {
         </form>
 
         {message && (
-          <p className={`mt-4 text-sm ${status === "error" ? "text-red-300" : "text-green-300"}`} role="status">
+          <p className={`mt-4 text-sm ${status === "error" ? "text-red-300" : "text-green-300"}`} role="status" aria-live="polite">
             {message}
           </p>
         )}

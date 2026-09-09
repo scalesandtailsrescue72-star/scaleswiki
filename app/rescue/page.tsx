@@ -53,7 +53,8 @@ export default function RescuePage() {
         <h2 className="text-4xl font-bold">Support the mission without locking care behind a wall.</h2>
         <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-gray-300">Founding Membership is being designed to support free educational resources, independent review, and the broader rescue-focused mission while keeping core husbandry information broadly accessible.</p>
         <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-          <Link href="/founders-tree" className="rounded-xl bg-green-600 px-7 py-4 font-semibold text-white transition hover:bg-green-500">Explore the Founders Tree</Link>
+          <Link href="/community/rescue-partners" className="rounded-xl bg-green-600 px-7 py-4 font-semibold text-white transition hover:bg-green-500">Join as a Rescue Partner</Link>
+          <Link href="/founders-tree" className="rounded-xl border border-green-600 px-7 py-4 font-semibold text-green-300 transition hover:bg-green-950/50">Explore the Founders Tree</Link>
           <Link href="/articles" className="rounded-xl border border-green-600 px-7 py-4 font-semibold text-green-300 transition hover:bg-green-950/50">Read Care Articles</Link>
         </div>
       </section>

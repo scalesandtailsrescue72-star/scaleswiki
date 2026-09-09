@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import ChapterLayout from "@/app/components/ChapterLayout";
 import DecisionChecklist from "@/app/components/callouts/DecisionChecklist";
 import KeeperInsight from "@/app/components/callouts/KeeperInsight";
+
+export const metadata: Metadata = {
+  title: "Is a Ball Python Right for You?",
+  description: "Evaluate the time, cost, feeding, space, veterinary access, and long-term responsibility involved in keeping a Ball Python.",
+  alternates: { canonical: "/guides/ball-python/is-a-ball-python-right-for-you" },
+};
 
 export default function IsABallPythonRightForYouPage() {
   return (

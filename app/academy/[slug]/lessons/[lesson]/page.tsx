@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { LessonPage } from "@/app/academy/lib/lessonPage";
@@ -8,15 +9,32 @@ type LessonPageProps = {
   params: { slug: string; lesson: string } | Promise<{ slug: string; lesson: string }>;
 };
 
+export async function generateMetadata({ params }: LessonPageProps): Promise<Metadata> {
+  const { slug, lesson } = await params;
+  const course = getCourseBySlug(slug);
+  const currentLesson = course?.lessons.find((item) => item.number === Number(lesson));
+
+  if (!course || !currentLesson) {
+    return { title: "Academy Lesson Not Found", robots: { index: false, follow: false } };
+  }
+
+  const canonical = `/academy/${slug}/lessons/${lesson}`;
+  const description = `Study lesson ${currentLesson.number}, ${currentLesson.title}, in the ${course.title} course.`;
+
+  return {
+    title: `${currentLesson.title} | ${course.title}`,
+    description,
+    alternates: { canonical },
+    openGraph: { title: `${currentLesson.title} | ${course.title}`, description, url: canonical },
+  };
+}
+
 export default async function Page({ params }: LessonPageProps) {
   const resolvedParams = (await params) as { slug: string; lesson: string };
   const courseSlug = resolvedParams.slug;
   const lessonNumber = Number(resolvedParams.lesson);
 
   const course = getCourseBySlug(courseSlug);
-  console.log("Course slug:", courseSlug);
-console.log("Lessons:", course?.lessons.map(l => l.number));
-
   if (!course) {
     notFound();
   }

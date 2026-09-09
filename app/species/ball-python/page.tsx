@@ -45,7 +45,14 @@ export default function BallPythonPage() {
       <GuideDownloadCard />
 
       <section className="mx-auto max-w-5xl px-6 pb-10">
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <Link href="/guides/ball-python" className="rounded-2xl border border-green-500/20 bg-green-500/5 p-6 transition hover:border-green-400/50 hover:bg-green-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-green-400">Read chapter by chapter</p>
+            <h2 className="mt-2 text-xl font-semibold">Guide Chapters</h2>
+            <p className="mt-2 text-sm leading-6 text-gray-300">Use the chaptered edition for focused reading, decisions, and practical keeper takeaways.</p>
+            <p className="mt-4 font-semibold text-green-300">Browse chapters →</p>
+          </Link>
+
           <Link href="/shop/ball-python-supplies" className="rounded-2xl border border-green-500/20 bg-green-500/5 p-6 transition hover:border-green-400/50 hover:bg-green-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-green-400">Build the habitat</p>
             <h2 className="mt-2 text-xl font-semibold">Setup & Supplies</h2>

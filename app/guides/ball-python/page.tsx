@@ -1,4 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Ball Python Guide Chapters",
+  description: "Read the chapter-by-chapter ScalesWiki Ball Python guide and access the complete care reference, Academy course, and setup resources.",
+  alternates: { canonical: "/guides/ball-python" },
+  openGraph: {
+    title: "Ball Python Guide Chapters | ScalesWiki",
+    description: "A chapter-by-chapter Ball Python guide with links to ScalesWiki's complete husbandry reference and Academy course.",
+    url: "/guides/ball-python",
+  },
+};
 
 const chapters = [
   { title: "Introduction", href: "/guides/ball-python/introduction" },

@@ -1,3 +1,12 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Veterinary Reviewer Access",
+  description: "Access the current ScalesWiki veterinary review project, reviewer instructions, and structured feedback materials.",
+  alternates: { canonical: "/veterinary-review/access" },
+  robots: { index: false, follow: false },
+};
+
 export default function VeterinaryReviewAccessPage() {
   return (
     <main className="min-h-screen bg-[#07110C] px-6 py-16 text-gray-200">

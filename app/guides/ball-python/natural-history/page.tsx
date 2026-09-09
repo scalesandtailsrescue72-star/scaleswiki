@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import ChapterLayout from "@/app/components/ChapterLayout";
 import KeeperInsight from "@/app/components/callouts/KeeperInsight";
 import VetPerspective from "@/app/components/callouts/VetPerspective";
 import CommonMistake from "@/app/components/callouts/CommonMistake";
 import WhyThisMatters from "@/app/components/callouts/WhyThisMatters";
 import SpeciesProfile from "@/app/components/callouts/SpeciesProfile";
+
+export const metadata: Metadata = {
+  title: "Ball Python Natural History",
+  description: "Learn how the Ball Python's native range, habitat, climate, and behavior inform responsible captive husbandry.",
+  alternates: { canonical: "/guides/ball-python/natural-history" },
+};
 
 export default function NaturalHistoryPage() {
   return (

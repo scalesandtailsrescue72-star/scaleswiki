@@ -49,6 +49,14 @@ export default function CommunityPage() {
       </section>
 
       <section className="mx-auto max-w-5xl px-6 py-16 lg:px-8">
+        <div className="mb-8 rounded-3xl border border-green-500/30 bg-green-500/10 p-8 sm:flex sm:items-center sm:justify-between sm:gap-8">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-green-400">For rescue organizations</p>
+            <h2 className="mt-3 text-3xl font-bold">Help shape better education for adopters.</h2>
+            <p className="mt-3 max-w-2xl leading-7 text-gray-300">The Founding Rescue Partner program is free, flexible, and does not require an endorsement or public profile.</p>
+          </div>
+          <Link href="/community/rescue-partners" className="mt-6 inline-flex shrink-0 rounded-xl bg-green-600 px-6 py-3 font-semibold text-white transition hover:bg-green-500 sm:mt-0">View the Rescue Partner Program</Link>
+        </div>
         <div className="rounded-3xl border border-green-500/20 bg-gradient-to-br from-[#13231B] to-[#0B1411] p-8 sm:p-10">
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-green-400">Free founding membership</p>
           <h2 className="mt-3 text-3xl font-bold sm:text-4xl">What members receive now</h2>
