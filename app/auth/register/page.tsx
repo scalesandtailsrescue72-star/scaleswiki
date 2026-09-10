@@ -29,6 +29,7 @@ export default function RegisterPage() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [memberRole, setMemberRole] = useState("keeper");
+  const [organizationName, setOrganizationName] = useState("");
   const [guideInterest, setGuideInterest] = useState("");
   const [spotlightInterest, setSpotlightInterest] = useState(false);
   const [email, setEmail] = useState("");
@@ -60,6 +61,9 @@ export default function RegisterPage() {
           first_name: firstName,
           last_name: lastName,
           community_role: memberRole,
+          organization_name: ["rescue", "veterinary", "store", "educator"].includes(memberRole)
+            ? organizationName.trim() || null
+            : null,
           guide_interest: guideInterest || null,
           spotlight_interest: spotlightInterest,
           founding_community: true,
@@ -119,6 +123,21 @@ export default function RegisterPage() {
                 {memberRoles.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
               </select>
             </label>
+
+            {["rescue", "veterinary", "store", "educator"].includes(memberRole) && (
+              <label className="block text-sm font-medium text-gray-200">
+                Organization or practice name
+                <input
+                  type="text"
+                  autoComplete="organization"
+                  className="mt-2 w-full rounded-lg border border-gray-700 bg-[#08120D] p-3 text-white"
+                  value={organizationName}
+                  onChange={(event) => setOrganizationName(event.target.value)}
+                  placeholder="Example: Arrowhead Reptile Rescue"
+                />
+                <span className="mt-1 block text-xs text-gray-500">This helps us group multiple staff accounts under one organization.</span>
+              </label>
+            )}
 
             <label className="block text-sm font-medium text-gray-200">
               Which guide should ScalesWiki build next?
