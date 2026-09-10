@@ -23,6 +23,7 @@ create index if not exists partner_organization_members_org_idx
 alter table public.partner_organizations enable row level security;
 alter table public.partner_organization_members enable row level security;
 
+drop policy if exists "Members can view their organizations" on public.partner_organizations;
 create policy "Members can view their organizations"
 on public.partner_organizations for select to authenticated
 using (
@@ -32,6 +33,7 @@ using (
   )
 );
 
+drop policy if exists "Members can view their own membership" on public.partner_organization_members;
 create policy "Members can view their own membership"
 on public.partner_organization_members for select to authenticated
 using (user_id = auth.uid());
