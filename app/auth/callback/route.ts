@@ -23,6 +23,10 @@ const personalEmailDomains = new Set([
   "yahoo.com", "ymail.com",
 ]);
 
+const organizationDomainAliases = new Map([
+  ["arrowheadreprilerescue.org", "arrowheadreptilerescue.org"],
+]);
+
 function getAdminClient() {
   const env = getRuntimeEnv();
   if (!env.NEXT_PUBLIC_SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) return null;
@@ -40,7 +44,8 @@ async function connectOrganization(admin: SupabaseClient, user: User) {
   if (!role || !["rescue", "veterinary", "store", "educator"].includes(role)) return;
 
   const emailDomain = user.email?.split("@").pop()?.toLowerCase();
-  const customDomain = emailDomain && !personalEmailDomains.has(emailDomain) ? emailDomain : null;
+  const canonicalDomain = emailDomain ? organizationDomainAliases.get(emailDomain) || emailDomain : null;
+  const customDomain = canonicalDomain && !personalEmailDomains.has(canonicalDomain) ? canonicalDomain : null;
   const suppliedName = String(user.user_metadata?.organization_name || "").trim();
   const normalizedName = suppliedName ? normalizeOrganizationName(suppliedName) : null;
   if (!customDomain && !normalizedName) return;
