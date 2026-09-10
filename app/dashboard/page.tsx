@@ -43,10 +43,10 @@ const partnerDashboardContent = {
     title: "Welcome to your Rescue Partner dashboard.",
     description:
       "Your rescue perspective can help ScalesWiki build clearer resources for adopters. Start with the partner overview, explore the current education, and share ideas whenever your schedule allows.",
-    primaryHref: "/community/rescue-partners",
-    primaryLabel: "View the Rescue Partner Program",
-    secondaryHref: "mailto:partners@scaleswiki.org?subject=Founding%20Rescue%20Partner%20Question",
-    secondaryLabel: "Contact ScalesWiki",
+    primaryHref: "/community/rescue-partners/input",
+    primaryLabel: "Share Rescue Partner Input",
+    secondaryHref: "/community/rescue-partners",
+    secondaryLabel: "View the Rescue Partner Program",
   },
   veterinary: {
     eyebrow: "Founding Veterinary Reviewer",
