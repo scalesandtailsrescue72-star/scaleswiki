@@ -1,25 +1,34 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { Suspense, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { supabase } from "@/app/lib/database/supabase";
+import { getSafeNextPath } from "@/app/auth/safe-next";
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const nextPath = getSafeNextPath(searchParams.get("next"));
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [loading, setLoading] = useState(false);
-
   const [error, setError] = useState("");
+  const [message, setMessage] = useState(
+    searchParams.get("reset") === "success"
+      ? "Your password has been updated. Sign in with your new password."
+      : "",
+  );
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
 
     setLoading(true);
     setError("");
+    setMessage("");
 
     const { error } = await supabase.auth.signInWithPassword({
       email,
@@ -29,11 +38,11 @@ export default function LoginPage() {
     setLoading(false);
 
     if (error) {
-      setError(error.message);
+      setError(error.message === "Invalid login credentials" ? "That email and password do not match. You can reset your password below." : error.message);
       return;
     }
 
-    router.push("/dashboard");
+    router.push(nextPath);
     router.refresh();
   }
 
@@ -71,9 +80,21 @@ export default function LoginPage() {
             required
           />
 
+          <div className="-mt-2 text-right">
+            <Link href={`/auth/forgot-password?next=${encodeURIComponent(nextPath)}`} className="text-sm font-semibold text-green-400 hover:text-green-300">
+              Forgot your password?
+            </Link>
+          </div>
+
           {error && (
-            <p className="text-red-400">
+            <p className="rounded-lg bg-red-950/40 p-3 text-sm text-red-300" role="alert">
               {error}
+            </p>
+          )}
+
+          {message && (
+            <p className="rounded-lg bg-green-950/40 p-3 text-sm text-green-300" role="status">
+              {message}
             </p>
           )}
 
@@ -85,7 +106,19 @@ export default function LoginPage() {
             {loading ? "Signing In..." : "Sign In"}
           </button>
         </form>
+
+        <p className="mt-6 text-center text-sm text-gray-400">
+          Need an account? <Link href="/auth/register" className="font-semibold text-green-400 hover:text-green-300">Join free</Link>
+        </p>
       </div>
     </main>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<main className="min-h-screen bg-[#08120D]" />}>
+      <LoginForm />
+    </Suspense>
   );
 }

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { createClient as createAdminClient, type SupabaseClient, type User } from "@supabase/supabase-js";
 import { createClient } from "@/app/lib/database/server";
+import { getSafeNextPath } from "@/app/auth/safe-next";
 
 function getRuntimeEnv() {
   try {
@@ -250,6 +251,7 @@ async function sendOwnerSignupNotification(user: User) {
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
+  const nextPath = getSafeNextPath(searchParams.get("next"));
 
   if (code) {
     const supabase = await createClient();
@@ -287,5 +289,5 @@ export async function GET(request: Request) {
     }
   }
 
-  return NextResponse.redirect(`${origin}/dashboard`);
+  return NextResponse.redirect(`${origin}${nextPath}`);
 }
