@@ -1,17 +1,8 @@
 import { NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
-import { createClient as createAdminClient, type SupabaseClient, type User } from "@supabase/supabase-js";
+import { createClient as createAdminClient } from "@supabase/supabase-js";
 import { createClient } from "@/app/lib/database/server";
-
-const personalEmailDomains = new Set([
-  "aol.com", "gmail.com", "hotmail.com", "icloud.com", "live.com",
-  "me.com", "msn.com", "outlook.com", "proton.me", "protonmail.com",
-  "yahoo.com", "ymail.com",
-]);
-
-const organizationDomainAliases = new Map([
-  ["arrowheadreprilerescue.org", "arrowheadreptilerescue.org"],
-]);
+import { ensurePartnerOrganization } from "@/app/lib/partners/organizations";
 
 function getRuntimeEnv() {
   try {
@@ -27,68 +18,6 @@ function escapeHtml(value: string) {
 
 function cleanText(value: unknown, maxLength: number) {
   return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
-}
-
-function normalizeOrganizationName(value: string) {
-  return value.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-}
-
-async function repairOrganizationMembership(admin: SupabaseClient, user: User) {
-  const suppliedName = String(user.user_metadata?.organization_name || "").trim();
-  const normalizedName = suppliedName ? normalizeOrganizationName(suppliedName) : null;
-  const emailDomain = user.email?.split("@").pop()?.toLowerCase();
-  const canonicalDomain = emailDomain ? organizationDomainAliases.get(emailDomain) || emailDomain : null;
-  const customDomain = canonicalDomain && !personalEmailDomains.has(canonicalDomain) ? canonicalDomain : null;
-
-  if (!customDomain && !normalizedName) return null;
-
-  const lookup = customDomain
-    ? admin.from("partner_organizations").select("id").eq("email_domain", customDomain).maybeSingle()
-    : admin.from("partner_organizations").select("id").eq("normalized_name", normalizedName!).maybeSingle();
-  const { data: existing, error: lookupError } = await lookup;
-  if (lookupError) {
-    console.error("[Rescue Partner Feedback] Organization lookup failed", lookupError.message);
-    return null;
-  }
-
-  let organizationId = existing?.id as string | undefined;
-  if (!organizationId) {
-    const fallbackName = customDomain
-      ? customDomain.split(".")[0].replace(/[-_]+/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase())
-      : "Rescue Partner Organization";
-    const { data: created, error: createError } = await admin
-      .from("partner_organizations")
-      .insert({
-        name: suppliedName || fallbackName,
-        normalized_name: normalizedName,
-        email_domain: customDomain,
-        organization_type: "rescue",
-      })
-      .select("id")
-      .single();
-    if (createError) {
-      console.error("[Rescue Partner Feedback] Organization repair failed", createError.message);
-      return null;
-    }
-    organizationId = created.id;
-  }
-
-  const localPart = user.email?.split("@")[0].toLowerCase() || "";
-  const organizationAccount = ["admin", "contact", "hello", "info", "office", "team"].includes(localPart);
-  const { error: membershipError } = await admin.from("partner_organization_members").upsert(
-    {
-      organization_id: organizationId,
-      user_id: user.id,
-      member_kind: organizationAccount ? "organization_account" : "staff",
-    },
-    { onConflict: "user_id" },
-  );
-  if (membershipError) {
-    console.error("[Rescue Partner Feedback] Membership repair failed", membershipError.message);
-    return null;
-  }
-
-  return organizationId;
 }
 
 export async function POST(request: Request) {
@@ -129,7 +58,7 @@ export async function POST(request: Request) {
       const admin = createAdminClient(env.NEXT_PUBLIC_SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY, {
         auth: { autoRefreshToken: false, persistSession: false },
       });
-      organizationId = await repairOrganizationMembership(admin, user) || undefined;
+      organizationId = await ensurePartnerOrganization(admin, user) || undefined;
     }
   }
 
