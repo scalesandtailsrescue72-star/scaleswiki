@@ -3,7 +3,7 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { createClient as createAdminClient } from "@supabase/supabase-js";
 import { createClient } from "@/app/lib/database/server";
 
-const actions = new Set(["approve", "decline", "publish", "unpublish"]);
+const actions = new Set(["approve", "decline", "publish", "unpublish", "delete"]);
 
 function getRuntimeEnv() {
   try {
@@ -43,6 +43,18 @@ export async function POST(request: Request) {
     .maybeSingle();
   if (lookupError || !organization) {
     return NextResponse.json({ error: "Organization profile not found." }, { status: 404 });
+  }
+
+  if (action === "delete") {
+    if (organization.profile_status !== "declined") {
+      return NextResponse.json({ error: "Only declined organization profiles can be permanently deleted." }, { status: 409 });
+    }
+    const { error: deleteError } = await admin.from("partner_organizations").delete().eq("id", organizationId);
+    if (deleteError) {
+      console.error("[Partner Profile Moderation] Delete failed", deleteError.message);
+      return NextResponse.json({ error: "The organization could not be deleted." }, { status: 500 });
+    }
+    return NextResponse.json({ ok: true, deleted: true });
   }
 
   let update: { profile_status: string; profile_published_at: string | null };

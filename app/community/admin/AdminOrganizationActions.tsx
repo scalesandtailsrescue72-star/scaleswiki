@@ -3,12 +3,13 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-type ModerationAction = "approve" | "decline" | "publish" | "unpublish";
+type ModerationAction = "approve" | "decline" | "publish" | "unpublish" | "delete";
 
 const confirmationText: Partial<Record<ModerationAction, string>> = {
   decline: "Decline this organization profile? It will remain private.",
   publish: "Publish this organization in the public Rescue Partner directory?",
   unpublish: "Remove this organization from the public directory?",
+  delete: "Permanently delete this declined organization, its membership links, and its partner submissions? The ScalesWiki login account will remain. This cannot be undone.",
 };
 
 export function AdminOrganizationActions({ organizationId, status }: { organizationId: string; status: string }) {
@@ -30,7 +31,7 @@ export function AdminOrganizationActions({ organizationId, status }: { organizat
       });
       const data = await response.json();
       if (!response.ok) throw new Error(data?.error || "Moderation action failed.");
-      setMessage(`Profile ${data.profileStatus}.`);
+      setMessage(data.deleted ? "Organization deleted." : `Profile ${data.profileStatus}.`);
       router.refresh();
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Moderation action failed.");
@@ -48,6 +49,7 @@ export function AdminOrganizationActions({ organizationId, status }: { organizat
         {status === "approved" && <button type="button" disabled={pending !== null} onClick={() => moderate("publish")} className={`${buttonClass} bg-emerald-600 text-white hover:bg-emerald-500`}>{pending === "publish" ? "Publishing..." : "Publish to Directory"}</button>}
         {(status === "submitted" || status === "approved") && <button type="button" disabled={pending !== null} onClick={() => moderate("decline")} className={`${buttonClass} border border-red-500/60 text-red-300 hover:bg-red-950/40`}>{pending === "decline" ? "Declining..." : "Decline"}</button>}
         {status === "published" && <button type="button" disabled={pending !== null} onClick={() => moderate("unpublish")} className={`${buttonClass} border border-amber-400/60 text-amber-200 hover:bg-amber-950/40`}>{pending === "unpublish" ? "Unpublishing..." : "Unpublish"}</button>}
+        {status === "declined" && <button type="button" disabled={pending !== null} onClick={() => moderate("delete")} className={`${buttonClass} border border-red-500/60 text-red-300 hover:bg-red-950/40`}>{pending === "delete" ? "Deleting..." : "Delete Organization"}</button>}
         {status === "draft" && <span className="text-sm text-gray-500">Waiting for the organization to submit its profile.</span>}
       </div>
       {message && <p className="mt-3 text-sm text-gray-300" role="status">{message}</p>}

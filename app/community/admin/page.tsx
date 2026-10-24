@@ -43,6 +43,8 @@ export default async function CommunityAdminPage() {
 
   const users = authData?.users || [];
   const userById = new Map(users.map((account) => [account.id, account]));
+  const activeOrganizations = organizations?.filter((organization) => organization.profile_status !== "declined") || [];
+  const declinedOrganizations = organizations?.filter((organization) => organization.profile_status === "declined") || [];
   const submittedCount = organizations?.filter((organization) => organization.profile_status === "submitted").length || 0;
   const publishedCount = organizations?.filter((organization) => organization.profile_status === "published").length || 0;
 
@@ -55,18 +57,41 @@ export default async function CommunityAdminPage() {
         </div>
 
         <section className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {[["Partner organizations", organizations?.length || 0], ["Awaiting review", submittedCount], ["Published profiles", publishedCount], ["Partner submissions", feedback?.length || 0]].map(([label, value]) => <div key={label} className="rounded-2xl border border-white/10 bg-[#102017] p-5"><div className="text-sm text-gray-400">{label}</div><div className="mt-2 text-3xl font-bold text-green-300">{value}</div></div>)}
+          {[["Active organizations", activeOrganizations.length], ["Awaiting review", submittedCount], ["Published profiles", publishedCount], ["Partner submissions", feedback?.length || 0]].map(([label, value]) => <div key={label} className="rounded-2xl border border-white/10 bg-[#102017] p-5"><div className="text-sm text-gray-400">{label}</div><div className="mt-2 text-3xl font-bold text-green-300">{value}</div></div>)}
         </section>
 
         <section className="mt-10">
-          <h2 className="text-2xl font-bold">Partner organizations</h2>
+          <h2 className="text-2xl font-bold">Active partner organizations</h2>
           <div className="mt-5 grid gap-5 lg:grid-cols-2">
-            {organizations?.map((organization) => {
+            {activeOrganizations.map((organization) => {
               const organizationMembers = memberships?.filter((membership) => membership.organization_id === organization.id) || [];
               return <article key={organization.id} className="rounded-2xl border border-white/10 bg-[#102017] p-6"><div className="flex items-start justify-between gap-4"><div><h3 className="text-xl font-semibold text-white">{organization.name}</h3><p className="mt-1 text-sm text-gray-400">{organization.email_domain || "No organization domain"}</p></div><div className="flex flex-col items-end gap-2"><span className="rounded-full bg-green-500/15 px-3 py-1 text-xs font-semibold capitalize text-green-300">{organization.organization_type}</span><span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold capitalize text-gray-300">Profile: {organization.profile_status || "draft"}</span></div></div>{organization.profile_submitted_at && <div className="mt-5 rounded-xl border border-amber-400/15 bg-amber-500/10 p-4 text-sm"><div className="font-semibold text-amber-100">Consent record</div><div className="mt-2 grid gap-1 text-amber-50/75 sm:grid-cols-2"><span>Authorized representative: {organization.representative_authorized ? "Yes" : "No"}</span><span>Public directory: {organization.directory_consent ? "Approved" : "Not approved"}</span><span>Name/logo outside directory: {organization.name_logo_consent ? "Approved" : "Not approved"}</span><span>Spotlight contact: {organization.spotlight_contact_consent ? "Approved" : "Not approved"}</span><span>Public links: {organization.public_links_consent ? "Approved" : "Not approved"}</span><span>Recorded: {organization.consented_at ? new Date(organization.consented_at).toLocaleDateString() : "Not recorded"}</span></div></div>}{organization.public_description && <p className="mt-5 text-sm leading-6 text-gray-300">{organization.public_description}</p>}{(organization.city || organization.state_region || organization.service_area) && <p className="mt-3 text-sm text-gray-400">Location: {[organization.city, organization.state_region].filter(Boolean).join(", ") || "Not specified"} · Service area: {organization.service_area || "Not specified"}</p>}{organization.species_handled?.length > 0 && <p className="mt-2 text-sm text-gray-400">Species: {organization.species_handled.join(", ")}</p>}<div className="mt-5 space-y-3">{organizationMembers.map((membership) => { const account = userById.get(membership.user_id); const name = [account?.user_metadata?.first_name, account?.user_metadata?.last_name].filter(Boolean).join(" ") || "Member"; return <div key={membership.user_id} className="rounded-xl bg-black/20 p-4 text-sm"><div className="font-semibold text-white">{name}</div><div className="text-gray-400">{account?.email || membership.user_id}</div><div className="mt-1 text-xs capitalize text-gray-500">{membership.member_kind.replace("_", " ")}</div></div>; })}</div><AdminOrganizationActions organizationId={organization.id} status={organization.profile_status || "draft"} /></article>;
             })}
           </div>
         </section>
+
+        {declinedOrganizations.length > 0 && (
+          <details className="mt-10 rounded-2xl border border-white/10 bg-[#0d1912] p-6">
+            <summary className="cursor-pointer text-lg font-semibold text-gray-300">Declined profiles ({declinedOrganizations.length})</summary>
+            <p className="mt-3 text-sm text-gray-500">Retained privately for review history. Delete an organization only when you want to remove its organization record, membership links, and partner submissions permanently.</p>
+            <div className="mt-5 grid gap-5 lg:grid-cols-2">
+              {declinedOrganizations.map((organization) => {
+                const organizationMembers = memberships?.filter((membership) => membership.organization_id === organization.id) || [];
+                return (
+                  <article key={organization.id} className="rounded-xl border border-red-500/15 bg-red-950/10 p-5">
+                    <h3 className="text-lg font-semibold text-white">{organization.name}</h3>
+                    <p className="mt-1 text-sm text-gray-400">{organization.email_domain || "No organization domain"}</p>
+                    {organizationMembers.map((membership) => {
+                      const account = userById.get(membership.user_id);
+                      return <p key={membership.user_id} className="mt-3 text-sm text-gray-400">{account?.email || membership.user_id}</p>;
+                    })}
+                    <AdminOrganizationActions organizationId={organization.id} status="declined" />
+                  </article>
+                );
+              })}
+            </div>
+          </details>
+        )}
 
         <section className="mt-12">
           <h2 className="text-2xl font-bold">Rescue Partner input</h2>
