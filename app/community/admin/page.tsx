@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { createClient as createAdminClient } from "@supabase/supabase-js";
 import { createClient as createUserClient } from "@/app/lib/database/server";
+import { AdminFeedbackActions } from "./AdminFeedbackActions";
 import { AdminOrganizationActions } from "./AdminOrganizationActions";
 
 export const dynamic = "force-dynamic";
@@ -70,7 +71,26 @@ export default async function CommunityAdminPage() {
         <section className="mt-12">
           <h2 className="text-2xl font-bold">Rescue Partner input</h2>
           <div className="mt-5 space-y-5">
-            {feedback?.length ? feedback.map((entry) => { const account = userById.get(entry.submitted_by); const organization = organizations?.find((item) => item.id === entry.organization_id); return <article key={entry.id} className="rounded-2xl border border-white/10 bg-[#102017] p-6"><div className="flex flex-col justify-between gap-2 sm:flex-row"><div><h3 className="text-xl font-semibold">{organization?.name || "Rescue Partner"}</h3><p className="text-sm text-gray-400">{account?.email || "Account unavailable"}</p></div><time className="text-sm text-gray-500">{new Date(entry.created_at).toLocaleDateString()}</time></div><div className="mt-5 grid gap-5 lg:grid-cols-2"><div><h4 className="font-semibold text-green-300">Adopter challenges</h4><p className="mt-2 whitespace-pre-wrap leading-7 text-gray-300">{entry.adopter_challenges}</p></div><div><h4 className="font-semibold text-green-300">Requested resources</h4><p className="mt-2 whitespace-pre-wrap leading-7 text-gray-300">{entry.requested_resources}</p></div></div><p className="mt-5 text-sm text-gray-400">Species: {entry.species_handled?.join(", ") || "Not specified"} · Spotlight: {entry.spotlight_interest ? "Yes" : "No"} · Follow-up: {entry.follow_up_ok ? "Yes" : "No"}</p>{entry.collaboration_notes && <p className="mt-3 whitespace-pre-wrap text-sm leading-6 text-gray-400">Notes: {entry.collaboration_notes}</p>}</article>; }) : <div className="rounded-2xl border border-dashed border-white/15 p-8 text-gray-400">No Rescue Partner input has been submitted yet.</div>}
+            {feedback?.length ? feedback.map((entry) => {
+              const account = userById.get(entry.submitted_by);
+              const organization = organizations?.find((item) => item.id === entry.organization_id);
+              const organizationName = organization?.name || "Rescue Partner";
+              return (
+                <article key={entry.id} className="rounded-2xl border border-white/10 bg-[#102017] p-6">
+                  <div className="flex flex-col justify-between gap-2 sm:flex-row">
+                    <div><h3 className="text-xl font-semibold">{organizationName}</h3><p className="text-sm text-gray-400">{account?.email || "Account unavailable"}</p></div>
+                    <time className="text-sm text-gray-500">{new Date(entry.created_at).toLocaleDateString()}</time>
+                  </div>
+                  <div className="mt-5 grid gap-5 lg:grid-cols-2">
+                    <div><h4 className="font-semibold text-green-300">Adopter challenges</h4><p className="mt-2 whitespace-pre-wrap leading-7 text-gray-300">{entry.adopter_challenges}</p></div>
+                    <div><h4 className="font-semibold text-green-300">Requested resources</h4><p className="mt-2 whitespace-pre-wrap leading-7 text-gray-300">{entry.requested_resources}</p></div>
+                  </div>
+                  <p className="mt-5 text-sm text-gray-400">Species: {entry.species_handled?.join(", ") || "Not specified"} · Spotlight: {entry.spotlight_interest ? "Yes" : "No"} · Follow-up: {entry.follow_up_ok ? "Yes" : "No"}</p>
+                  {entry.collaboration_notes && <p className="mt-3 whitespace-pre-wrap text-sm leading-6 text-gray-400">Notes: {entry.collaboration_notes}</p>}
+                  <AdminFeedbackActions feedbackId={entry.id} organizationName={organizationName} recipientEmail={account?.email || null} />
+                </article>
+              );
+            }) : <div className="rounded-2xl border border-dashed border-white/15 p-8 text-gray-400">No Rescue Partner input has been submitted yet.</div>}
           </div>
         </section>
       </div>
