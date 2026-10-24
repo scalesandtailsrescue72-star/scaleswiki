@@ -8,7 +8,8 @@ export function RescuePartnerInputForm() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     setStatus("saving");
     setMessage("");
 
@@ -29,7 +30,7 @@ export function RescuePartnerInputForm() {
       if (!response.ok) throw new Error(data?.error || "Submission failed.");
       setStatus("success");
       setMessage("Thank you—your rescue perspective has been saved and sent to ScalesWiki.");
-      event.currentTarget.reset();
+      formElement.reset();
     } catch (error) {
       setStatus("error");
       setMessage(error instanceof Error ? error.message : "We could not save your input. Please try again.");
