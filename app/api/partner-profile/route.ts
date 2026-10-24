@@ -96,6 +96,7 @@ export async function POST(request: Request) {
     consented_by: user.id,
     consented_at: submittedAt,
     profile_submitted_at: submittedAt,
+    profile_published_at: null,
   };
 
   const { error: updateError } = await admin.from("partner_organizations").update(profile).eq("id", organizationId);

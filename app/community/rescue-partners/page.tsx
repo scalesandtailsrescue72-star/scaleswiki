@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { createClient as createAdminClient } from "@supabase/supabase-js";
 import { Navbar } from "@/app/components/Navbar";
 import { Footer } from "@/app/components/Footer";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Founding Rescue Partners",
@@ -23,7 +27,46 @@ const expectations = [
   "Choose separately whether you want to participate in any future public Spotlight.",
 ];
 
-export default function RescuePartnersPage() {
+function getRuntimeEnv() {
+  try {
+    return getCloudflareContext().env as unknown as Record<string, string | undefined>;
+  } catch {
+    return process.env;
+  }
+}
+
+export default async function RescuePartnersPage() {
+  const env = getRuntimeEnv();
+  let publishedPartners: Array<{
+    id: string;
+    name: string;
+    website_url: string | null;
+    city: string | null;
+    state_region: string | null;
+    service_area: string | null;
+    public_description: string | null;
+    species_handled: string[];
+    services_offered: string[];
+    facebook_url: string | null;
+    instagram_url: string | null;
+    public_links_consent: boolean;
+  }> = [];
+
+  if (env.NEXT_PUBLIC_SUPABASE_URL && env.SUPABASE_SERVICE_ROLE_KEY) {
+    const admin = createAdminClient(env.NEXT_PUBLIC_SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY, {
+      auth: { autoRefreshToken: false, persistSession: false },
+    });
+    const { data, error } = await admin
+      .from("partner_organizations")
+      .select("id,name,website_url,city,state_region,service_area,public_description,species_handled,services_offered,facebook_url,instagram_url,public_links_consent")
+      .eq("profile_status", "published")
+      .eq("directory_consent", true)
+      .eq("representative_authorized", true)
+      .order("name");
+    if (error) console.error("[Rescue Partner Directory] Load failed", error.message);
+    else publishedPartners = data || [];
+  }
+
   return (
     <main className="min-h-screen bg-[#08120D] text-white">
       <Navbar />
@@ -69,6 +112,34 @@ export default function RescuePartnersPage() {
           </ul>
         </div>
       </section>
+
+      {publishedPartners.length > 0 && (
+        <section className="mx-auto max-w-6xl px-6 py-16 lg:px-8" aria-labelledby="partner-directory-heading">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-green-400">Published with permission</p>
+            <h2 id="partner-directory-heading" className="mt-3 text-3xl font-bold sm:text-4xl">Rescue Partner directory</h2>
+            <p className="mt-4 leading-7 text-gray-300">These organizations authorized a public listing and were reviewed by ScalesWiki before publication.</p>
+          </div>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {publishedPartners.map((partner) => {
+              const location = [partner.city, partner.state_region].filter(Boolean).join(", ");
+              const links = partner.public_links_consent
+                ? [{ label: "Website", href: partner.website_url }, { label: "Facebook", href: partner.facebook_url }, { label: "Instagram", href: partner.instagram_url }].filter((entry): entry is { label: string; href: string } => Boolean(entry.href))
+                : [];
+              return (
+                <article key={partner.id} className="rounded-2xl border border-green-500/20 bg-[#102017] p-7">
+                  <h3 className="text-2xl font-semibold text-white">{partner.name}</h3>
+                  {(location || partner.service_area) && <p className="mt-2 text-sm text-green-300">{location || partner.service_area}{location && partner.service_area ? ` · Serves ${partner.service_area}` : ""}</p>}
+                  <p className="mt-4 leading-7 text-gray-300">{partner.public_description}</p>
+                  {partner.species_handled?.length > 0 && <p className="mt-4 text-sm text-gray-400"><strong className="text-gray-200">Species:</strong> {partner.species_handled.join(", ")}</p>}
+                  {partner.services_offered?.length > 0 && <p className="mt-2 text-sm text-gray-400"><strong className="text-gray-200">Services:</strong> {partner.services_offered.join(", ")}</p>}
+                  {links.length > 0 && <div className="mt-5 flex flex-wrap gap-3">{links.map(({ label, href }) => <a key={label} href={href} target="_blank" rel="noreferrer" className="rounded-lg border border-green-600 px-4 py-2 text-sm font-semibold text-green-300 transition hover:bg-green-950/50">{label}</a>)}</div>}
+                </article>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       <section className="mx-auto max-w-5xl px-6 py-16 lg:px-8">
         <div className="rounded-3xl border border-amber-400/20 bg-amber-500/10 p-8 sm:p-10">
